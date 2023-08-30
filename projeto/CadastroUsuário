@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-       
+       <div>Cadastro Usuario</div>
     </body>
 </html>
 
@@ -19,7 +19,7 @@
 <body>
     <div class="page">
         <form method="POST" class="formLogin">
-            <h1>Login</h1>
+            <h1>CadastroUsuário</h1>
             <p>Digite os seus dados de acesso no campo abaixo.</p>
             <label for="email">E-mail</label>
             <input type="email" placeholder="Digite seu e-mail" autofocus="true" />
