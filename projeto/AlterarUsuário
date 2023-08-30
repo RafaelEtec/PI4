@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+    </body>
+</html>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="page">
+        <form method="POST" class="formLogin">
+            <h1>Cadastrar ou alterar Usuário</h1>
+            <p>Digite os dados dos campos abaixo</p>
+            <label for="campo 1">campo 1</label>
+            <input type="campo 2" placeholder="Digite seu e-mail" autofocus="true" />
+            <label for="password">campo 2</label>
+            <input type="password" placeholder="Digite sua senha" />
+            
+             <input type="submit" value="Cancelar" class="btn" />
+            <input type="submit" value="Ok" class="btn" />
+        </form>
+    </div>
+    
+</body>
+</html>
