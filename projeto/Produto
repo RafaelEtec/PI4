@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>TODO write content</div>
+    </body>
+</html>
+
+
+ <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="page">
+        <form method="POST" class="formLogin">
+            <h1>Principais</h1>
+            <p>Digite os dados dos campos abaixo</p>
+            <label for="campo 1">Listar produto</label>
+            
+            <label for="campo 2">Listar usuário</label>
+            
+            <label for="campo 3">Lista pedidos</label>
+        </form>
+    </div>
+    
+</body>
+</html>
