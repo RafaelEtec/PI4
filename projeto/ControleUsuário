@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+      
+    </body>
+</html>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Cadastro e Controle de Usuário</title>
+</head>
+<body>
+    <div class="container">
+        <form id="user-form">
+            <h1>Cadastro e Controle de Usuário</h1>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+                <option value="ativo">Ativo</option>
+                <option value="inativo">Inativo</option>
+            </select>
+
+            <div class="button-group">
+                <button type="submit">Cadastrar</button>
+                <button type="button" class="alter-button">Alterar</button>
+                <button type="button" class="toggle-button">Habilitar/Desabilitar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
