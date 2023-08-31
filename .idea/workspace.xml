@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c60ba89c-12ae-4a6e-b7a3-dc56d70fdf64" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/databaseSQL" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/asDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/evDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/usDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Assessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Evento.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Usuario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/ConfPresAs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/ConfPresServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/CreateAsServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/CreateEventServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/CreateUsServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/DeleteEv.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/InfoAss.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/ListEventByAss.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/ListEventoServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/ListEventoServletUS.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/LoginAsServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/LoginUsServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/LogoutAs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/LogoutUs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/SearchEventoServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/SenhaAsServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/SenhaUsServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/infoUs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/criaAS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/criaEV.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/criaUS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/dash.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/dashAS.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/loginUS.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/option.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/prox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/reset.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/usOuAs.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/dashboard.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/dashboardAS.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/evento.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/defaultEV.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/defaultPFP.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/del.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/fundo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/heart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/ola.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/playBtn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/returnArrow.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/returnArrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/search.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/share.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/infoAS.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/infoUS.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/loginAS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/loginUS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/menu.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/optionAS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/optionUS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/senhaAS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/senhaUS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/usOuAs.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2Uj9D6CKLc11l2DJNFWC3O1PthP" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/raf/IdeaProjects/PI_4",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\raf\IdeaProjects\PI_4" />
+      <recent name="C:\Users\raf\IdeaProjects\PI_4\src\main" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="PI_4" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="PI_4" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c60ba89c-12ae-4a6e-b7a3-dc56d70fdf64" name="Changes" comment="" />
+      <created>1693442001570</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1693442001570</updated>
+    </task>
+    <servers />
+  </component>
+</project>
