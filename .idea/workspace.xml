@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1fc923a6-1e2d-48f3-a81e-52d7c05e4e12" name="Changes" comment="&gt; Reestruturação e planejamento do projeto&#10;  - &quot;Start do zero&quot;&#10;    - Dependências inseridas&#10;      - H2 Database&#10;      - Tomcat7&#10;      - Servlet&#10;    - DAO, MODEL e SERVLET criados&#10;      - Login já é possível, resta implementar a página .html&#10;    - Script SQL repensado" />
+    <list default="true" id="1fc923a6-1e2d-48f3-a81e-52d7c05e4e12" name="Changes" comment="workspace.xml" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +17,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/main" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -26,12 +29,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\raf\IdeaProjects\Disciplina_Musical" />
@@ -80,7 +83,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693592440735</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="workspace.xml">
+      <created>1693592771828</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1693592771828</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -96,6 +106,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="&gt; Reestruturação e planejamento do projeto&#10;  - &quot;Start do zero&quot;&#10;    - Dependências inseridas&#10;      - H2 Database&#10;      - Tomcat7&#10;      - Servlet&#10;    - DAO, MODEL e SERVLET criados&#10;      - Login já é possível, resta implementar a página .html&#10;    - Script SQL repensado" />
-    <option name="LAST_COMMIT_MESSAGE" value="&gt; Reestruturação e planejamento do projeto&#10;  - &quot;Start do zero&quot;&#10;    - Dependências inseridas&#10;      - H2 Database&#10;      - Tomcat7&#10;      - Servlet&#10;    - DAO, MODEL e SERVLET criados&#10;      - Login já é possível, resta implementar a página .html&#10;    - Script SQL repensado" />
+    <MESSAGE value="workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspace.xml" />
   </component>
 </project>
