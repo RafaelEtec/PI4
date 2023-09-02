@@ -1,0 +1,31 @@
+.fundo {
+    background-color: white;
+}
+
+html {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.container {
+    align-content: start;
+    margin-top: 10%;
+    width: auto;
+    height: auto;
+    position: relative;
+}
+
+.greetings {
+    width: auto;
+    height: 50%;
+}
+
+.greet1 {
+    align: left;
+    letter: -4%;
+    line-height: 120%;
+    font-size: 400%;
+    weight: bold;
+    color: #181E4B;
+    font-family: 'Open Sans', sans-serif;"Plus Jakarta Sans";
+}
