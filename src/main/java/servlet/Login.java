@@ -17,15 +17,14 @@ public class Login extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String us_email = req.getParameter("us-email");
         String us_pass = req.getParameter("us-pass");
-
-        boolean resposta = new usDAO().login(us_email, us_pass);
-        if (resposta) {
-            Usuario us = new usDAO().sessionPorEmail(us_email);
-            req.getSession().setAttribute("us", us);
-            // resp.sendRedirect("");
-        } else {
-            // resp.sendRedirect("");
-            System.out.println("Não foi possível efetuar o Login!");
+        System.out.println(us_email + " - " + us_pass);
+        if (!us_email.isEmpty() && !us_pass.isEmpty()) {
+            boolean resposta = new usDAO().login(us_email, us_pass);
+            if (resposta) {
+                Usuario us = new usDAO().sessionPorEmail(us_email);
+                req.getSession().setAttribute("us", us);
+                resp.sendRedirect("index.html");
+            }
         }
     }
 }
