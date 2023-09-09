@@ -4,20 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1fc923a6-1e2d-48f3-a81e-52d7c05e4e12" name="Changes" comment="workspace.xml">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/listUsers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/principal.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/principal.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/usuarios.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="1fc923a6-1e2d-48f3-a81e-52d7c05e4e12" name="Changes" comment="&gt; implemented but to do">
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/searchUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/updateStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/updateUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/usuarios.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/databaseSQL" beforeDir="false" afterPath="$PROJECT_DIR$/databaseSQL" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/usDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/usDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Usuario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/listUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/listUsers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/principal.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/principal.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/usuarios.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/usuarios.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,18 +52,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\raf\IdeaProjects\Disciplina_Musical" />
@@ -117,7 +119,47 @@
       <option name="project" value="LOCAL" />
       <updated>1693592771828</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="&gt; updated">
+      <option name="closed" value="true" />
+      <created>1694233750890</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1694233750890</updated>
+    </task>
+    <task id="LOCAL-00004" summary="&gt; refined">
+      <option name="closed" value="true" />
+      <created>1694233774840</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1694233774840</updated>
+    </task>
+    <task id="LOCAL-00005" summary="&gt; most likely done">
+      <option name="closed" value="true" />
+      <created>1694233838007</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1694233838007</updated>
+    </task>
+    <task id="LOCAL-00006" summary="&gt; updated and refined">
+      <option name="closed" value="true" />
+      <created>1694233872249</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1694233872249</updated>
+    </task>
+    <task id="LOCAL-00007" summary="&gt; implemented but to do">
+      <option name="closed" value="true" />
+      <created>1694233908876</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1694233908876</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -134,6 +176,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="&gt; Reestruturação e planejamento do projeto&#10;  - &quot;Start do zero&quot;&#10;    - Dependências inseridas&#10;      - H2 Database&#10;      - Tomcat7&#10;      - Servlet&#10;    - DAO, MODEL e SERVLET criados&#10;      - Login já é possível, resta implementar a página .html&#10;    - Script SQL repensado" />
     <MESSAGE value="workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="workspace.xml" />
+    <MESSAGE value="&gt; updated" />
+    <MESSAGE value="&gt; refined" />
+    <MESSAGE value="&gt; most likely done" />
+    <MESSAGE value="&gt; updated and refined" />
+    <MESSAGE value="&gt; implemented but to do" />
+    <option name="LAST_COMMIT_MESSAGE" value="&gt; implemented but to do" />
   </component>
 </project>
