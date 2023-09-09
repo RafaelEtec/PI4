@@ -27,14 +27,10 @@ public class Usuario {
         this.status = status;
     }
 
-    public Usuario(String img, String nome, String email, String cpf, String num, String nasc, String pass, String funcao, Boolean status) {
-        this.img = img;
+    public Usuario(int id, String nome, String email, String funcao, Boolean status) {
+        this.id = id;
         this.nome = nome;
         this.email = email;
-        this.cpf = cpf;
-        this.num = num;
-        this.nasc = nasc;
-        this.pass = pass;
         this.funcao = funcao;
         this.status = status;
     }
