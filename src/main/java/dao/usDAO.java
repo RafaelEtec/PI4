@@ -35,7 +35,7 @@ public class usDAO {
     }
 
     public boolean login(String email, String pass) {
-        String sql = "SELECT us_PASS FROM tb_USUARIO WHERE us_EMAIL = ? AND us_PASS = ?";
+        String sql = "SELECT us_PASS FROM tb_USUARIO WHERE us_EMAIL = ? AND us_PASS = ?;";
         boolean saida = false;
         String resposta = "";
         try {
@@ -61,7 +61,7 @@ public class usDAO {
     }
 
     public boolean isADM(String email) {
-        String sql = "SELECT us_FUNCAO FROM tb_USUARIO WHERE us_EMAIL = ?";
+        String sql = "SELECT us_FUNCAO FROM tb_USUARIO WHERE us_EMAIL = ?;";
         boolean saida = false;
         String resposta = "";
         try {
@@ -86,7 +86,7 @@ public class usDAO {
     }
 
     public Usuario sessionPorEmail(String sessionEmail) {
-        String sql = "SELECT us_ID, us_IMG, us_NOME, us_EMAIL, us_CPF, us_NUM, us_NASC, us_PASS, us_FUNCAO, us_STATUS FROM tb_USUARIO WHERE us_EMAIL = ?";
+        String sql = "SELECT us_ID, us_IMG, us_NOME, us_EMAIL, us_CPF, us_NUM, us_NASC, us_PASS, us_FUNCAO, us_STATUS FROM tb_USUARIO WHERE us_EMAIL = ?;";
         Usuario us = new Usuario();
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
@@ -118,7 +118,7 @@ public class usDAO {
     }
 
     public List<Usuario> listUsers() {
-        String sql = "SELECT us_ID, us_NOME, us_EMAIL, us_FUNCAO, us_STATUS FROM tb_USUARIO";
+        String sql = "SELECT us_ID, us_NOME, us_EMAIL, us_FUNCAO, us_STATUS FROM tb_USUARIO;";
 
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
@@ -148,13 +148,13 @@ public class usDAO {
     }
 
     public List<Usuario> listUsersByNome(String nomeToSearch) {
-        String sql = "SELECT us_ID, us_NOME, us_EMAIL, us_FUNCAO, us_STATUS FROM tb_USUARIO WHERE us_NOME = ?";
+        String sql = "SELECT us_ID, us_NOME, us_EMAIL, us_FUNCAO, us_STATUS FROM tb_USUARIO WHERE us_NOME LIKE ?;";
 
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
             System.out.println("Conectado");
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, nomeToSearch);
+            ps.setString(1, "%" + nomeToSearch + "%");
             ResultSet rs = ps.executeQuery();
             List<Usuario> users = new ArrayList<>();
 
@@ -176,6 +176,46 @@ public class usDAO {
         } catch (Exception ex) {
             System.out.println("Erro na listagem!");
             return Collections.emptyList();
+        }
+    }
+
+    public boolean getStatus(int id) {
+        String sql = "SELECT us_STATUS FROM tb_USUARIO WHERE us_ID = ?;";
+        Boolean status = false;
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            System.out.println("Conectado");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                if (rs.getBoolean("us_STATUS")) {
+                    status = true;
+                }
+            }
+        } catch (Exception ex) {
+            System.out.println("Erro na pesquisa!");
+        }
+        return status;
+    }
+
+    public void updateStatus(int id) {
+        String sql = getStatus(id) ?
+                  "UPDATE tb_USUARIO SET us_STATUS = false WHERE us_ID = ?;"
+                : "UPDATE tb_USUARIO SET us_STATUS = true WHERE us_ID = ?;";
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            System.out.println("Conectado");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.execute();
+            System.out.println("Status alterado!");
+            con.close();
+        } catch (Exception ex) {
+            System.out.println("Erro no update!");
         }
     }
 }
