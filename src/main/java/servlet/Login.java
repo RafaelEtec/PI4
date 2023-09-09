@@ -18,12 +18,19 @@ public class Login extends HttpServlet {
         String us_email = req.getParameter("us-email");
         String us_pass = req.getParameter("us-pass");
         System.out.println(us_email + " - " + us_pass);
-        if (!us_email.isEmpty() && !us_pass.isEmpty()) {
+        if (!us_email.isEmpty() || !us_pass.isEmpty()) {
             boolean resposta = new usDAO().login(us_email, us_pass);
+            boolean admin = new usDAO().isADM(us_email);
             if (resposta) {
-                Usuario us = new usDAO().sessionPorEmail(us_email);
-                req.getSession().setAttribute("us", us);
-                resp.sendRedirect("index.html");
+                if (admin) {
+                    Usuario us = new usDAO().sessionPorEmail(us_email);
+                    req.getSession().setAttribute("us", us);
+                    resp.sendRedirect("principal.html");
+                } else {
+                    resp.sendRedirect("index.html");
+                }
+            } else {
+                resp.sendRedirect("login.html");
             }
         }
     }
