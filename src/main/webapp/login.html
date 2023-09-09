@@ -19,23 +19,23 @@
             </div>
             <div class="card-body">
                 <form action="/login" method="get">
-                <div class="row mb-3">
-                    <div id="alertaEmail"></div>
-                    <label for="us-email" class="col-sm-2 col-form-label">Usuário:</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="us-email" name="us-email">
+                    <div class="row mb-3">
+                        <div id="alertaEmail"></div>
+                        <label for="us-email" class="col-sm-2 col-form-label">Usuário:</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="us-email" name="us-email">
+                        </div>
                     </div>
-                </div>
-                <div class="row mb-3">
-                    <div id="alertaSenha"></div>
-                    <label for="us-pass" class="col-sm-2 col-form-label">Senha:</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="us-pass" name="us-pass">
+                    <div class="row mb-3">
+                        <div id="alertaSenha"></div>
+                        <label for="us-pass" class="col-sm-2 col-form-label">Senha:</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="us-pass" name="us-pass">
+                        </div>
                     </div>
-                </div>
-                <button type="submit" id="enviar" class="btn btn-primary">OK</button>
+                    <button type="submit" id="enviar" class="btn btn-primary">OK</button>
+                    <button onclick="limparCampos()" class="btn btn-secondary" id="cancelar">Cancelar</button>
                 </form>
-                <button onclick="limparCampos()" class="btn btn-secondary" id="cancelar">Cancelar</button>
             </div>
         </div>
         </header>
