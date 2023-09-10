@@ -29,6 +29,14 @@ public class Usuario {
         this.status = status;
     }
 
+    public Usuario(String nome, String email, String cpf, String pass, String funcao) {
+        this.nome = nome;
+        this.email = email;
+        this.cpf = cpf;
+        this.pass = pass;
+        this.funcao = funcao;
+    }
+
     public int getId() {
         return id;
     }

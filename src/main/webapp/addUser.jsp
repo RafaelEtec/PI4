@@ -19,11 +19,11 @@
                     Cadastro de Usuário
                 </div>
                 <div class="card-body">
-                    <form action="/login" method="get">
+                    <form action="/addUser" method="get">
                         <div class="row mb-1">
-                            <label for="us-email" class="col-sm-2 col-form-label">Nome</label>
+                            <label for="us-nome" class="col-sm-2 col-form-label">Nome</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="us-email" name="us-email">
+                                <input type="nome" class="form-control" id="us-nome" name="us-nome">
                             </div>
                         </div>
                         <div class="row mb-2">
@@ -33,23 +33,57 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="us-email" class="col-sm-2 col-form-label">CPF</label>
+                            <label for="us-cpf" class="col-sm-2 col-form-label">CPF</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="us-email" name="us-email">
+                                <input type="cpf" class="form-control" id="us-cpf" name="us-cpf">
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div id="divSelect" class="input-group mb-6">
-                              <label class="input-group-text" for="inputGroupSelect01">Função</label>
-                              <select class="form-select" id="inputGroupSelect01">
+                              <label class="input-group-text" for="us-funcao">Função</label>
+                              <select class="form-select" id="us-funcao" name="us-funcao">
                                 <option value="USER">USUÁRIO</option>
                                 <option value="STOCKIST">ESTOQUISTA</option>
                                 <option value="ADMIN">ADMINISTRADOR</option>
                               </select>
                             </div>
                         </div>
-                        <button type="submit" id="enviar" class="btn btn-primary">Avançar</button>
-                        <button onclick="limparCampos()" class="btn btn-secondary" id="cancelar">Cancelar</button>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Avançar</button>
+
+                        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+                          <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Informe a senha do Usuário</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                          </div>
+                          <div class="offcanvas-body">
+                            <div class="row g-3 align-items-center">
+                              <div class="col-auto">
+                                <label for="inputPassword6" class="col-form-label">Senha</label>
+                              </div>
+                              <div class="col-auto">
+                                <input type="password" minlength="8" maxlength="20" required id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+                              </div>
+                              <div class="col-auto">
+                                <span id="passwordHelpInline" class="form-text">
+                                  A senha deve conter de 8 à 20 caracteres.
+                                </span>
+                              </div><div class="row g-3 align-items-center">
+                              <div class="col-auto">
+                                <label for="inputPassword7" class="col-form-label">Confirme</label>
+                              </div>
+                              <div class="col-auto">
+                                <input type="password" minlength="8" maxlength="20" required id="inputPassword7" class="form-control" aria-describedby="passwordHelpInline">
+                              </div>
+                              <div class="col-auto">
+                                <span id="passwordHelpInline" class="form-text">
+                                  Informe novamente a senha.
+                                </span>
+                              </div>
+                            </div>
+                            <button type="submit" id="enviar" class="btn btn-primary">Avançar</button>
+                            <button onclick="limparCampos()" class="btn btn-secondary" id="cancelar">Cancelar</button>
+                          </div>
+                        </div>
                     </form>
                 </div>
             </div>
