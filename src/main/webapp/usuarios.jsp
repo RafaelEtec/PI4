@@ -19,8 +19,8 @@
                 <div class="input-group">
                   <span class="input-group-text" id="basic-addon1">Nome</span>
                   <input type="text" class="form-control" name="nomeToSearch" id="nomeToSearch" aria-label="Nome" aria-describedby="basic-addon1">
-                    <button class="btn btn-outline-success" type="submit">Procurar</button>
-                    <button class="btn btn-outline" style="font-size: 1.4rem;">&nbsp&nbsp&nbsp+&nbsp&nbsp&nbsp</button>
+                    <button id="search" class="btn btn-outline-success" type="submit">Procurar</button>
+                    <a id="addUser" role="button" href="addUser.jsp" class="btn btn-outline" style="font-size: 1.4rem;">&nbsp&nbsp&nbsp+&nbsp&nbsp&nbsp</a>
                 </div>
               </form>
             </nav>
@@ -31,6 +31,7 @@
                         <th scope="col">Nome</th>
                         <th scope="col">E-mail</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Função</th>
                         <th scope="col">Alterar</th>
                         <th scope="col">Hab/Des</th>
                     </tr>
@@ -41,6 +42,7 @@
                             <td>${user.nome}</td>
                             <td>${user.email}</td>
                             <td>${user.status ? "Ativo" : "Inativo"}</td>
+                            <td>${user.funcao}</td>
 
                             <form action="/updateUser" method="get">
                                 <input type="hidden" id="us_ID" name="us_ID" value="${user.id}">
