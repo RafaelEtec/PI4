@@ -1,5 +1,6 @@
 package servlet;
 
+import dao.usDAO;
 import model.Usuario;
 
 import javax.servlet.ServletException;
@@ -21,5 +22,12 @@ public class addUser extends HttpServlet {
         String us_pass = req.getParameter("us-pass");
 
         Usuario us = new Usuario(us_nome, us_email, us_cpf, us_pass, us_funcao);
+        boolean saida = new usDAO().addUser(us);
+
+        if (saida) {
+            req.getRequestDispatcher("/listUsers").forward(req, resp);
+        } else {
+            resp.sendRedirect("addUser.jsp");
+        }
     }
 }

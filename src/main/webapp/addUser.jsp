@@ -19,7 +19,7 @@
                     Cadastro de Usuário
                 </div>
                 <div class="card-body">
-                    <form action="/addUser" method="get">
+                    <form action="/addUser" method="post" id="formAddUser">
                         <div class="row mb-1">
                             <label for="us-nome" class="col-sm-2 col-form-label">Nome</label>
                             <div class="col-sm-10">
@@ -42,14 +42,19 @@
                             <div id="divSelect" class="input-group mb-6">
                               <label class="input-group-text" for="us-funcao">Função</label>
                               <select class="form-select" id="us-funcao" name="us-funcao">
+                                <option value=""></option>
                                 <option value="USER">USUÁRIO</option>
                                 <option value="STOCKIST">ESTOQUISTA</option>
                                 <option value="ADMIN">ADMINISTRADOR</option>
                               </select>
                             </div>
                         </div>
-                        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Avançar</button>
 
+                        <button onclick="checkCampos()" id="avancar" class="btn btn-primary" type="button">Avançar</button>
+                        <a href="/listUsers" class="btn btn-secondary" id="Voltar">Voltar</a>
+
+                        <div id="alert" class="row mb-3"></div>
+                        <button hidden data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" data-bs-toggle="offcanvas"></button>
                         <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
                           <div class="offcanvas-header">
                             <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Informe a senha do Usuário</h5>
@@ -58,21 +63,18 @@
                           <div class="offcanvas-body">
                             <div class="row g-3 align-items-center">
                               <div class="col-auto">
-                                <label for="inputPassword6" class="col-form-label">Senha</label>
+                                <label for="us-pass" class="col-form-label">Senha</label>
                               </div>
                               <div class="col-auto">
-                                <input type="password" minlength="8" maxlength="20" required id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+                                <input type="password" minlength="8" maxlength="20" required id="us-pass" name="us-pass" class="form-control" aria-describedby="passwordHelpInline">
                               </div>
                               <div class="col-auto">
-                                <span id="passwordHelpInline" class="form-text">
-                                  A senha deve conter de 8 à 20 caracteres.
-                                </span>
                               </div><div class="row g-3 align-items-center">
                               <div class="col-auto">
-                                <label for="inputPassword7" class="col-form-label">Confirme</label>
+                                <label for="us-passC" class="col-form-label">Confirme</label>
                               </div>
                               <div class="col-auto">
-                                <input type="password" minlength="8" maxlength="20" required id="inputPassword7" class="form-control" aria-describedby="passwordHelpInline">
+                                <input type="password" minlength="8" maxlength="20" required id="us-passC" class="form-control" aria-describedby="passwordHelpInline">
                               </div>
                               <div class="col-auto">
                                 <span id="passwordHelpInline" class="form-text">
@@ -81,13 +83,14 @@
                               </div>
                             </div>
                             <button type="submit" id="enviar" class="btn btn-primary">Avançar</button>
-                            <button onclick="limparCampos()" class="btn btn-secondary" id="cancelar">Cancelar</button>
+                            <a onclick="limparCampos()" role="button" class="btn btn-secondary" id="cancelar">Cancelar</a>
                           </div>
                         </div>
                     </form>
                 </div>
             </div>
         </header>
+    <script src="js/senha.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

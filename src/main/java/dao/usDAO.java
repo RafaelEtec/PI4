@@ -9,7 +9,7 @@ import java.util.List;
 
 public class usDAO {
     public boolean addUser(Usuario us) {
-        String sql = "INSERT INTO tb_USUARIO(us_NOME, us_EMAIL, us_CPF, us_PASS, us_FUNCAO, us_STATUS) VALUES(?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO tb_USUARIO(us_NOME, us_EMAIL, us_CPF, us_PASS, us_FUNCAO) VALUES(?, ?, ?, ?, ?);";
         boolean saida = false;
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
@@ -20,7 +20,6 @@ public class usDAO {
             ps.setString(3, us.getCpf());
             ps.setString(4, us.getPass());
             ps.setString(5, us.getFuncao());
-            ps.setBoolean(6, us.getStatus());
             ps.execute();
             saida = true;
             System.out.println("Sucesso no cadastro!");
@@ -233,5 +232,27 @@ public class usDAO {
         } catch (Exception ex) {
             System.out.println("Erro no update!");
         }
+    }
+
+    public boolean checkNome(String nome) {
+        String sql = "SELECT us_NOME FROM tb_USUARIO WHERE us_NOME = ?;";
+        Boolean exists = false;
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            System.out.println("Conectado");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nome);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                if (rs.getString("us_NOME").equals(nome)) {
+                    exists = true;
+                }
+            }
+        } catch (Exception ex) {
+            System.out.println("Erro na pesquisa!");
+        }
+        return exists;
     }
 }
