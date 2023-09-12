@@ -17,7 +17,7 @@ public class usDAO {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, us.getNome());
             ps.setString(2, us.getEmail());
-            ps.setInt(3, us.getCpf());
+            ps.setString(3, us.getCpf());
             ps.setString(4, us.getPass());
             ps.setString(5, us.getFuncao());
             ps.execute();
@@ -95,7 +95,7 @@ public class usDAO {
                 int id = rs.getInt("us_ID");
                 String nome = rs.getString("us_NOME");
                 String email = rs.getString("us_EMAIL");
-                int cpf = rs.getInt("us_CPF");
+                String cpf = rs.getString("us_CPF");
                 String pass = rs.getString("us_PASS");
                 String funcao = rs.getString("us_FUNCAO");
                 Boolean status = rs.getBoolean("us_STATUS");
@@ -256,20 +256,19 @@ public class usDAO {
         return exists;
     }
 
-    public boolean checkCPF(int cpf) {
+    public boolean checkCPF(String cpf) {
         String sql = "SELECT us_CPF FROM tb_USUARIO WHERE us_CPF = ?;";
-        //SELECT RIGHT('000000000' + CONVERT(VARCHAR(8),Num), 8) FROM #Numbers
         Boolean exists = false;
 
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
             System.out.println("Conectado");
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, cpf);
+            ps.setString(1, cpf);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                if (rs.getInt("us_CPF") == cpf) {
+                if (rs.getString("us_CPF").equals(cpf)) {
                     exists = true;
                 }
             }
@@ -277,5 +276,58 @@ public class usDAO {
             System.out.println("Erro na pesquisa!");
         }
         return exists;
+    }
+
+    public Usuario userInfo(int id) {
+        String sql = "SELECT us_ID, us_NOME, us_EMAIL, us_CPF, us_PASS, us_FUNCAO, us_STATUS FROM tb_USUARIO WHERE us_ID = ?;";
+        Usuario us = new Usuario();
+        try {
+            Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            System.out.println("Conectado");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int us_ID = rs.getInt("us_ID");
+                String us_NOME = rs.getString("us_NOME");
+                String us_EMAIL = rs.getString("us_EMAIL");
+                String us_CPF = rs.getString("us_CPF");
+                String us_PASS = rs.getString("us_PASS");
+                String us_FUNCAO = rs.getString("us_FUNCAO");
+                Boolean us_STATUS = rs.getBoolean("us_STATUS");
+
+                us = new Usuario(us_ID, us_NOME, us_EMAIL, us_CPF, us_PASS, us_FUNCAO, us_STATUS);
+            }
+            System.out.println("Sucesso na coleta!");
+            con.close();
+
+            return us;
+        } catch (Exception ex) {
+            System.out.println("Erro na coleta!");
+            return null;
+        }
+    }
+
+    public boolean updateUser(Usuario us) {
+        String sql = "UPDATE tb_USUARIO SET us_NOME = ?, us_CPF = ?, us_PASS = ?, us_FUNCAO = ? WHERE us_ID = ?";
+        Boolean saida = false;
+        try {
+            Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            System.out.println("Conectado");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, us.getNome());
+            ps.setString(2, us.getCpf());
+            ps.setString(3, us.getPass());
+            ps.setString(4, us.getFuncao());
+            ps.setInt(5, us.getId());
+            ps.execute();
+            saida = true;
+            System.out.println("Sucesso na atualização!");
+            con.close();
+        } catch (Exception ex) {
+            System.out.println("Erro na atualização!");
+        }
+        return saida;
     }
 }
