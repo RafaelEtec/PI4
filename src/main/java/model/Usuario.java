@@ -4,14 +4,14 @@ public class Usuario {
     private int id;
     private String nome;
     private String email;
-    private int cpf;
+    private String cpf;
     private String pass;
     private String funcao;
     private Boolean status;
 
     public Usuario() {}
 
-    public Usuario(int id, String nome, String email, int cpf, String pass, String funcao, Boolean status) {
+    public Usuario(int id, String nome, String email, String cpf, String pass, String funcao, Boolean status) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -29,7 +29,16 @@ public class Usuario {
         this.status = status;
     }
 
-    public Usuario(String nome, String email, int cpf, String pass, String funcao) {
+    public Usuario(int id, String nome, String email, String cpf, String pass, String funcao) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.cpf = cpf;
+        this.pass = pass;
+        this.funcao = funcao;
+    }
+
+    public Usuario(String nome, String email, String cpf, String pass, String funcao) {
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
@@ -61,11 +70,11 @@ public class Usuario {
         this.email = email;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
