@@ -21,36 +21,71 @@
                 <div class="card-body">
                     <form action="/addUser" method="post" id="formAddUser">
                         <input type="hidden" id="error" name="error" value="${error}">
+                        <input type="hidden" id="gonna" name="gonna" value="${gonna}">
+                        <input type="hidden" id="email" name="email" value="${usC.email}">
+                        <input type="hidden" id="cpf" name="cpf" value="${usC.cpf}">
+                        <input type="hidden" id="id" name="id" value="${usC.id}">
 
                         <div class="row mb-1">
                             <label for="us-nome" class="col-sm-2 col-form-label">Nome</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="us-nome" name="us-nome" value="${us.nome}">
+                                <input type="text" class="form-control" id="us-nome" name="us-nome" value="${usC.nome}">
                             </div>
                         </div>
-                        <div class="row mb-2">
-                            <label for="us-email" class="col-sm-2 col-form-label">E-mail</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="us-email" name="us-email" value="${us.email}>
-                            </div>
-                        </div>
+
+                        <c:choose>
+                            <c:when test="${gonna == 'UPDATE'}">
+                                <div id="divEmail" class="row mb-2">
+                                    <label for="us-email" class="col-sm-2 col-form-label">E-mail</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" disabled id="us-email" name="us-email" value="${usC.email}">
+                                    </div>
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div id="divEmail" class="row mb-2">
+                                    <label for="us-email" class="col-sm-2 col-form-label">E-mail</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="us-email" name="us-email" value="${usC.email}">
+                                    </div>
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
+
                         <div class="row mb-3">
                             <label for="us-cpf" class="col-sm-2 col-form-label">CPF</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="us-cpf" name="us-cpf" value="${us.cpf}>
+                                <input type="number" class="form-control" id="us-cpf" name="us-cpf" value="${usC.cpf}">
                             </div>
                         </div>
-                        <div class="row mb-4">
-                            <div id="divSelect" class="input-group mb-6">
-                              <label class="input-group-text" for="us-funcao">Função</label>
-                              <select class="form-select" id="us-funcao" name="us-funcao" value="${us.funcao}>
-                                <option value=""></option>
-                                <option value="USER">USUÁRIO</option>
-                                <option value="STOCKIST">ESTOQUISTA</option>
-                                <option value="ADMIN">ADMINISTRADOR</option>
-                              </select>
-                            </div>
-                        </div>
+                        <c:choose>
+                            <c:when test="${us.id == usC.id}">
+                                <div id="inputFuncao" class="row mb-4">
+                                    <div id="divSelect" class="input-group mb-6">
+                                      <label class="input-group-text" for="us-funcao">Função</label>
+                                      <select disabled class="form-select" id="us-funcao" name="us-funcao" value="${usC.funcao}">
+                                        <option value="">${usC.funcao}</option>
+                                        <option value="USER">USUÁRIO</option>
+                                        <option value="STOCKIST">ESTOQUISTA</option>
+                                        <option value="ADMIN">ADMINISTRADOR</option>
+                                      </select>
+                                    </div>
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div id="inputFuncao" class="row mb-4">
+                                    <div id="divSelect" class="input-group mb-6">
+                                      <label class="input-group-text" for="us-funcao">Função</label>
+                                      <select class="form-select" id="us-funcao" name="us-funcao" value="${usC.funcao}">
+                                        <option value=""></option>
+                                        <option value="USER">USUÁRIO</option>
+                                        <option value="STOCKIST">ESTOQUISTA</option>
+                                        <option value="ADMIN">ADMINISTRADOR</option>
+                                      </select>
+                                    </div>
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
 
                         <button onclick="checkCampos()" id="avancar" class="btn btn-primary" type="button">Avançar</button>
                         <a href="/listUsers" class="btn btn-secondary" id="Voltar">Voltar</a>
@@ -70,7 +105,7 @@
                                 <label for="us-pass" class="col-form-label">Senha</label>
                               </div>
                               <div class="col-auto">
-                                <input type="password" minlength="8" maxlength="20" required id="us-pass" name="us-pass" class="form-control" aria-describedby="passwordHelpInline"  value="${us.pass}>
+                                <input type="password" minlength="8" maxlength="20" required id="us-pass" name="us-pass" class="form-control" aria-describedby="passwordHelpInline"  value="${usC.pass}">
                               </div>
                               <div class="col-auto">
                               </div><div class="row g-3 align-items-center">

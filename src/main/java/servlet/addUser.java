@@ -15,33 +15,67 @@ public class addUser extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String us_nome = req.getParameter("us-nome");
-        String us_email = req.getParameter("us-email");
-        int us_cpf = Integer.parseInt(req.getParameter("us-cpf"));
-        String us_pass = req.getParameter("us-pass");
-        String us_funcao = req.getParameter("us-funcao");
 
-        Usuario us = new Usuario(us_nome, us_email, us_cpf, us_pass, us_funcao);
-        boolean saida = new usDAO().addUser(us);
+        if (req.getParameter("gonna").equals("UPDATE")) {
+            int us_id = Integer.parseInt(req.getParameter("id"));
+            String us_nome = req.getParameter("us-nome");
+            String us_email = req.getParameter("email");
+            String us_cpf = req.getParameter("us-cpf");
+            String cpf = req.getParameter("cpf");
+            String us_pass = req.getParameter("us-pass");
+            String us_funcao = req.getParameter("us-funcao");
 
-        if (saida) {
-            resp.sendRedirect("/listUsers");
-        } else {
-            boolean checkEmail = new usDAO().checkEmail(us_email);
-            boolean checkCPF = new usDAO().checkCPF(us_cpf);
-            String error = "";
+            Usuario us = new Usuario(us_id, us_nome, us_email, us_cpf, us_pass, us_funcao);
+            boolean saida = new usDAO().updateUser(us);
 
-            if (checkEmail) {
-                error = "emailDupe";
-            } else if (checkCPF) {
-                error = "cpfDupe";
+            if (saida) {
+                resp.sendRedirect("/listUsers");
             } else {
-                error = "Erro não identificado";
-            }
+                boolean checkCPF = new usDAO().checkCPF(us_cpf);
+                String error = "";
 
-            req.setAttribute("error", error);
-            req.setAttribute("us", us);
-            req.getRequestDispatcher("addUser.jsp").forward(req, resp);
+                if (!us_cpf.equals(cpf)) {
+                    if (checkCPF) {
+                        error = "cpfDupe";
+                    } else {
+                        error = "Erro não identificado";
+                    }
+                }
+
+                req.setAttribute("error", error);
+                req.setAttribute("gonna", "UPDATE");
+                req.setAttribute("usC", us);
+                req.getRequestDispatcher("addUser.jsp").forward(req, resp);
+            }
+        } else {
+            String us_nome = req.getParameter("us-nome");
+            String us_email = req.getParameter("us-email");
+            String us_cpf = req.getParameter("us-cpf");
+            String us_pass = req.getParameter("us-pass");
+            String us_funcao = req.getParameter("us-funcao");
+
+            Usuario us = new Usuario(us_nome, us_email, us_cpf, us_pass, us_funcao);
+            boolean saida = new usDAO().addUser(us);
+
+            if (saida) {
+                resp.sendRedirect("/listUsers");
+            } else {
+                boolean checkEmail = new usDAO().checkEmail(us_email);
+                boolean checkCPF = new usDAO().checkCPF(us_cpf);
+                String error = "";
+
+                if (checkEmail) {
+                    error = "emailDupe";
+                } else if (checkCPF) {
+                    error = "cpfDupe";
+                } else {
+                    error = "Erro não identificado";
+                }
+
+                req.setAttribute("error", error);
+                req.setAttribute("usC", us);
+                req.getRequestDispatcher("addUser.jsp").forward(req, resp);
+            }
         }
     }
 }
