@@ -22,6 +22,6 @@ public class listUsers extends HttpServlet {
         req.setAttribute("users", users);
         req.setAttribute("id", req.getSession().getAttribute("us_ID"));
         req.setAttribute("strTotal", strTotal);
-        req.getRequestDispatcher("usuarios.jsp?").forward(req, resp);
+        req.getRequestDispatcher("usuarios.jsp").forward(req, resp);
     }
 }

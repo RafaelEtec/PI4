@@ -17,17 +17,31 @@ public class addUser extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String us_nome = req.getParameter("us-nome");
         String us_email = req.getParameter("us-email");
-        String us_cpf = req.getParameter("us-cpf");
-        String us_funcao = req.getParameter("us-funcao");
+        int us_cpf = Integer.parseInt(req.getParameter("us-cpf"));
         String us_pass = req.getParameter("us-pass");
+        String us_funcao = req.getParameter("us-funcao");
 
         Usuario us = new Usuario(us_nome, us_email, us_cpf, us_pass, us_funcao);
         boolean saida = new usDAO().addUser(us);
 
         if (saida) {
-            req.getRequestDispatcher("/listUsers").forward(req, resp);
+            resp.sendRedirect("/listUsers");
         } else {
-            resp.sendRedirect("addUser.jsp");
+            boolean checkEmail = new usDAO().checkEmail(us_email);
+            boolean checkCPF = new usDAO().checkCPF(us_cpf);
+            String error = "";
+
+            if (checkEmail) {
+                error = "emailDupe";
+            } else if (checkCPF) {
+                error = "cpfDupe";
+            } else {
+                error = "Erro não identificado";
+            }
+
+            req.setAttribute("error", error);
+            req.setAttribute("us", us);
+            req.getRequestDispatcher("addUser.jsp").forward(req, resp);
         }
     }
 }

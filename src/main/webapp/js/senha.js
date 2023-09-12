@@ -11,6 +11,8 @@ var closeCanvas = document.querySelector('[data-bs-dismiss="offcanvas"]');
 var openCanvas = document.querySelector('[data-bs-toggle="offcanvas"]');
 var form = document.getElementById('formAddUser');
 
+checkDupes();
+
 if (form.attachEvent) {
     form.attachEvent("submit", processForm);
 } else {
@@ -77,7 +79,30 @@ function checkCampos() {
         document.getElementById("us-funcao").focus();
     } else {
         document.getElementById("alert").innerHTML = `<div class="alert alert-info" hidden role="alert"></div>`;
-        document.getElementById("avancar").focus();
         openCanvas.click();
+    }
+}
+
+function checkDupes() {
+    var error = document.getElementById("error").value;
+
+    if (error != null) {
+        if (error == "emailDupe") {
+            console.log(error);
+            document.getElementById("toastAlert").innerHTML = `<div class="alert alert-warning" role="alert">
+                                                                O E-mail informado já foi cadastrado!
+                                                               </div>`;
+        } else if (error == "cpfDupe") {
+            console.log(error);
+            document.getElementById("toastAlert").innerHTML = `<div class="alert alert-warning" role="alert">
+                                                                O CPF informado já foi cadastrado!
+                                                               </div>`;
+        } else if (error == "Erro não identificado") {
+            document.getElementById("toastAlert").innerHTML = `<div class="alert alert-warning" role="alert">
+                                                                Algo de errado não está certo!
+                                                               </div>`;
+        } else {
+            document.getElementById("toastAlert").innerHTML = `<div class="alert alert-warning" hidden role="alert"></div>`;
+        }
     }
 }
