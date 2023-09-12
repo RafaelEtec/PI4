@@ -44,7 +44,7 @@
                             <td>${user.status ? "Ativo" : "Inativo"}</td>
                             <td>${user.funcao}</td>
 
-                            <form action="/updateUser" method="get">
+                            <form action="/toUpdate" method="get">
                                 <input type="hidden" id="us_ID" name="us_ID" value="${user.id}">
                                 <td><button type="submit">Alterar</button></td>
                             </form>
