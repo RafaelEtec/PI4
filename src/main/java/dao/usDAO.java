@@ -11,6 +11,7 @@ public class usDAO {
     public boolean addUser(Usuario us) {
         String sql = "INSERT INTO tb_USUARIO (us_NOME, us_EMAIL, us_CPF, us_PASS, us_FUNCAO) VALUES (?, ?, ?, ?, ?);";
         boolean saida = false;
+
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
             System.out.println("Conectado");
@@ -21,11 +22,12 @@ public class usDAO {
             ps.setString(4, us.getPass());
             ps.setString(5, us.getFuncao());
             ps.execute();
+
             saida = true;
-            System.out.println("Sucesso no cadastro!");
+            System.out.println("Sucesso no cadastro do Usuário!");
             con.close();
         } catch (Exception ex) {
-            System.out.println("Erro no cadastro!");
+            System.out.println("Erro no cadastro do Usuário!");
         }
         return saida;
     }
@@ -34,6 +36,7 @@ public class usDAO {
         String sql = "SELECT us_PASS FROM tb_USUARIO WHERE us_EMAIL = ? AND us_PASS = ?;";
         boolean saida = false;
         String resposta = "";
+
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
             PreparedStatement ps = con.prepareStatement(sql);
@@ -60,6 +63,7 @@ public class usDAO {
         String sql = "SELECT us_FUNCAO FROM tb_USUARIO WHERE us_EMAIL = ?;";
         boolean saida = false;
         String resposta = "";
+
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
             PreparedStatement ps = con.prepareStatement(sql);
@@ -84,6 +88,7 @@ public class usDAO {
     public Usuario sessionPorEmail(String sessionEmail) {
         String sql = "SELECT us_ID, us_NOME, us_EMAIL, us_CPF, us_PASS, us_FUNCAO, us_STATUS FROM tb_USUARIO WHERE us_EMAIL = ?;";
         Usuario us = new Usuario();
+
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
             System.out.println("Conectado");
@@ -98,7 +103,7 @@ public class usDAO {
                 String cpf = rs.getString("us_CPF");
                 String pass = rs.getString("us_PASS");
                 String funcao = rs.getString("us_FUNCAO");
-                Boolean status = rs.getBoolean("us_STATUS");
+                boolean status = rs.getBoolean("us_STATUS");
 
                 us = new Usuario(id, nome, email, cpf, pass, funcao, status);
             }
@@ -111,7 +116,7 @@ public class usDAO {
     }
 
     public List<Usuario> listUsers() {
-        String sql = "SELECT us_ID, us_NOME, us_EMAIL, us_FUNCAO, us_STATUS FROM tb_USUARIO;";
+        String sql = "SELECT * FROM tb_USUARIO;";
 
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
@@ -125,7 +130,7 @@ public class usDAO {
                 String us_NOME = rs.getString("us_NOME");
                 String us_EMAIL = rs.getString("us_EMAIL");
                 String us_FUNCAO = rs.getString("us_FUNCAO");
-                Boolean us_STATUS = rs.getBoolean("us_STATUS");
+                boolean us_STATUS = rs.getBoolean("us_STATUS");
 
                 Usuario user = new Usuario(us_ID, us_NOME, us_EMAIL, us_FUNCAO, us_STATUS);
                 users.add(user);
@@ -156,7 +161,7 @@ public class usDAO {
                 String us_NOME = rs.getString("us_NOME");
                 String us_EMAIL = rs.getString("us_EMAIL");
                 String us_FUNCAO = rs.getString("us_FUNCAO");
-                Boolean us_STATUS = rs.getBoolean("us_STATUS");
+                boolean us_STATUS = rs.getBoolean("us_STATUS");
 
                 Usuario user = new Usuario(us_ID, us_NOME, us_EMAIL, us_FUNCAO, us_STATUS);
                 users.add(user);
@@ -174,7 +179,7 @@ public class usDAO {
 
     public boolean getStatus(int id) {
         String sql = "SELECT us_STATUS FROM tb_USUARIO WHERE us_ID = ?;";
-        Boolean status = false;
+        boolean status = false;
 
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
@@ -188,6 +193,7 @@ public class usDAO {
                     status = true;
                 }
             }
+            con.close();
         } catch (Exception ex) {
             System.out.println("Erro na pesquisa!");
         }
@@ -196,7 +202,7 @@ public class usDAO {
 
     public boolean getStatus(String email) {
         String sql = "SELECT us_STATUS FROM tb_USUARIO WHERE us_EMAIL = ?;";
-        Boolean status = false;
+        boolean status = false;
 
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
@@ -210,6 +216,7 @@ public class usDAO {
                     status = true;
                 }
             }
+            con.close();
         } catch (Exception ex) {
             System.out.println("Erro na pesquisa!");
         }
@@ -236,7 +243,7 @@ public class usDAO {
 
     public boolean checkEmail(String email) {
         String sql = "SELECT us_EMAIL FROM tb_USUARIO WHERE us_EMAIL = ?;";
-        Boolean exists = false;
+        boolean exists = false;
 
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
@@ -258,7 +265,7 @@ public class usDAO {
 
     public boolean checkCPF(String cpf) {
         String sql = "SELECT us_CPF FROM tb_USUARIO WHERE us_CPF = ?;";
-        Boolean exists = false;
+        boolean exists = false;
 
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
@@ -281,6 +288,7 @@ public class usDAO {
     public Usuario userInfo(int id) {
         String sql = "SELECT us_ID, us_NOME, us_EMAIL, us_CPF, us_PASS, us_FUNCAO, us_STATUS FROM tb_USUARIO WHERE us_ID = ?;";
         Usuario us = new Usuario();
+
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
             System.out.println("Conectado");
@@ -295,7 +303,7 @@ public class usDAO {
                 String us_CPF = rs.getString("us_CPF");
                 String us_PASS = rs.getString("us_PASS");
                 String us_FUNCAO = rs.getString("us_FUNCAO");
-                Boolean us_STATUS = rs.getBoolean("us_STATUS");
+                boolean us_STATUS = rs.getBoolean("us_STATUS");
 
                 us = new Usuario(us_ID, us_NOME, us_EMAIL, us_CPF, us_PASS, us_FUNCAO, us_STATUS);
             }
@@ -310,8 +318,9 @@ public class usDAO {
     }
 
     public boolean updateUser(Usuario us) {
-        String sql = "UPDATE tb_USUARIO SET us_NOME = ?, us_CPF = ?, us_PASS = ?, us_FUNCAO = ? WHERE us_ID = ?";
-        Boolean saida = false;
+        String sql = "UPDATE tb_USUARIO SET us_NOME = ?, us_CPF = ?, us_PASS = ?, us_FUNCAO = ? WHERE us_ID = ?;";
+        boolean saida = false;
+
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
             System.out.println("Conectado");

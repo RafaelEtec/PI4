@@ -18,6 +18,7 @@ public class Login extends HttpServlet {
         String us_email = req.getParameter("us-email");
         String us_pass = req.getParameter("us-pass");
         System.out.println(us_email + " - " + us_pass);
+        String error = "";
         if (!us_email.isEmpty() || !us_pass.isEmpty()) {
             boolean resposta = new usDAO().login(us_email, us_pass);
             boolean admin = new usDAO().isADM(us_email);
@@ -29,16 +30,24 @@ public class Login extends HttpServlet {
                         req.getSession().setAttribute("us", us);
                         resp.sendRedirect("principal.html");
                     } else {
-                        resp.sendRedirect("index.html");
+                        error = "notAnAdmin";
+                        req.setAttribute("error", error);
+                        req.getRequestDispatcher("index.jsp").forward(req, resp);
                     }
                 } else {
-                    resp.sendRedirect("login.html");
+                    error = "notUp";
+                    req.setAttribute("error", error);
+                    req.getRequestDispatcher("login.jsp").forward(req, resp);
                 }
             } else {
-                resp.sendRedirect("login.html");
+                error = "notFound";
+                req.setAttribute("error", error);
+                req.getRequestDispatcher("login.jsp").forward(req, resp);
             }
         } else {
-            resp.sendRedirect("login.html");
+            error = "missingSpaces";
+            req.setAttribute("error", error);
+            req.getRequestDispatcher("login.jsp").forward(req, resp);
         }
     }
 }

@@ -58,6 +58,7 @@
                                 <input type="number" class="form-control" id="us-cpf" name="us-cpf" value="${usC.cpf}">
                             </div>
                         </div>
+
                         <c:choose>
                             <c:when test="${us.id == usC.id}">
                                 <div id="inputFuncao" class="row mb-4">

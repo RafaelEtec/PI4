@@ -4,17 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1fc923a6-1e2d-48f3-a81e-52d7c05e4e12" name="Changes" comment="&gt; updated">
-      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/toUpdate.java" afterDir="false" />
+    <list default="true" id="1fc923a6-1e2d-48f3-a81e-52d7c05e4e12" name="Changes" comment="&gt; Updated">
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/prDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/listProducts.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/produtos.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/error.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/produtos.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/databaseSQL" beforeDir="false" afterPath="$PROJECT_DIR$/databaseSQL" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/usDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/usDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/addUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/addUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/updateUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Produto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/addUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addUser.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/usuarios.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/usuarios.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/usuarios.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/usuarios.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/principal.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/principal.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,7 +202,47 @@
       <option name="project" value="LOCAL" />
       <updated>1694376755366</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="&gt; Agora é possível atualizar o Usuário">
+      <option name="closed" value="true" />
+      <created>1694536986605</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1694536986606</updated>
+    </task>
+    <task id="LOCAL-00014" summary="&gt; Refined">
+      <option name="closed" value="true" />
+      <created>1694536998055</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1694536998055</updated>
+    </task>
+    <task id="LOCAL-00015" summary="&gt; Refined">
+      <option name="closed" value="true" />
+      <created>1694537007040</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1694537007040</updated>
+    </task>
+    <task id="LOCAL-00016" summary="&gt; updateUser">
+      <option name="closed" value="true" />
+      <created>1694537023226</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1694537023226</updated>
+    </task>
+    <task id="LOCAL-00017" summary="&gt; Updated">
+      <option name="closed" value="true" />
+      <created>1694537032251</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1694537032251</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -222,6 +266,10 @@
     <MESSAGE value="&gt; implemented but to do" />
     <MESSAGE value="&gt; fixed and refined" />
     <MESSAGE value="&gt; updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="&gt; updated" />
+    <MESSAGE value="&gt; Agora é possível atualizar o Usuário" />
+    <MESSAGE value="&gt; Refined" />
+    <MESSAGE value="&gt; updateUser" />
+    <MESSAGE value="&gt; Updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="&gt; Updated" />
   </component>
 </project>
