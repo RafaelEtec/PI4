@@ -2,32 +2,23 @@ package model;
 
 public class Produto {
     private int id;
-    private String img;
     private String nome;
     private String desc;
-    private String data;
     private double val;
-    private int fav;
+    private int qnt;
+    private double ava;
+    private Boolean status;
 
     public Produto() {}
 
-    public Produto(int id, String img, String nome, String desc, String data, double val, int fav) {
+    public Produto(int id, String nome, String desc, double val, int qnt, double ava, boolean status) {
         this.id = id;
-        this.img = img;
         this.nome = nome;
         this.desc = desc;
-        this.data = data;
         this.val = val;
-        this.fav = fav;
-    }
-
-    public Produto(String img, String nome, String desc, String data, double val, int fav) {
-        this.img = img;
-        this.nome = nome;
-        this.desc = desc;
-        this.data = data;
-        this.val = val;
-        this.fav = fav;
+        this.qnt = qnt;
+        this.ava = ava;
+        this.status = status;
     }
 
     public int getId() {
@@ -36,14 +27,6 @@ public class Produto {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
     }
 
     public String getNome() {
@@ -62,14 +45,6 @@ public class Produto {
         this.desc = desc;
     }
 
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
-
     public double getVal() {
         return val;
     }
@@ -78,11 +53,27 @@ public class Produto {
         this.val = val;
     }
 
-    public int getFav() {
-        return fav;
+    public int getQnt() {
+        return qnt;
     }
 
-    public void setFav(int fav) {
-        this.fav = fav;
+    public void setQnt(int qnt) {
+        this.qnt = qnt;
+    }
+
+    public double getAva() {
+        return ava;
+    }
+
+    public void setAva(double ava) {
+        this.ava = ava;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 }

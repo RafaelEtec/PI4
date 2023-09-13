@@ -18,7 +18,9 @@
                 Principal
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><a class="btn btn-primary" href="#" role="button">Listar Produtos</a></li>
+                <form action="/listProducts" method="get">
+                    <li class="list-group-item"><button class="btn btn-primary" method="submit">Listar Produtos</button></li>
+                </form>
                 <form action="/listUsers" method="get">
                     <li class="list-group-item"><button class="btn btn-primary" method="submit">Listar Usuários</button></li>
                 </form>
