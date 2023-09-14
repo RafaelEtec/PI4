@@ -21,6 +21,14 @@ public class Produto {
         this.status = status;
     }
 
+    public Produto(String nome, String desc, double val, int qnt, double ava) {
+        this.nome = nome;
+        this.desc = desc;
+        this.val = val;
+        this.qnt = qnt;
+        this.ava = ava;
+    }
+
     public int getId() {
         return id;
     }

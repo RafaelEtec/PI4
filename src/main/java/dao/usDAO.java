@@ -2,6 +2,8 @@ package dao;
 
 import model.Usuario;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,7 +21,7 @@ public class usDAO {
             ps.setString(1, us.getNome());
             ps.setString(2, us.getEmail());
             ps.setString(3, us.getCpf());
-            ps.setString(4, us.getPass());
+            ps.setString(4, encrypt(us.getPass()));
             ps.setString(5, us.getFuncao());
             ps.execute();
 
@@ -36,7 +38,7 @@ public class usDAO {
         String sql = "SELECT us_PASS FROM tb_USUARIO WHERE us_EMAIL = ? AND us_PASS = ?;";
         boolean saida = false;
         String resposta = "";
-
+        pass = encrypt(pass);
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
             PreparedStatement ps = con.prepareStatement(sql);
@@ -57,6 +59,26 @@ public class usDAO {
             System.out.println("Erro na pesquisa!");
         }
         return saida;
+    }
+
+    public String encrypt(String str) {
+        try {
+            byte[] bytes = str.getBytes("UTF-8");
+            String encoded = Base64.getEncoder().encodeToString(bytes);
+            return encoded;
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+
+    public String decrypt(String str) {
+        try {
+            byte[] decoded = Base64.getDecoder().decode(str);
+            String decodedStr = new String(decoded, StandardCharsets.UTF_8);
+            return decodedStr;
+        } catch (Exception ex) {
+            return null;
+        }
     }
 
     public boolean isADM(String email) {
@@ -305,6 +327,8 @@ public class usDAO {
                 String us_FUNCAO = rs.getString("us_FUNCAO");
                 boolean us_STATUS = rs.getBoolean("us_STATUS");
 
+                us_PASS = decrypt(us_PASS);
+
                 us = new Usuario(us_ID, us_NOME, us_EMAIL, us_CPF, us_PASS, us_FUNCAO, us_STATUS);
             }
             System.out.println("Sucesso na coleta!");
@@ -320,14 +344,14 @@ public class usDAO {
     public boolean updateUser(Usuario us) {
         String sql = "UPDATE tb_USUARIO SET us_NOME = ?, us_CPF = ?, us_PASS = ?, us_FUNCAO = ? WHERE us_ID = ?;";
         boolean saida = false;
-
+        String us_pass = encrypt(us.getPass());
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
             System.out.println("Conectado");
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, us.getNome());
             ps.setString(2, us.getCpf());
-            ps.setString(3, us.getPass());
+            ps.setString(3, us_pass);
             ps.setString(4, us.getFuncao());
             ps.setInt(5, us.getId());
             ps.execute();

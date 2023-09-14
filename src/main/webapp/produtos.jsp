@@ -14,6 +14,7 @@
     </head>
     <body>
         <header class="container">
+
             <nav class="navbar bg-body-tertiary">
               <form class="container-fluid" action="/searchProduct" method="get">
                 <div class="input-group">
@@ -24,7 +25,6 @@
                 </div>
               </form>
             </nav>
-
 
             <div class="accordion" id="accordionExample">
               <div class="accordion-item">
