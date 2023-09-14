@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1fc923a6-1e2d-48f3-a81e-52d7c05e4e12" name="Changes" comment="&gt; Updated">
-      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/addProduct.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/searchProduct.java" afterDir="false" />
+    <list default="true" id="1fc923a6-1e2d-48f3-a81e-52d7c05e4e12" name="Changes" comment="&gt; updated">
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/updateProductStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/databaseSQL" beforeDir="false" afterPath="$PROJECT_DIR$/databaseSQL" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/prDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/prDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/usDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/usDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Produto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/produtos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/produtos.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -233,7 +228,15 @@
       <option name="project" value="LOCAL" />
       <updated>1694537032251</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="&gt; updated">
+      <option name="closed" value="true" />
+      <created>1694708655153</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1694708655153</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -256,11 +259,11 @@
     <MESSAGE value="&gt; fixed" />
     <MESSAGE value="&gt; implemented but to do" />
     <MESSAGE value="&gt; fixed and refined" />
-    <MESSAGE value="&gt; updated" />
     <MESSAGE value="&gt; Agora é possível atualizar o Usuário" />
     <MESSAGE value="&gt; Refined" />
     <MESSAGE value="&gt; updateUser" />
     <MESSAGE value="&gt; Updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="&gt; Updated" />
+    <MESSAGE value="&gt; updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="&gt; updated" />
   </component>
 </project>

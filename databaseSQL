@@ -32,12 +32,29 @@ INSERT INTO tb_PRODUTO (pr_NOME, pr_DESC, pr_VAL, pr_QNT, pr_AVA, pr_STATUS) VAL
 ('PRODUTO7', 'Esta é a descrição do produto', 89.99, 30, 0, TRUE),
 ('PRODUTO8', 'Esta é a descrição do produto', 24.00, 120, 0, FALSE),
 ('PRODUTO9', 'Esta é a descrição do produto', 299.99, 10, 0, TRUE),
-('PRODUTO10', 'Esta é a descrição do produto', 559.99, 2, 0, TRUE);
+('PRODUTO10', 'Esta é a descrição do produto', 60.00, 40, 0, TRUE),
+('PRODUTO11', 'Esta é a descrição do produto', 120.00, 60, 0, TRUE),
+('PRODUTO12', 'Esta é a descrição do produto', 59.99, 80, 0, TRUE),
+('PRODUTO13', 'Esta é a descrição do produto', 85.99, 20, 0, FALSE),
+('PRODUTO14', 'Esta é a descrição do produto', 2.99, 55, 0, FALSE),
+('PRODUTO15', 'Esta é a descrição do produto', 19.99, 15, 0, TRUE),
+('PRODUTO16', 'Esta é a descrição do produto', 89.99, 30, 0, TRUE),
+('PRODUTO17', 'Esta é a descrição do produto', 24.00, 120, 0, FALSE),
+('PRODUTO18', 'Esta é a descrição do produto', 299.99, 10, 0, TRUE),
+('PRODUTO19', 'Esta é a descrição do produto', 559.99, 2, 0, TRUE);
 
 CREATE TABLE tb_PEDIDO_PRODUTO (
     pe_ID INT PRIMARY KEY,
-    pe_pro_ID INT NOT NULL,
-    pe_QNT INT NOT NULL
+    pe_pr_ID INT NOT NULL,
+    pe_pr_QNT INT NOT NULL,
+    pe_TOTAL DECIMAL(5, 2) NOT NULL
+);
+
+CREATE TABLE tb_IMAGEM_PRODUTO (
+    im_ID INT PRIMARY KEY,
+    im_pr_ID INT NOT NULL,
+    im_PATH VARCHAR(2000) NOT NULL,
+    im_DEFAULT BOOLEAN DEFAULT FALSE
 );
 
 SELECT * FROM TB_USUARIO;

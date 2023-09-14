@@ -31,12 +31,26 @@
                 <c:forEach var="pr" items="${prs}">
                     <h2 class="accordion-header">
                       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${pr.id}" aria-expanded="true" aria-controls="collapse${pr.id}">
-                        ${pr.nome}
+                        <strong>${pr.nome}</strong>
                       </button>
                     </h2>
                     <div id="collapse${pr.id}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                       <div class="accordion-body">
-                        <strong>Código: ${pr.id}</strong>
+                        <p class="pItems">
+                            Código: ${pr.id} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            Quantidade: ${pr.qnt} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            Valor: R$${pr.val} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            Status: ${pr.status ? "Ativo" : "Inativo"}
+
+                            <form action="/toUpdateProduct" method="get">
+                                <input type="hidden" id="pr_ID" name="pr_ID" value="${pr.id}">
+                                <button type="submit">Alterar</button>
+                            </form>
+
+                            <form action="/updateProductStatus" method="post">
+                                <input type="hidden" id="pr_ID" name="pr_ID" value="${pr.id}">
+                                <button type="submit">${pr.status ? "Desabilitar" : "Habilitar"}</button>
+                            </form>
                       </div>
                     </div>
                 </c:forEach>
