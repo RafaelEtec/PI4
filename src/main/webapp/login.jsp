@@ -26,14 +26,14 @@
                         <div id="alertaEmail"></div><br>
                         <label for="us-email" class="col-sm-2 col-form-label">Usuário:</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" id="us-email" name="us-email">
+                            <input maxlength="40" type="email" class="form-control" id="us-email" name="us-email">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div id="alertaSenha"></div><br>
                         <label for="us-pass" class="col-sm-2 col-form-label">Senha:</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="us-pass" name="us-pass">
+                            <input maxlength="20" type="password" class="form-control" id="us-pass" name="us-pass">
                         </div>
                     </div>
                     <button type="submit" id="enviar" class="btn btn-primary">OK</button>

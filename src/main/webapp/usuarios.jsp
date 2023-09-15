@@ -14,6 +14,14 @@
     </head>
     <body>
         <header class="container">
+
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="principal.html">Menu</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Lista de Usuários</li>
+              </ol>
+            </nav>
+
             <nav class="navbar bg-body-tertiary">
               <form class="container-fluid" action="/searchUser" method="get">
                 <div class="input-group">

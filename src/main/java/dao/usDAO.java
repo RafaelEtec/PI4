@@ -96,7 +96,7 @@ public class usDAO {
                 while (rs.next()) {
                     resposta = rs.getString("us_FUNCAO");
                 }
-                if (resposta.equals("ADMIN")) {
+                if (resposta.equals("ADMIN") || resposta.equals("STOCKIST")) {
                     saida = true;
                 }
             }

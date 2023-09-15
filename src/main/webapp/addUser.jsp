@@ -14,6 +14,15 @@
     </head>
     <body>
         <header class="container">
+
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="principal.html">Menu</a></li>
+                <li class="breadcrumb-item"><a href="/listUsers">Lista de Usuários</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Cadastro de Usuário</li>
+              </ol>
+            </nav>
+
             <div class="card text-center">
                 <div class="card-header">
                     Cadastro de Usuário
@@ -29,7 +38,7 @@
                         <div class="row mb-1">
                             <label for="us-nome" class="col-sm-2 col-form-label">Nome</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="us-nome" name="us-nome" value="${usC.nome}">
+                                <input maxlength="40" type="text" class="form-control" id="us-nome" name="us-nome" value="${usC.nome}">
                             </div>
                         </div>
 
@@ -38,7 +47,7 @@
                                 <div id="divEmail" class="row mb-2">
                                     <label for="us-email" class="col-sm-2 col-form-label">E-mail</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" disabled id="us-email" name="us-email" value="${usC.email}">
+                                        <input maxlength="40" type="text" class="form-control" disabled id="us-email" name="us-email" value="${usC.email}">
                                     </div>
                                 </div>
                             </c:when>
@@ -46,7 +55,7 @@
                                 <div id="divEmail" class="row mb-2">
                                     <label for="us-email" class="col-sm-2 col-form-label">E-mail</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="us-email" name="us-email" value="${usC.email}">
+                                        <input maxlength="40" type="text" class="form-control" id="us-email" name="us-email" value="${usC.email}">
                                     </div>
                                 </div>
                             </c:otherwise>
@@ -55,7 +64,7 @@
                         <div class="row mb-3">
                             <label for="us-cpf" class="col-sm-2 col-form-label">CPF</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="us-cpf" name="us-cpf" value="${usC.cpf}">
+                                <input maxlength="11" type="text" class="form-control" id="us-cpf" name="us-cpf" value="${usC.cpf}">
                             </div>
                         </div>
 
