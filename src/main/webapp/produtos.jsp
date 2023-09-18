@@ -15,6 +15,13 @@
     <body>
         <header class="container">
 
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="principal.html">Menu</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Lista de Produtos</li>
+              </ol>
+            </nav>
+
             <nav class="navbar bg-body-tertiary">
               <form class="container-fluid" action="/searchProduct" method="get">
                 <div class="input-group">
@@ -34,6 +41,7 @@
                         <strong>${pr.nome}</strong>
                       </button>
                     </h2>
+
                     <div id="collapse${pr.id}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                       <div class="accordion-body">
                         <p class="pItems">
@@ -47,7 +55,7 @@
                                 <button type="submit">Alterar</button>
                             </form>
 
-                            <form action="/updateProductStatus" method="post">
+                            <form action="/updateProductStatus" method="get">
                                 <input type="hidden" id="pr_ID" name="pr_ID" value="${pr.id}">
                                 <button type="submit">${pr.status ? "Desabilitar" : "Habilitar"}</button>
                             </form>
