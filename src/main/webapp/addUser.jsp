@@ -17,7 +17,7 @@
 
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="principal.html">Menu</a></li>
+                <li class="breadcrumb-item"><a href="principal.jsp">Menu</a></li>
                 <li class="breadcrumb-item"><a href="/listUsers">Lista de Usuários</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Cadastro de Usuário</li>
               </ol>
@@ -34,6 +34,7 @@
                         <input type="hidden" id="email" name="email" value="${usC.email}">
                         <input type="hidden" id="cpf" name="cpf" value="${usC.cpf}">
                         <input type="hidden" id="id" name="id" value="${usC.id}">
+                        <input type="hidden" id="idC" name="idC" value="${us.id}">
 
                         <div class="row mb-1">
                             <label for="us-nome" class="col-sm-2 col-form-label">Nome</label>
@@ -72,9 +73,10 @@
                             <c:when test="${us.id == usC.id}">
                                 <div id="inputFuncao" class="row mb-4">
                                     <div id="divSelect" class="input-group mb-6">
+                                    <input type="hidden" id="us-funcao" name="us-funcao" value="${usC.funcao}">
                                       <label class="input-group-text" for="us-funcao">Função</label>
                                       <select disabled class="form-select" id="us-funcao" name="us-funcao" value="${usC.funcao}">
-                                        <option value="">${usC.funcao}</option>
+                                        <option value="${usC.funcao}">${usC.funcao}</option>
                                         <option value="USER">USUÁRIO</option>
                                         <option value="STOCKIST">ESTOQUISTA</option>
                                         <option value="ADMIN">ADMINISTRADOR</option>
@@ -87,22 +89,60 @@
                                     <div id="divSelect" class="input-group mb-6">
                                       <label class="input-group-text" for="us-funcao">Função</label>
                                       <select class="form-select" id="us-funcao" name="us-funcao" value="${usC.funcao}">
-                                        <option value=""></option>
-                                        <option value="USER">USUÁRIO</option>
-                                        <option value="STOCKIST">ESTOQUISTA</option>
-                                        <option value="ADMIN">ADMINISTRADOR</option>
+                                        <c:choose>
+                                            <c:when test="${usC.funcao == 'USER'}">
+                                                <option value=""></option>
+                                                <option selected value="USER">USUÁRIO</option>
+                                                <option value="STOCKIST">ESTOQUISTA</option>
+                                                <option value="ADMIN">ADMINISTRADOR</option>
+                                            </c:when>
+                                            <c:when test="${usC.funcao == 'STOCKIST'}">
+                                                <option value=""></option>
+                                                <option value="USER">USUÁRIO</option>
+                                                <option selected value="STOCKIST">ESTOQUISTA</option>
+                                                <option value="ADMIN">ADMINISTRADOR</option>
+                                            </c:when>
+                                            <c:when test="${usC.funcao == 'ADMIN'}">
+                                                <option value=""></option>
+                                                <option value="USER">USUÁRIO</option>
+                                                <option value="STOCKIST">ESTOQUISTA</option>
+                                                <option selected value="ADMIN">ADMINISTRADOR</option>
+                                            </c:when>
+                                            <c:otherwise>
+                                            <option selected value=""></option>
+                                            <option value="USER">USUÁRIO</option>
+                                            <option value="STOCKIST">ESTOQUISTA</option>
+                                            <option value="ADMIN">ADMINISTRADOR</option>
+                                            </c:otherwise>
+                                        </c:choose>
                                       </select>
                                     </div>
                                 </div>
                             </c:otherwise>
                         </c:choose>
 
-                        <button onclick="checkCampos()" id="avancar" class="btn btn-primary" type="button">Avançar</button>
-                        <a href="/listUsers" class="btn btn-secondary" id="Voltar">Voltar</a>
-
                         <div id="toastAlert" class="row mb-3"></div>
                         <div id="alert" class="row mb-3"></div>
                         <button hidden data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" data-bs-toggle="offcanvas"></button>
+
+                        <c:choose>
+                            <c:when test="${gonna == 'UPDATE'}">
+                                <c:choose>
+                                    <c:when test="${us.id == usC.id}">
+                                        <button onclick="checkCampos()" id="avancar" class="btn btn-primary" type="button">Avançar</button>
+                                        <a href="/listUsers" class="btn btn-secondary" id="Voltar">Voltar</a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <button onclick="checkUpdate()" id="updateUser" class="btn btn-primary" type="button">Avançar</button>
+                                        <a href="/listUsers" class="btn btn-secondary" id="Voltar">Voltar</a>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:when>
+                            <c:otherwise>
+                                <button onclick="checkCampos()" id="avancar" class="btn btn-primary" type="button">Avançar</button>
+                                <a href="/listUsers" class="btn btn-secondary" id="Voltar">Voltar</a>
+                            </c:otherwise>
+                        </c:choose>
 
                         <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
                           <div class="offcanvas-header">

@@ -17,7 +17,7 @@
 
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="principal.html">Menu</a></li>
+                <li class="breadcrumb-item"><a href="principal.jsp">Menu</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Lista de Usuários</li>
               </ol>
             </nav>

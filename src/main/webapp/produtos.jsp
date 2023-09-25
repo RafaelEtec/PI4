@@ -5,19 +5,29 @@
     <head>
         <meta charset="UTF-8">
         <title>Menu</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/produtos.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet">
     </head>
-    <body>
+    <body><div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown button
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
         <header class="container">
 
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="principal.html">Menu</a></li>
+                <li class="breadcrumb-item"><a href="principal.jsp">Menu</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Lista de Produtos</li>
               </ol>
             </nav>
@@ -33,42 +43,55 @@
               </form>
             </nav>
 
-            <div class="accordion" id="accordionExample">
-              <div class="accordion-item">
-                <c:forEach var="pr" items="${prs}">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${pr.id}" aria-expanded="true" aria-controls="collapse${pr.id}">
-                        <strong>${pr.nome}</strong>
-                      </button>
-                    </h2>
-
-                    <div id="collapse${pr.id}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                      <div class="accordion-body">
-                        <p class="pItems">
-                            Código: ${pr.id} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                            Quantidade: ${pr.qnt} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                            Valor: R$${pr.val} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                            Status: ${pr.status ? "Ativo" : "Inativo"}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Quantidade</th>
+                        <th scope="col">Valor</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Alterar qnt.</th>
+                        <th scope="col">Hab/Des</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach var="pr" items="${prs}">
+                        <tr>
+                            <td>${pr.id}</td>
+                            <td>${pr.nome}</td>
+                            <td>${pr.qnt}</td>
+                            <td>${pr.val}</td>
+                            <td>${pr.status ? "Ativo" : "Inativo"}</td>
 
                             <form action="/toUpdateProduct" method="get">
                                 <input type="hidden" id="pr_ID" name="pr_ID" value="${pr.id}">
-                                <button type="submit">Alterar</button>
+                                <td>
+                                    <div class="dropdown${pr.id}">
+                                    <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown${pr.id}" aria-expanded="false">
+                                      Alterar
+                                    </button>
+                                      <div class="dropdown-menu">
+                                          <label for="exampleDropdownFormQnt" class="form-label">Quantidade</label>
+                                          <input value="${pr.qnt}" type="number" class="form-control" id="exampleDropdownFormQnt${pr.id}">
+                                        <button type="submit" class="btn btn-primary">Alterar</button>
+                                    </div>
+                                </td>
                             </form>
 
-                            <form action="/updateProductStatus" method="get">
+                            <form action="/updateProductStatus" method="post">
                                 <input type="hidden" id="pr_ID" name="pr_ID" value="${pr.id}">
-                                <button type="submit">${pr.status ? "Desabilitar" : "Habilitar"}</button>
+                                <td><button type="submit">${pr.status ? "Desabilitar" : "Habilitar"}</button></td>
                             </form>
-                      </div>
-                    </div>
-                </c:forEach>
-              </div>
-            </div>
-
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
             <p>${strTotal}</p>
         </header>
+    <script src="js/produtos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
     </body>
 </html>

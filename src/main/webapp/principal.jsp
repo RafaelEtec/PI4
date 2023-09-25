@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
     <head>
         <meta charset="UTF-8">
         <title>Menu</title>
@@ -26,9 +28,19 @@
                 <form action="/listProducts" method="get">
                     <li class="list-group-item"><button class="btn btn-primary" method="submit">Listar Produtos</button></li>
                 </form>
-                <form action="/listUsers" method="get">
-                    <li class="list-group-item"><button class="btn btn-primary" method="submit">Listar Usuários</button></li>
-                </form>
+
+                <c:choose>
+                    <c:when test="${us.funcao == 'ADMIN'}">
+                        <form action="/listUsers" method="get">
+                            <li class="list-group-item"><button class="btn btn-primary" method="submit">Listar Usuários</button></li>
+                        </form>
+                    </c:when>
+                    <c:otherwise>
+                        <form action="/listUsers" method="get">
+                            <li class="list-group-item"><button disabled class="btn btn-primary" method="submit">Listar Usuários</button></li>
+                        </form>
+                    </c:otherwise>
+                </c:choose>
                 <li class="list-group-item"><a href="#" class="btn btn-secondary disabled" role="button" aria-disabled="true">Listar Pedidos</a></li>
             </ul>
         </div>

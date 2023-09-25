@@ -28,7 +28,7 @@ public class Login extends HttpServlet {
                     if (admin) {
                         Usuario us = new usDAO().sessionPorEmail(us_email);
                         req.getSession().setAttribute("us", us);
-                        resp.sendRedirect("principal.html");
+                        resp.sendRedirect("principal.jsp");
                     } else {
                         error = "notAnAdmin";
                         req.setAttribute("error", error);

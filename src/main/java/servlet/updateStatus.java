@@ -12,7 +12,6 @@ import java.io.IOException;
 
 @WebServlet("/updateStatus")
 public class updateStatus extends HttpServlet {
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int us_id = Integer.parseInt(req.getParameter("us_ID"));

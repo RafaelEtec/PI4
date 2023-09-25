@@ -1,5 +1,18 @@
 document.getElementById("cancelar").onClick = limparCampos;
-document.getElementById("avancar").onClick = checkCampos;
+var gonna = document.getElementById("gonna").value;
+var id = document.getElementById("id").value;
+var idC = document.getElementById("idC").value;
+if (gonna != null) {
+    if (gonna == "UPDATE" && id == idC) {
+        document.getElementById("avancar").onClick = checkUpdate;
+    } else if (gonna == "UPDATE") {
+        document.getElementById("updateUser").onClick = checkUpdate;
+    } else {
+        document.getElementById("avancar").onClick = checkCampos;
+    }
+} else {
+    document.getElementById("avancar").onClick = checkCampos;
+}
 
 var nome = document.getElementById("us-nome");
 var email = document.getElementById("us-email");
@@ -83,9 +96,57 @@ function checkCampos() {
     }
 }
 
-function checkDupes() {
-    var error = document.getElementById("error").value;
+function checkUpdate() {
+    if (nome.value == "") {
+        document.getElementById("alert").innerHTML = `<div class="alert alert-info" role="alert">
+                                                       Informe o Nome
+                                                      </div>`;
+        document.getElementById("us-nome").focus();
+    } else if (email.value == "") {
+        document.getElementById("alert").innerHTML = `<div class="alert alert-info" role="alert">
+                                                       Informe o E-mail
+                                                      </div>`;
+        document.getElementById("us-email").focus();
+    } else if (cpf.value == "") {
+        document.getElementById("alert").innerHTML = `<div class="alert alert-info" role="alert">
+                                                       Informe o CPF
+                                                      </div>`;
+        document.getElementById("us-cpf").focus();
+    } else if (funcao.value == "") {
+        document.getElementById("alert").innerHTML = `<div class="alert alert-info" role="alert">
+                                                       Informe a função
+                                                      </div>`;
+        document.getElementById("us-funcao").focus();
+    } else {
+        document.getElementById("alert").innerHTML = `<div class="alert alert-info" hidden role="alert"></div>`;
+        checkDupesUpdate();
+    }
+}
 
+function checkDupesUpdate() {
+    if (error != null) {
+        if (error == "emailDupe") {
+            console.log(error);
+            document.getElementById("toastAlert").innerHTML = `<div class="alert alert-warning" role="alert">
+                                                                O E-mail informado já foi cadastrado!
+                                                               </div>`;
+        } else if (error == "cpfDupe") {
+            console.log(error);
+            document.getElementById("toastAlert").innerHTML = `<div class="alert alert-warning" role="alert">
+                                                                O CPF informado já foi cadastrado!
+                                                               </div>`;
+        } else if (error == "Erro não identificado") {
+            document.getElementById("toastAlert").innerHTML = `<div class="alert alert-warning" role="alert">
+                                                                Algo de errado não está certo!
+                                                               </div>`;
+        } else {
+            document.getElementById("toastAlert").innerHTML = `<div class="alert alert-warning" hidden role="alert"></div>`;
+            form.submit();
+        }
+    }
+}
+
+function checkDupes() {
     if (error != null) {
         if (error == "emailDupe") {
             console.log(error);
