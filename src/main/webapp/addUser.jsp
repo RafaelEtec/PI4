@@ -4,7 +4,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
     <head>
         <meta charset="UTF-8">
-        <title>Menu</title>
+        <title>Novo Usuário</title>
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/addUser.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -36,7 +36,7 @@
                         <input type="hidden" id="id" name="id" value="${usC.id}">
                         <input type="hidden" id="idC" name="idC" value="${us.id}">
 
-                        <div class="row mb-1">
+                        <div class="row mb-2">
                             <label for="us-nome" class="col-sm-2 col-form-label">Nome</label>
                             <div class="col-sm-10">
                                 <input maxlength="40" type="text" class="form-control" id="us-nome" name="us-nome" value="${usC.nome}">
@@ -62,16 +62,16 @@
                             </c:otherwise>
                         </c:choose>
 
-                        <div class="row mb-3">
+                        <div class="row mb-2">
                             <label for="us-cpf" class="col-sm-2 col-form-label">CPF</label>
                             <div class="col-sm-10">
-                                <input maxlength="11" type="text" class="form-control" id="us-cpf" name="us-cpf" value="${usC.cpf}">
+                                <input minlength="11" maxlength="11" type="text" class="form-control" id="us-cpf" name="us-cpf" value="${usC.cpf}">
                             </div>
                         </div>
 
                         <c:choose>
                             <c:when test="${us.id == usC.id}">
-                                <div id="inputFuncao" class="row mb-4">
+                                <div id="inputFuncao" class="row mb-2">
                                     <div id="divSelect" class="input-group mb-6">
                                     <input type="hidden" id="us-funcao" name="us-funcao" value="${usC.funcao}">
                                       <label class="input-group-text" for="us-funcao">Função</label>
@@ -85,7 +85,7 @@
                                 </div>
                             </c:when>
                             <c:otherwise>
-                                <div id="inputFuncao" class="row mb-4">
+                                <div id="inputFuncao" class="row mb-2">
                                     <div id="divSelect" class="input-group mb-6">
                                       <label class="input-group-text" for="us-funcao">Função</label>
                                       <select class="form-select" id="us-funcao" name="us-funcao" value="${usC.funcao}">
@@ -121,8 +121,8 @@
                             </c:otherwise>
                         </c:choose>
 
-                        <div id="toastAlert" class="row mb-3"></div>
-                        <div id="alert" class="row mb-3"></div>
+                        <div id="toastAlert" class="row mb-2"></div>
+                        <div id="alert" class="row mb-2"></div>
                         <button hidden data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" data-bs-toggle="offcanvas"></button>
 
                         <c:choose>

@@ -196,4 +196,24 @@ public class prDAO {
         }
         return saida;
     }
+
+    public boolean updateProductQnt(int id, int qnt) {
+        String sql = "UPDATE tb_PRODUTO SET pr_QNT = ? WHERE pr_ID = ?;";
+        boolean saida = false;
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            System.out.println("Conectado");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, qnt);
+            ps.setInt(2, id);
+            ps.execute();
+            saida = true;
+            System.out.println("Sucesso na atualização!");
+            con.close();
+        } catch (Exception ex) {
+            System.out.println("Erro na atualização!");
+        }
+        return saida;
+    }
 }

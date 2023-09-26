@@ -4,7 +4,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
     <head>
         <meta charset="UTF-8">
-        <title>Menu</title>
+        <title>Produtos do sistema</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/produtos.css">
@@ -42,10 +42,11 @@
                         <th scope="col">Quantidade</th>
                         <th scope="col">Valor</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Alterar qnt.</th>
+                        <th scope="col">Alterar produto</th>
                         <th scope="col">Hab/Des</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     <c:forEach var="pr" items="${prs}">
                         <tr>
@@ -55,20 +56,35 @@
                             <td>${pr.val}</td>
                             <td>${pr.status ? "Ativo" : "Inativo"}</td>
 
-                            <form action="/toUpdateProduct" method="get">
-                                <input type="hidden" id="pr_ID" name="pr_ID" value="${pr.id}">
-                                <td>
-                                    <div class="dropdown${pr.id}">
-                                    <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown${pr.id}" aria-expanded="false">
-                                      Alterar
-                                    </button>
-                                      <div class="dropdown-menu">
-                                          <label for="exampleDropdownFormQnt" class="form-label">Quantidade</label>
-                                          <input value="${pr.qnt}" type="number" class="form-control" id="exampleDropdownFormQnt${pr.id}">
-                                        <button type="submit" class="btn btn-primary">Alterar</button>
-                                    </div>
-                                </td>
-                            </form>
+                            <td>
+                                <div class="dropdown">
+                                  <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Alterar
+                                  </button>
+                                  <ul class="dropdown-menu">
+                                    <li class="container text-center">
+                                    <div class="row">
+                                    <div class="col">
+                                        <form action="/toUpdateProductQnt" method="get">
+                                            <input type="hidden" id="pr_ID" name="pr_ID" value="${pr.id}">
+                                            <input class="small" type="number" id="pr_new_QNT" name="pr_new_QNT" value="${pr.qnt}">
+                                        </div>
+                                        <div class="col">
+                                            <button type="submit">&nbspAlterar quantidade &nbsp</button>
+                                        </form>
+                                        </div>
+                                        </div>
+                                    </li>
+                                    <hr>
+                                    <li class="d-flex justify-content-center">
+                                        <form action="/toUpdateProduct" method="get">
+                                            <input type="hidden" id="pr_ID" name="pr_ID" value="${pr.id}">
+                                            <button disabled type="submit">Alterar produto</button>
+                                        </form>
+                                    </li>
+                                  </ul>
+                                </div>
+                            </td>
 
                             <form action="/updateProductStatus" method="post">
                                 <input type="hidden" id="pr_ID" name="pr_ID" value="${pr.id}">
@@ -79,10 +95,10 @@
                 </tbody>
             </table>
             <p>${strTotal}</p>
+
         </header>
-    <script src="js/produtos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     </body>
 </html>
