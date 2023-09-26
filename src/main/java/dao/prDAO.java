@@ -67,7 +67,7 @@ public class prDAO {
     }
 
     public List<Produto> listProductsByNome(String nomeToSearch) {
-        String sql = "SELECT * FROM tb_PRODUTO WHERE pr_NOME LIKE ?;";
+        String sql = "SELECT * FROM tb_PRODUTO WHERE pr_NOME LIKE ? ORDER BY pr_ID DESC;";
 
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
