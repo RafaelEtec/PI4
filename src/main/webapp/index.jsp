@@ -19,7 +19,7 @@
                 <p class="greet1">Navegue pelo nosso site e encontre<br>o melhor instrumento para você!</p>
             </div>
 
-            <a href="Disciplina-Musical.jsp" class="btn btn-primary">Conhecer</a><br>
+            <a href="/Disciplina-Musical" class="btn btn-primary">Conhecer</a><br>
             <div id="toastAlert" class="row mb-3"></div>
         </header>
         <script src="js/error.js"></script>

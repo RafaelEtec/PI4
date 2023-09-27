@@ -56,6 +56,27 @@ INSERT INTO tb_PRODUTO (pr_NOME, pr_DESC, pr_VAL, pr_QNT, pr_AVA, pr_STATUS) VAL
 ('PRODUTO18', 'Esta é a descrição do produto', 299.99, 10, 2, TRUE),
 ('PRODUTO19', 'Esta é a descrição do produto', 559.99, 2, 1.5, TRUE);
 
+INSERT INTO tb_PRODUTO (pr_NOME, pr_DESC, pr_VAL, pr_QNT, pr_AVA, pr_STATUS) VALUES
+('Piano1', 'Esta é a descrição do produto', 60.00, 40, 1.5, TRUE),
+('Piano2', 'Esta é a descrição do produto', 120.00, 60, 2, TRUE),
+('Piano3', 'Esta é a descrição do produto', 59.99, 80, 3, TRUE),
+('Piano4', 'Esta é a descrição do produto', 85.99, 20, 4, FALSE),
+('Flauta1', 'Esta é a descrição do produto', 2.99, 55, 2, FALSE),
+('Flauta2', 'Esta é a descrição do produto', 19.99, 15, 2, TRUE),
+('Guitarra1', 'Esta é a descrição do produto', 89.99, 30, 1.5, TRUE),
+('Guitarra2', 'Esta é a descrição do produto', 24.00, 120, 1, FALSE),
+('Guitarra3', 'Esta é a descrição do produto', 299.99, 10, 1, TRUE),
+('Guitarra4', 'Esta é a descrição do produto', 60.00, 40, 1, TRUE),
+('Flauta3', 'Esta é a descrição do produto', 120.00, 60, 2, TRUE),
+('Flauta4', 'Esta é a descrição do produto', 59.99, 80, 3, TRUE),
+('Violão1', 'Esta é a descrição do produto', 85.99, 20, 3.5, FALSE),
+('Violão2', 'Esta é a descrição do produto', 2.99, 55, 4.5, FALSE),
+('Violão3', 'Esta é a descrição do produto', 19.99, 15, 5, TRUE),
+('Violão4', 'Esta é a descrição do produto', 89.99, 30, 5, TRUE),
+('Saxofone1', 'Esta é a descrição do produto', 24.00, 120, 2, FALSE),
+('Saxofone2', 'Esta é a descrição do produto', 299.99, 10, 2, TRUE),
+('Saxofone3', 'Esta é a descrição do produto', 559.99, 2, 1.5, TRUE);
+
 CREATE TABLE tb_PEDIDO_PRODUTO (
     pe_ID INT PRIMARY KEY,
     pe_pr_ID INT NOT NULL,
