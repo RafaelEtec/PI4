@@ -4,7 +4,6 @@
 
 html {
     overflow-x: hidden;
-    overflow-y: hidden;
 }
 
 .container {
@@ -28,4 +27,9 @@ html {
     weight: bold;
     color: #181E4B;
     font-family: 'Open Sans', sans-serif;"Plus Jakarta Sans";
+}
+
+#tittleDis {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3rem;
 }

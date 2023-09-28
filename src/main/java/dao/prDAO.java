@@ -67,7 +67,7 @@ public class prDAO {
     }
 
     public List<Produto> listProductsByNome(String nomeToSearch) {
-        String sql = "SELECT * FROM tb_PRODUTO WHERE pr_NOME LIKE ?;";
+        String sql = "SELECT * FROM tb_PRODUTO WHERE pr_NOME LIKE ? ORDER BY pr_ID DESC;";
 
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
@@ -195,5 +195,53 @@ public class prDAO {
             System.out.println("Erro na atualização!");
         }
         return saida;
+    }
+
+    public boolean updateProductQnt(int id, int qnt) {
+        String sql = "UPDATE tb_PRODUTO SET pr_QNT = ? WHERE pr_ID = ?;";
+        boolean saida = false;
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            System.out.println("Conectado");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, qnt);
+            ps.setInt(2, id);
+            ps.execute();
+            saida = true;
+            System.out.println("Sucesso na atualização!");
+            con.close();
+        } catch (Exception ex) {
+            System.out.println("Erro na atualização!");
+        }
+        return saida;
+    }
+
+    public List<Produto> listCarrouselCardsByName(String name) {
+        String sql = "SELECT TOP 3 pr_NOME, pr_DESC FROM tb_PRODUTO WHERE pr_NOME LIKE ? AND pr_STATUS = TRUE ORDER BY RAND();";
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            System.out.println("Conectado");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, "%" + name + "%");
+            ResultSet rs = ps.executeQuery();
+            List<Produto> prs = new ArrayList<>();
+
+            while (rs.next()) {
+                String pr_NOME = rs.getString("pr_NOME");
+                String pr_DESC = rs.getString("pr_DESC");
+
+                Produto pr = new Produto(pr_NOME, pr_DESC);
+                prs.add(pr);
+            }
+            System.out.println("Sucesso na listagem!");
+            con.close();
+
+            return prs;
+        } catch (Exception ex) {
+            System.out.println("Erro na listagem de " + name + "!");
+            return Collections.emptyList();
+        }
     }
 }

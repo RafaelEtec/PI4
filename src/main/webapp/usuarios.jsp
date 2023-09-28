@@ -4,7 +4,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
     <head>
         <meta charset="UTF-8">
-        <title>Menu</title>
+        <title>Usuários do sistema</title>
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/usuarios.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -17,7 +17,7 @@
 
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="principal.html">Menu</a></li>
+                <li class="breadcrumb-item"><a href="principal.jsp">Menu</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Lista de Usuários</li>
               </ol>
             </nav>

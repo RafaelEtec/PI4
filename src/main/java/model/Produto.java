@@ -29,6 +29,11 @@ public class Produto {
         this.ava = ava;
     }
 
+    public Produto(String nome, String desc) {
+        this.nome = nome;
+        this.desc = desc;
+    }
+
     public int getId() {
         return id;
     }
