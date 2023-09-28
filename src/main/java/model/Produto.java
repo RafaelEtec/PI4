@@ -8,8 +8,20 @@ public class Produto {
     private int qnt;
     private double ava;
     private Boolean status;
+    private String img;
 
     public Produto() {}
+
+    public Produto(int id, String nome, String desc, double val, int qnt, double ava, Boolean status, String img) {
+        this.id = id;
+        this.nome = nome;
+        this.desc = desc;
+        this.val = val;
+        this.qnt = qnt;
+        this.ava = ava;
+        this.status = status;
+        this.img = img;
+    }
 
     public Produto(int id, String nome, String desc, double val, int qnt, double ava, boolean status) {
         this.id = id;
@@ -29,9 +41,24 @@ public class Produto {
         this.ava = ava;
     }
 
+    public Produto(String nome, String desc, double val, int qnt, double ava, String img) {
+        this.nome = nome;
+        this.desc = desc;
+        this.val = val;
+        this.qnt = qnt;
+        this.ava = ava;
+        this.img = img;
+    }
+
     public Produto(String nome, String desc) {
         this.nome = nome;
         this.desc = desc;
+    }
+
+    public Produto(String nome, String desc, String img) {
+        this.nome = nome;
+        this.desc = desc;
+        this.img = img;
     }
 
     public int getId() {
@@ -88,5 +115,13 @@ public class Produto {
 
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

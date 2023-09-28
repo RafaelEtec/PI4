@@ -29,7 +29,7 @@
                     Cadastro de Produto
                 </div>
                 <div class="card-body">
-                    <form action="/addProduct" method="post" id="formAddProduct">
+                    <form action="/addProduct" method="post" id="formAddProduct" enctype="multipart/form-data">
                         <input type="hidden" id="error" name="error" value="${error}">
                         <input type="hidden" id="gonna" name="gonna" value="${gonna}">
                         <input type="hidden" id="id" name="id" value="${us.id}">
@@ -67,6 +67,13 @@
                             <label for="pr-qnt" class="col-sm-2 col-form-label">Quantidade</label>
                             <div class="col-sm-10">
                                 <input type="number" class="form-control" id="pr-qnt" name="pr-qnt" value="${pr.qnt}">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="pr-img" class="col-sm-2 col-form-label">Imagem</label>
+                            <div class="col-sm-10">
+                                <input type="file" class="form-control" id="img" name="img">
                             </div>
                         </div>
 

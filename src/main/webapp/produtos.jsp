@@ -44,6 +44,7 @@
                         <th scope="col">Status</th>
                         <th scope="col">Alterar produto</th>
                         <th scope="col">Hab/Des</th>
+                        <th scope="col">Prévia do produto</th>
                     </tr>
                 </thead>
 
@@ -89,6 +90,11 @@
                             <form action="/updateProductStatus" method="post">
                                 <input type="hidden" id="pr_ID" name="pr_ID" value="${pr.id}">
                                 <td><button type="submit">${pr.status ? "Desabilitar" : "Habilitar"}</button></td>
+                            </form>
+
+                            <form action="/previaDoProduto" method="post">
+                                <input type="hidden" id="pr_ID" name="pr_ID" value="${pr.id}">
+                                <td><button type="submit">Visualizar</button></td>
                             </form>
                         </tr>
                     </c:forEach>
