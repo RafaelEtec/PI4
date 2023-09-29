@@ -108,10 +108,10 @@
                               <div class="carousel-item active">
                                 <c:choose>
                                   <c:when test="${piano.img != null}">
-                                    <img src="img/${piano.img}" class="d-block w-100" alt="${piano.desc}">
+                                    <img src="img/${piano.img}" class="d-block w-100" style="width:400px;height:400px" alt="${piano.desc}">
                                   </c:when>
                                   <c:otherwise>
-                                    <img src="img/indexServix.png" class="d-block w-100" alt="${piano.desc}">
+                                    <img src="img/mus.jpg" class="d-block w-100" style="width:400px;height:400px" alt="${piano.desc}">
                                   </c:otherwise>
                                 </c:choose>
                               </div>
@@ -142,10 +142,10 @@
                               <div class="carousel-item active">
                                 <c:choose>
                                   <c:when test="${guitarra.img != null}">
-                                    <img src="img/${guitarra.img}" class="d-block w-100" alt="${guitarra.desc}">
+                                    <img src="img/${guitarra.img}" class="d-block w-100" style="width:400px;height:200px" alt="${guitarra.desc}">
                                   </c:when>
                                   <c:otherwise>
-                                    <img src="img/indexServix.png" class="d-block w-100" alt="${guitarra.desc}">
+                                    <img src="img/mus.jpg" class="d-block w-100" style="width:400px;height:200px" alt="${guitarra.desc}">
                                   </c:otherwise>
                                 </c:choose>
                               </div>
@@ -174,14 +174,19 @@
                         <div class="carousel-inner">
                             <c:forEach var="flauta" items="${flautas}">
                               <div class="carousel-item active">
+                              <form action="/showProduct" method="get">
+                              <input type="hidden" id="pr-id" name="pr-id" value="${flauta.id}">
+                              <button type="submit">
                                 <c:choose>
                                   <c:when test="${flauta.img != null}">
-                                    <img src="img/${flauta.img}" class="d-block w-100" alt="${flauta.desc}">
+                                    <img src="img/${flauta.img}" class="d-block w-100" style="width:400px;height:200px" alt="${flauta.desc}">
                                   </c:when>
                                   <c:otherwise>
-                                    <img src="img/indexServix.png" class="d-block w-100" alt="${flauta.desc}">
+                                    <img src="img/mus.jpg" class="d-block w-100" style="width:400px;height:200px" alt="${flauta.desc}">
                                   </c:otherwise>
                                 </c:choose>
+                               </button>
+                               </form>
                               </div>
                             </c:forEach>
                         </div>
@@ -210,10 +215,10 @@
                               <div class="carousel-item active">
                                 <c:choose>
                                   <c:when test="${violao.img != null}">
-                                    <img src="img/${violao.img}" class="d-block w-100" alt="${violao.desc}">
+                                    <img src="img/${violao.img}" class="d-block w-100" style="width:400px;height:200px" alt="${violao.desc}">
                                   </c:when>
                                   <c:otherwise>
-                                    <img src="img/indexServix.png" class="d-block w-100" alt="${violao.desc}">
+                                    <img src="img/mus.jpg" class="d-block w-100" style="width:400px;height:200px" alt="${violao.desc}">
                                   </c:otherwise>
                                 </c:choose>
                               </div>
@@ -244,10 +249,10 @@
                               <div class="carousel-item active">
                                 <c:choose>
                                   <c:when test="${saxofone.img != null}">
-                                    <img src="img/${saxofone.img}" class="d-block w-100" alt="${saxofone.desc}">
+                                    <img src="img/${saxofone.img}" class="d-block w-100" style="width:400px;height:200px" alt="${saxofone.desc}">
                                   </c:when>
                                   <c:otherwise>
-                                    <img src="img/indexServix.png" class="d-block w-100" alt="${saxofone.desc}">
+                                    <img src="img/mus.jpg" class="d-block w-100" style="width:400px;height:200px" alt="${saxofone.desc}">
                                   </c:otherwise>
                                 </c:choose>
                               </div>

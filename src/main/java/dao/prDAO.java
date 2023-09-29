@@ -144,7 +144,7 @@ public class prDAO {
     }
 
     public Produto productInfo(int id) {
-        String sql = "";
+        String sql = "SELECT * FROM tb_PRODUTO WHERE pr_ID = ?;";
         Produto pr = new Produto();
 
         try {
@@ -162,8 +162,9 @@ public class prDAO {
                 int pr_QNT = rs.getInt("pr_QNT");
                 Double pr_AVA = rs.getDouble("pr_AVA");
                 Boolean pr_STATUS = rs.getBoolean("pr_STATUS");
+                String pr_IMG = rs.getString("pr_IMG");
 
-                pr = new Produto(pr_ID, pr_NOME, pr_DESC, pr_VAL, pr_QNT, pr_AVA, pr_STATUS);
+                pr = new Produto(pr_ID, pr_NOME, pr_DESC, pr_VAL, pr_QNT, pr_AVA, pr_STATUS, pr_IMG);
             }
             System.out.println("Sucesso na coleta!");
             con.close();
@@ -221,7 +222,7 @@ public class prDAO {
     }
 
     public List<Produto> listCarrouselCardsByName(String name) {
-        String sql = "SELECT TOP 3 pr_NOME, pr_DESC, pr_IMG FROM tb_PRODUTO WHERE pr_NOME LIKE ? AND pr_STATUS = TRUE ORDER BY RAND();";
+        String sql = "SELECT TOP 3 pr_ID, pr_NOME, pr_DESC, pr_IMG FROM tb_PRODUTO WHERE pr_NOME LIKE ? AND pr_STATUS = TRUE ORDER BY RAND();";
 
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
@@ -232,11 +233,12 @@ public class prDAO {
             List<Produto> prs = new ArrayList<>();
 
             while (rs.next()) {
+                int pr_ID = rs.getInt("pr_ID");
                 String pr_NOME = rs.getString("pr_NOME");
                 String pr_DESC = rs.getString("pr_DESC");
                 String pr_IMG = rs.getString("pr_IMG");
 
-                Produto pr = new Produto(pr_NOME, pr_DESC, pr_IMG);
+                Produto pr = new Produto(pr_ID, pr_NOME, pr_DESC, pr_IMG);
                 prs.add(pr);
             }
             System.out.println("Sucesso na listagem!");

@@ -55,7 +55,8 @@ public class Produto {
         this.desc = desc;
     }
 
-    public Produto(String nome, String desc, String img) {
+    public Produto(int id, String nome, String desc, String img) {
+        this.id = id;
         this.nome = nome;
         this.desc = desc;
         this.img = img;

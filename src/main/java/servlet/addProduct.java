@@ -57,7 +57,7 @@ public class addProduct extends HttpServlet {
                     checkFieldType(item, parameters);
                 }
             } catch (Exception ex) {
-                parameters.put("img", "img/indexServix.png");
+                parameters.put("img", "img/mus.jpg");
             }
         } else {
             return parameters;
