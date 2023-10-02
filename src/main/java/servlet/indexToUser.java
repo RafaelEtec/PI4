@@ -19,7 +19,7 @@ public class indexToUser extends HttpServlet {
         List<Produto> pianos = new prDAO().listCarrouselCardsByName("Piano");
         List<Produto> guitarras = new prDAO().listCarrouselCardsByName("Guitarra");
         List<Produto> flautas = new prDAO().listCarrouselCardsByName("Flauta");
-        List<Produto> violoes = new prDAO().listCarrouselCardsByName("Violão");
+        List<Produto> violoes = new prDAO().listCarrouselCardsByName("Violao");
         List<Produto> saxofones = new prDAO().listCarrouselCardsByName("Saxofone");
 
         req.setAttribute("pianos", pianos);

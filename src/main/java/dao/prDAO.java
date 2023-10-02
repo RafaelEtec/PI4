@@ -11,7 +11,7 @@ import java.util.List;
 
 public class prDAO {
     public boolean addProduct(Produto pr) {
-        String sql = "INSERT INTO tb_PRODUTO (pr_NOME, pr_DESC, pr_VAL, pr_QNT, pr_AVA) VALUES (?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO tb_PRODUTO (pr_NOME, pr_DESC, pr_VAL, pr_QNT, pr_AVA, pr_IMG) VALUES (?, ?, ?, ?, ?, ?);";
         boolean saida = false;
 
         try {
@@ -23,6 +23,7 @@ public class prDAO {
             ps.setDouble(3, pr.getVal());
             ps.setInt(4, pr.getQnt());
             ps.setDouble(5, pr.getAva());
+            ps.setString(6, pr.getImg());
             ps.execute();
 
             saida = true;
@@ -52,8 +53,9 @@ public class prDAO {
                 int pr_QNT = rs.getInt("pr_QNT");
                 Double pr_AVA = rs.getDouble("pr_AVA");
                 boolean pr_STATUS = rs.getBoolean("pr_STATUS");
+                String pr_IMG = rs.getString("pr_IMG");
 
-                Produto pr = new Produto(pr_ID, pr_NOME, pr_DESC, pr_VAL, pr_QNT, pr_AVA, pr_STATUS);
+                Produto pr = new Produto(pr_ID, pr_NOME, pr_DESC, pr_VAL, pr_QNT, pr_AVA, pr_STATUS, pr_IMG);
                 prs.add(pr);
             }
             System.out.println("Sucesso na listagem!");
@@ -85,8 +87,9 @@ public class prDAO {
                 int pr_QNT = rs.getInt("pr_QNT");
                 Double pr_AVA = rs.getDouble("pr_AVA");
                 boolean pr_STATUS = rs.getBoolean("pr_STATUS");
+                String pr_IMG = rs.getString("pr_IMG");
 
-                Produto pr = new Produto(pr_ID, pr_NOME, pr_DESC, pr_VAL, pr_QNT, pr_AVA, pr_STATUS);
+                Produto pr = new Produto(pr_ID, pr_NOME, pr_DESC, pr_VAL, pr_QNT, pr_AVA, pr_STATUS, pr_IMG);
                 prs.add(pr);
             }
             System.out.println("Sucesso na listagem!");
@@ -141,7 +144,7 @@ public class prDAO {
     }
 
     public Produto productInfo(int id) {
-        String sql = "";
+        String sql = "SELECT * FROM tb_PRODUTO WHERE pr_ID = ?;";
         Produto pr = new Produto();
 
         try {
@@ -159,8 +162,9 @@ public class prDAO {
                 int pr_QNT = rs.getInt("pr_QNT");
                 Double pr_AVA = rs.getDouble("pr_AVA");
                 Boolean pr_STATUS = rs.getBoolean("pr_STATUS");
+                String pr_IMG = rs.getString("pr_IMG");
 
-                pr = new Produto(pr_ID, pr_NOME, pr_DESC, pr_VAL, pr_QNT, pr_AVA, pr_STATUS);
+                pr = new Produto(pr_ID, pr_NOME, pr_DESC, pr_VAL, pr_QNT, pr_AVA, pr_STATUS, pr_IMG);
             }
             System.out.println("Sucesso na coleta!");
             con.close();
@@ -218,7 +222,7 @@ public class prDAO {
     }
 
     public List<Produto> listCarrouselCardsByName(String name) {
-        String sql = "SELECT TOP 3 pr_NOME, pr_DESC FROM tb_PRODUTO WHERE pr_NOME LIKE ? AND pr_STATUS = TRUE ORDER BY RAND();";
+        String sql = "SELECT TOP 3 pr_ID, pr_NOME, pr_DESC, pr_IMG FROM tb_PRODUTO WHERE pr_NOME LIKE ? AND pr_STATUS = TRUE ORDER BY RAND();";
 
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
@@ -229,10 +233,12 @@ public class prDAO {
             List<Produto> prs = new ArrayList<>();
 
             while (rs.next()) {
+                int pr_ID = rs.getInt("pr_ID");
                 String pr_NOME = rs.getString("pr_NOME");
                 String pr_DESC = rs.getString("pr_DESC");
+                String pr_IMG = rs.getString("pr_IMG");
 
-                Produto pr = new Produto(pr_NOME, pr_DESC);
+                Produto pr = new Produto(pr_ID, pr_NOME, pr_DESC, pr_IMG);
                 prs.add(pr);
             }
             System.out.println("Sucesso na listagem!");

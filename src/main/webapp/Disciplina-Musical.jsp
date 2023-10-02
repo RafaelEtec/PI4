@@ -19,7 +19,7 @@
 
         <nav class="navbar body-tertiary">
           <div class="container-fluid">
-            <a id="tittleDis" class="navbar-brand" href="Disciplina-Musical.jsp">
+            <a id="tittleDis" class="navbar-brand" href="/Disciplina-Musical">
               &nbsp<i class="bi bi-music-note-beamed"></i> &nbsp
               Disciplina Musical
             </a>
@@ -65,10 +65,10 @@
 
               <form class="dropdown-menu p-1">
                   <div class="d-grid gap-2">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalLogin">
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalLogin">
                       Login
                     </button>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCriar">
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalCriar">
                       Criar conta
                     </button>
                   </div>
@@ -93,13 +93,27 @@
         <header class="container">
             <div style="width: 100%; height: 100px;">
                 <div class="row">
+
+                <nav class="navbar body-tertiary">
+                  <div class="container-fluid">
+                    <span class="navbar-brand mb-0 h1">Principais escolhas</span>
+                  </div>
+                </nav>
+
                   <div class="col-sm-4 mb-3 mb-sm-0">
                     <div class="card mb-3">
                       <div id="carouselExampleAutoplaying1" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <c:forEach var="piano" items="${pianos}">
                               <div class="carousel-item active">
-                                <img src="img/indexServix.png" class="d-block w-100" alt="${piano.desc}">
+                                <c:choose>
+                                  <c:when test="${piano.img != null}">
+                                    <img src="img/${piano.img}" class="d-block w-100" style="width:400px;height:400px" alt="${piano.desc}">
+                                  </c:when>
+                                  <c:otherwise>
+                                    <img src="img/mus.jpg" class="d-block w-100" style="width:400px;height:400px" alt="${piano.desc}">
+                                  </c:otherwise>
+                                </c:choose>
                               </div>
                             </c:forEach>
                         </div>
@@ -126,7 +140,14 @@
                         <div class="carousel-inner">
                             <c:forEach var="guitarra" items="${guitarras}">
                               <div class="carousel-item active">
-                                <img src="img/indexServix.png" class="d-block w-100" alt="${guitarra.desc}">
+                                <c:choose>
+                                  <c:when test="${guitarra.img != null}">
+                                    <img src="img/${guitarra.img}" class="d-block w-100" style="width:400px;height:200px" alt="${guitarra.desc}">
+                                  </c:when>
+                                  <c:otherwise>
+                                    <img src="img/mus.jpg" class="d-block w-100" style="width:400px;height:200px" alt="${guitarra.desc}">
+                                  </c:otherwise>
+                                </c:choose>
                               </div>
                             </c:forEach>
                         </div>
@@ -153,7 +174,19 @@
                         <div class="carousel-inner">
                             <c:forEach var="flauta" items="${flautas}">
                               <div class="carousel-item active">
-                                <img src="img/indexServix.png" class="d-block w-100" alt="${flauta.desc}">
+                              <form action="/showProduct" method="get">
+                              <input type="hidden" id="pr-id" name="pr-id" value="${flauta.id}">
+                              <button type="submit">
+                                <c:choose>
+                                  <c:when test="${flauta.img != null}">
+                                    <img src="img/${flauta.img}" class="d-block w-100" style="width:400px;height:200px" alt="${flauta.desc}">
+                                  </c:when>
+                                  <c:otherwise>
+                                    <img src="img/mus.jpg" class="d-block w-100" style="width:400px;height:200px" alt="${flauta.desc}">
+                                  </c:otherwise>
+                                </c:choose>
+                               </button>
+                               </form>
                               </div>
                             </c:forEach>
                         </div>
@@ -180,7 +213,14 @@
                         <div class="carousel-inner">
                             <c:forEach var="violao" items="${violoes}">
                               <div class="carousel-item active">
-                                <img src="img/indexServix.png" class="d-block w-100" alt="${violao.desc}">
+                                <c:choose>
+                                  <c:when test="${violao.img != null}">
+                                    <img src="img/${violao.img}" class="d-block w-100" style="width:400px;height:200px" alt="${violao.desc}">
+                                  </c:when>
+                                  <c:otherwise>
+                                    <img src="img/mus.jpg" class="d-block w-100" style="width:400px;height:200px" alt="${violao.desc}">
+                                  </c:otherwise>
+                                </c:choose>
                               </div>
                             </c:forEach>
                         </div>
@@ -207,7 +247,14 @@
                         <div class="carousel-inner">
                             <c:forEach var="saxofone" items="${saxofones}">
                               <div class="carousel-item active">
-                                <img src="img/indexServix.png" class="d-block w-100" alt="${saxofone.desc}">
+                                <c:choose>
+                                  <c:when test="${saxofone.img != null}">
+                                    <img src="img/${saxofone.img}" class="d-block w-100" style="width:400px;height:200px" alt="${saxofone.desc}">
+                                  </c:when>
+                                  <c:otherwise>
+                                    <img src="img/mus.jpg" class="d-block w-100" style="width:400px;height:200px" alt="${saxofone.desc}">
+                                  </c:otherwise>
+                                </c:choose>
                               </div>
                             </c:forEach>
                         </div>
