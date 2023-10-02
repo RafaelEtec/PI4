@@ -34,8 +34,9 @@ public class addProduct extends HttpServlet {
         int pr_qnt = Integer.parseInt(parameters.get("pr-qnt"));
         double pr_ava = Double.parseDouble(parameters.get("pr-ava"));
         String pr_img = parameters.get("img");
+        String pr_tag = parameters.get("pr-tag");
 
-        Produto pr = new Produto(pr_nome, pr_desc, pr_val, pr_qnt, pr_ava, pr_img);
+        Produto pr = new Produto(pr_nome, pr_desc, pr_val, pr_qnt, pr_ava, pr_img, pr_tag);
         boolean saida = new prDAO().addProduct(pr);
 
         if (saida) {

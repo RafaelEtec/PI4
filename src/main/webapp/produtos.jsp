@@ -39,6 +39,7 @@
                     <tr>
                         <th scope="col">Código</th>
                         <th scope="col">Nome</th>
+                        <th scope="col">Categoria</th>
                         <th scope="col">Quantidade</th>
                         <th scope="col">Valor</th>
                         <th scope="col">Status</th>
@@ -53,6 +54,7 @@
                         <tr>
                             <td>${pr.id}</td>
                             <td>${pr.nome}</td>
+                            <td>${pr.tag}</td>
                             <td>${pr.qnt}</td>
                             <td>${pr.val}</td>
                             <td>${pr.status ? "Ativo" : "Inativo"}</td>

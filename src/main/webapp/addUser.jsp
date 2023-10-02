@@ -121,7 +121,7 @@
                             </c:otherwise>
                         </c:choose>
 
-                        <div id="toastAlert" class="row mb-2"></div>
+                        <div id="toastAlert" class="alert alert-warning" hidden role="alert"></div>
                         <div id="alert" class="row mb-2"></div>
                         <button hidden data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" data-bs-toggle="offcanvas"></button>
 

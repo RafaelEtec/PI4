@@ -90,11 +90,11 @@ function checkCampos() {
                                                        Informe a função
                                                       </div>`;
         document.getElementById("us-funcao").focus();
-    } else if (!TestaCPF(cpf)) {
-        document.getElementById("alert").innerHTML = `<div class="alert alert-info" role="alert">
-                                                       CPF Inválido
-                                                      </div>`;
-        document.getElementById("us-cpf").focus();
+    //} else if (TestaCPF(cpf)) {
+     //   document.getElementById("alert").innerHTML = `<div class="alert alert-info" role="alert">
+     //                                                  CPF Inválido
+     //                                                </div>`;
+     //   document.getElementById("us-cpf").focus();
     } else {
         document.getElementById("alert").innerHTML = `<div class="alert alert-info" hidden role="alert"></div>`;
         openCanvas.click();
@@ -161,6 +161,10 @@ function checkDupesUpdate() {
             document.getElementById("toastAlert").innerHTML = `<div class="alert alert-warning" role="alert">
                                                                 O CPF informado já foi cadastrado!
                                                                </div>`;
+        } else if (error == "wrongPass") {
+            document.getElementById("toastAlert").innerHTML = `<div class="alert alert-warning" role="alert">
+                                                                Senha incorreta!
+                                                               </div>`;
         } else if (error == "Erro não identificado") {
             document.getElementById("toastAlert").innerHTML = `<div class="alert alert-warning" role="alert">
                                                                 Algo de errado não está certo!
@@ -183,6 +187,10 @@ function checkDupes() {
             console.log(error);
             document.getElementById("toastAlert").innerHTML = `<div class="alert alert-warning" role="alert">
                                                                 O CPF informado já foi cadastrado!
+                                                               </div>`;
+        } else if (error == "wrongPass") {
+            document.getElementById("toastAlert").innerHTML = `<div class="alert alert-warning" role="alert">
+                                                                Senha incorreta!
                                                                </div>`;
         } else if (error == "Erro não identificado") {
             document.getElementById("toastAlert").innerHTML = `<div class="alert alert-warning" role="alert">

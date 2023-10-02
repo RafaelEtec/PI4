@@ -9,6 +9,7 @@ public class Produto {
     private double ava;
     private Boolean status;
     private String img;
+    private String tag;
 
     public Produto() {}
 
@@ -33,6 +34,18 @@ public class Produto {
         this.status = status;
     }
 
+    public Produto(int id, String nome, String desc, double val, int qnt, double ava, Boolean status, String img, String tag) {
+        this.id = id;
+        this.nome = nome;
+        this.desc = desc;
+        this.val = val;
+        this.qnt = qnt;
+        this.ava = ava;
+        this.status = status;
+        this.img = img;
+        this.tag = tag;
+    }
+
     public Produto(String nome, String desc, double val, int qnt, double ava) {
         this.nome = nome;
         this.desc = desc;
@@ -41,13 +54,14 @@ public class Produto {
         this.ava = ava;
     }
 
-    public Produto(String nome, String desc, double val, int qnt, double ava, String img) {
+    public Produto(String nome, String desc, double val, int qnt, double ava, String img, String tag) {
         this.nome = nome;
         this.desc = desc;
         this.val = val;
         this.qnt = qnt;
         this.ava = ava;
         this.img = img;
+        this.tag = tag;
     }
 
     public Produto(String nome, String desc) {
@@ -124,5 +138,13 @@ public class Produto {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 }

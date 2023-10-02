@@ -77,6 +77,32 @@
                             </div>
                         </div>
 
+                        <div id="inputTag" class="row mb-3">
+                            <div id="divSelect" class="input-group mb-6">
+                            <input type="hidden" id="pr-tag" name="pr-tag" value="${pr.tag}">
+                              <label class="input-group-text" for="us-funcao">Função</label>
+                              <select class="form-select" id="pr-tag" name="pr-tag" value="${pr.tag}">
+                                <option value="${pr.tag}">${pr.tag}</option>
+                                <option value="PIANO">Piano</option>
+                                <option value="GUITARRA">Guitarra</option>
+                                <option value="VIOLAO">Violão</option>
+                                <option value="BATERIA">Bateria</option>
+                                <option value="FLAUTA">Flauta</option>
+                                <option value="SAXOFONE">Saxofone</option>
+                                <option value="TROMBONE">Trombone</option>
+                                <option value="BAIXO">Baixo</option>
+                                <option value="VIOLINO">Violino</option>
+                                <option value="GAITA">Gaita</option>
+                                <option value="XILOFONE">Xilofone</option>
+                                <option value="TRIANGULO">Triângulo</option>
+                                <option value="TECLADO">Teclado</option>
+                                <option value="PANDEIRO">Pandeiro</option>
+                                <option value="CAVACO">Cavaco</option>
+                                <option value="UKULELE">Ukulele</option>
+                              </select>
+                            </div>
+                        </div>
+
                         <button onclick="checkCampos()" id="avancar" class="btn btn-primary" type="button">Avançar</button>
                         <a href="/listProducts" class="btn btn-secondary" id="Voltar">Voltar</a>
 

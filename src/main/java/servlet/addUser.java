@@ -15,7 +15,6 @@ public class addUser extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         if (req.getParameter("gonna").equals("UPDATE")) {
             int us_id = Integer.parseInt(req.getParameter("id"));
             String us_nome = req.getParameter("us-nome");
@@ -24,7 +23,6 @@ public class addUser extends HttpServlet {
             String cpf = req.getParameter("cpf");
             String us_pass = req.getParameter("us-pass");
             String us_funcao = req.getParameter("us-funcao");
-
             Usuario us = new Usuario(us_id, us_nome, us_email, us_cpf, us_pass, us_funcao);
             boolean saida = new usDAO().updateUser(us);
 
@@ -55,8 +53,14 @@ public class addUser extends HttpServlet {
             String us_funcao = req.getParameter("us-funcao");
 
             Usuario us = new Usuario(us_nome, us_email, us_cpf, us_pass, us_funcao);
-            boolean saida = new usDAO().addUser(us);
-
+            boolean saida = false;
+            Usuario check = (Usuario) req.getSession().getAttribute("us");
+            String cPass = new usDAO().decrypt(check.getPass());
+            if (cPass.equals(us_pass)) {
+                if (new usDAO().addUser(us)) {
+                    saida = true;
+                }
+            }
             if (saida) {
                 resp.sendRedirect("/listUsers");
             } else {
@@ -68,6 +72,8 @@ public class addUser extends HttpServlet {
                     error = "emailDupe";
                 } else if (checkCPF) {
                     error = "cpfDupe";
+                } else if (!cPass.equals(us_pass)) {
+                    error = "wrongPass";
                 } else {
                     error = "Erro não identificado";
                 }

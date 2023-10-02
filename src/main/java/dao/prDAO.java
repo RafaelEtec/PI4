@@ -11,7 +11,7 @@ import java.util.List;
 
 public class prDAO {
     public boolean addProduct(Produto pr) {
-        String sql = "INSERT INTO tb_PRODUTO (pr_NOME, pr_DESC, pr_VAL, pr_QNT, pr_AVA, pr_IMG) VALUES (?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO tb_PRODUTO (pr_NOME, pr_DESC, pr_VAL, pr_QNT, pr_AVA, pr_IMG, pr_TAG) VALUES (?, ?, ?, ?, ?, ?, ?);";
         boolean saida = false;
 
         try {
@@ -24,6 +24,7 @@ public class prDAO {
             ps.setInt(4, pr.getQnt());
             ps.setDouble(5, pr.getAva());
             ps.setString(6, pr.getImg());
+            ps.setString(7, pr.getTag());
             ps.execute();
 
             saida = true;
@@ -163,8 +164,9 @@ public class prDAO {
                 Double pr_AVA = rs.getDouble("pr_AVA");
                 Boolean pr_STATUS = rs.getBoolean("pr_STATUS");
                 String pr_IMG = rs.getString("pr_IMG");
+                String pr_TAG = rs.getString("pr_TAG");
 
-                pr = new Produto(pr_ID, pr_NOME, pr_DESC, pr_VAL, pr_QNT, pr_AVA, pr_STATUS, pr_IMG);
+                pr = new Produto(pr_ID, pr_NOME, pr_DESC, pr_VAL, pr_QNT, pr_AVA, pr_STATUS, pr_IMG, pr_TAG);
             }
             System.out.println("Sucesso na coleta!");
             con.close();
