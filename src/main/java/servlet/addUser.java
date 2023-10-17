@@ -50,9 +50,10 @@ public class addUser extends HttpServlet {
             String us_email = req.getParameter("us-email");
             String us_cpf = req.getParameter("us-cpf");
             String us_pass = req.getParameter("us-pass");
+            String us_passNew = "musical2023";
             String us_funcao = req.getParameter("us-funcao");
 
-            Usuario us = new Usuario(us_nome, us_email, us_cpf, us_pass, us_funcao);
+            Usuario us = new Usuario(us_nome, us_email, us_cpf, us_passNew, us_funcao);
             boolean saida = false;
             Usuario check = (Usuario) req.getSession().getAttribute("us");
             String cPass = new usDAO().decrypt(check.getPass());
