@@ -252,4 +252,34 @@ public class prDAO {
             return Collections.emptyList();
         }
     }
+
+    public List<Produto> listCarrouselCardsByTag(String tag) {
+        String sql = "SELECT TOP 3 pr_ID, pr_NOME, pr_DESC, pr_IMG FROM tb_PRODUTO WHERE pr_TAG LIKE ? AND pr_STATUS = TRUE ORDER BY RAND();";
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            System.out.println("Conectado");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, tag);
+            ResultSet rs = ps.executeQuery();
+            List<Produto> prs = new ArrayList<>();
+
+            while (rs.next()) {
+                int pr_ID = rs.getInt("pr_ID");
+                String pr_NOME = rs.getString("pr_NOME");
+                String pr_DESC = rs.getString("pr_DESC");
+                String pr_IMG = rs.getString("pr_IMG");
+
+                Produto pr = new Produto(pr_ID, pr_NOME, pr_DESC, pr_IMG);
+                prs.add(pr);
+            }
+            System.out.println("Sucesso na listagem!");
+            con.close();
+
+            return prs;
+        } catch (Exception ex) {
+            System.out.println("Erro na listagem de " + tag + "!");
+            return Collections.emptyList();
+        }
+    }
 }
