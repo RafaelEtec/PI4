@@ -5,16 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fc923a6-1e2d-48f3-a81e-52d7c05e4e12" name="Changes" comment="&gt; Sprint 3 inicializada">
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/clDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Cliente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/LoginCli.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/Logoff.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/cliente.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/databaseSQL" beforeDir="false" afterPath="$PROJECT_DIR$/databaseSQL" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/prDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/prDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Produto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/addProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/addProduct.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/addUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/addUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/addProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addProduct.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/addUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addUser.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/senha.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/senha.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/produtos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/produtos.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/indexToUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/indexToUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Disciplina-Musical.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Disciplina-Musical.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/product-info.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/product-info.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -324,34 +327,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="&gt; Sprint 3 inicializada" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/dao/prDAO.java</url>
-          <line>12</line>
-          <properties class="dao.prDAO" method="addProduct">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dao/prDAO.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dao/prDAO.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dao/prDAO.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="org.apache.catalina.core.ApplicationHttpRequest" memberName="request" />
