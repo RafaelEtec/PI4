@@ -25,6 +25,7 @@
             </a>
 
             <div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <form action="/loginCli" method="get" id="loginCliForm">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -32,13 +33,31 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <!-- Inputs -->
+                        <input type="hidden" id="error" name="error" value="${error}">
+                        <div class="row mb-3">
+                            <div id="alertaEmail"></div><br>
+                            <label for="cl-email" class="col-sm-2 col-form-label">Usuário:</label>
+                            <div class="col-sm-10">
+                                <input maxlength="40" type="email" class="form-control" id="cl-email" name="cl-email">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div id="alertaSenha"></div><br>
+                            <label for="cl-pass" class="col-sm-2 col-form-label">Senha:</label>
+                            <div class="col-sm-10">
+                                <input maxlength="20" type="password" class="form-control" id="cl-pass" name="cl-pass">
+                            </div>
+                        </div>
                   </div>
                   <div class="modal-footer">
                     <!-- Botões -->
+                        <button type="submit" id="enviar" class="btn btn-primary">OK</button>
+                        <button onclick="limparCampos()" type="button" class="btn btn-secondary" id="cancelar">Cancelar</button>
+                        <div id="toastAlert" class="row mb-3"></div>
                   </div>
                 </div>
               </div>
+                    </form>
             </div>
 
             <div class="modal fade" id="modalCriar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -58,22 +77,44 @@
               </div>
             </div>
 
-            <div class="dropdown">
-              <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                <i class="bi bi-person-fill"></i>
-              </button>
+            <c:choose>
+                <c:when test="${sessionStatus == 'naologado'}">
+                    <div class="dropdown">
+                      <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                        <i class="bi bi-person-fill"></i>
+                      </button>
 
-              <form class="dropdown-menu p-1">
-                  <div class="d-grid gap-2">
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalLogin">
-                      Login
-                    </button>
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalCriar">
-                      Criar conta
-                    </button>
-                  </div>
-              </form>
-            </div>
+                      <form class="dropdown-menu p-1">
+                          <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalLogin">
+                              Login
+                            </button>
+                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalCriar">
+                              Criar conta
+                            </button>
+                          </div>
+                      </form>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div class="dropdown">
+                      <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                        <i class="bi bi-person-fill"></i>
+                      </button>
+
+                      <form class="dropdown-menu p-1">
+                          <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modal">
+                              Meus dados
+                            </button>
+                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modal">
+                              Logoff
+                            </button>
+                          </div>
+                      </form>
+                    </div>
+                </c:otherwise>
+            </c:choose>
 
             <button class="btn navbar-brand" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
               <i class="bi bi-cart"></i>

@@ -16,6 +16,7 @@
     </head>
     <body class="fundo">
         <input type="hidden" id="error" name="error" value="${error}">
+        <input type="hidden" id="sessionStatus" name="sessionStatus" value="${sessionStatus}">
 
         <nav class="navbar body-tertiary">
           <div class="container-fluid">
@@ -24,7 +25,36 @@
               Disciplina Musical
             </a>
 
+            <button type="button" onclick="mostraToast()" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+
+            <div class="toast-container position-fixed bottom-0 end-0 p-3">
+              <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                  <img src="..." class="rounded me-2" alt="...">
+                  <strong class="me-auto">Bootstrap</strong>
+                  <small>11 mins ago</small>
+                  <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                  Hello, world! This is a toast message.
+                </div>
+              </div>
+            </div>
+
+            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-header">
+                <img src="..." class="rounded me-2" alt="...">
+                <strong class="me-auto">Bootstrap</strong>
+                <small>11 mins ago</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+              <div class="toast-body">
+                Hello, world! This is a toast message.
+              </div>
+            </div>
+
             <div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <form action="/loginCli" method="get" id="loginCliForm">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -32,13 +62,31 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <!-- Inputs -->
+                        <input type="hidden" id="error" name="error" value="${error}">
+                        <div class="row mb-3">
+                            <div id="alertaEmail"></div><br>
+                            <label for="cl-email" class="col-sm-2 col-form-label">Usuário:</label>
+                            <div class="col-sm-10">
+                                <input maxlength="40" type="email" class="form-control" id="cl-email" name="cl-email">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div id="alertaSenha"></div><br>
+                            <label for="cl-pass" class="col-sm-2 col-form-label">Senha:</label>
+                            <div class="col-sm-10">
+                                <input maxlength="20" type="password" class="form-control" id="cl-pass" name="cl-pass">
+                            </div>
+                        </div>
                   </div>
                   <div class="modal-footer">
                     <!-- Botões -->
+                        <button type="submit" id="enviar" class="btn btn-primary">OK</button>
+                        <button onclick="limparCampos()" type="button" class="btn btn-secondary" id="cancelar">Cancelar</button>
+                        <div id="toastAlert" class="row mb-3"></div>
                   </div>
                 </div>
               </div>
+                    </form>
             </div>
 
             <div class="modal fade" id="modalCriar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -58,22 +106,46 @@
               </div>
             </div>
 
-            <div class="dropdown">
-              <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                <i class="bi bi-person-fill"></i>
-              </button>
+            <c:choose>
+                <c:when test="${sessionStatus == 'naologado'}">
+                    <div class="dropdown">
+                      <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                        <i class="bi bi-person-fill"></i>
+                      </button>
 
-              <form class="dropdown-menu p-1">
-                  <div class="d-grid gap-2">
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalLogin">
-                      Login
-                    </button>
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalCriar">
-                      Criar conta
-                    </button>
-                  </div>
-              </form>
-            </div>
+                      <div class="dropdown-menu p-1">
+                          <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalLogin">
+                              Login
+                            </button>
+                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalCriar">
+                              Criar conta
+                            </button>
+                          </div>
+                      </div>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div class="dropdown">
+                      <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                        <i class="bi bi-person-fill"></i>
+                      </button>
+
+                      <div class="dropdown-menu p-1">
+                          <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modal">
+                              Meus dados
+                            </button>
+                            <form action="/Logoff" method="get" id="logoffCliForm">
+                                <button type="submit" class="btn btn-secondary text-center" data-bs-toggle="modal" data-bs-target="#modal">
+                                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLogoff&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                </button>
+                            </form>
+                          </div>
+                      </div>
+                    </div>
+                </c:otherwise>
+            </c:choose>
 
             <button class="btn navbar-brand" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
               <i class="bi bi-cart"></i>
@@ -106,6 +178,9 @@
                         <div class="carousel-inner">
                             <c:forEach var="piano" items="${pianos}">
                               <div class="carousel-item active">
+                              <form action="/showProduct" method="get">
+                                <input type="hidden" id="pr-id" name="pr-id" value="${piano.id}">
+                                <button type="submit">
                                 <c:choose>
                                   <c:when test="${piano.img != null}">
                                     <img src="img/${piano.img}" class="d-block w-100" style="width:400px;height:400px" alt="${piano.desc}">
@@ -114,6 +189,8 @@
                                     <img src="img/mus.jpg" class="d-block w-100" style="width:400px;height:400px" alt="${piano.desc}">
                                   </c:otherwise>
                                 </c:choose>
+                              </button>
+                              </form>
                               </div>
                             </c:forEach>
                         </div>
@@ -140,6 +217,9 @@
                         <div class="carousel-inner">
                             <c:forEach var="guitarra" items="${guitarras}">
                               <div class="carousel-item active">
+                              <form action="/showProduct" method="get">
+                              <input type="hidden" id="pr-id" name="pr-id" value="${guitarra.id}">
+                              <button type="submit">
                                 <c:choose>
                                   <c:when test="${guitarra.img != null}">
                                     <img src="img/${guitarra.img}" class="d-block w-100" style="width:400px;height:200px" alt="${guitarra.desc}">
@@ -148,6 +228,8 @@
                                     <img src="img/mus.jpg" class="d-block w-100" style="width:400px;height:200px" alt="${guitarra.desc}">
                                   </c:otherwise>
                                 </c:choose>
+                              </button>
+                              </form>
                               </div>
                             </c:forEach>
                         </div>
@@ -213,6 +295,9 @@
                         <div class="carousel-inner">
                             <c:forEach var="violao" items="${violoes}">
                               <div class="carousel-item active">
+                              <form action="/showProduct" method="get">
+                                <input type="hidden" id="pr-id" name="pr-id" value="${violao.id}">
+                                <button type="submit">
                                 <c:choose>
                                   <c:when test="${violao.img != null}">
                                     <img src="img/${violao.img}" class="d-block w-100" style="width:400px;height:200px" alt="${violao.desc}">
@@ -221,6 +306,8 @@
                                     <img src="img/mus.jpg" class="d-block w-100" style="width:400px;height:200px" alt="${violao.desc}">
                                   </c:otherwise>
                                 </c:choose>
+                              </button>
+                              </form>
                               </div>
                             </c:forEach>
                         </div>
@@ -247,6 +334,9 @@
                         <div class="carousel-inner">
                             <c:forEach var="saxofone" items="${saxofones}">
                               <div class="carousel-item active">
+                              <form action="/showProduct" method="get">
+                                <input type="hidden" id="pr-id" name="pr-id" value="${saxofone.id}">
+                                <button type="submit">
                                 <c:choose>
                                   <c:when test="${saxofone.img != null}">
                                     <img src="img/${saxofone.img}" class="d-block w-100" style="width:400px;height:200px" alt="${saxofone.desc}">
@@ -255,6 +345,8 @@
                                     <img src="img/mus.jpg" class="d-block w-100" style="width:400px;height:200px" alt="${saxofone.desc}">
                                   </c:otherwise>
                                 </c:choose>
+                              </button>
+                              </form>
                               </div>
                             </c:forEach>
                         </div>
@@ -287,7 +379,7 @@
                 </div>
             </div>
         </header>
-
+        <script src="js/cliente.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
