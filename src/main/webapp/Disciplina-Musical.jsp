@@ -17,6 +17,7 @@
     <body class="fundo">
         <input type="hidden" id="error" name="error" value="${error}">
         <input type="hidden" id="sessionStatus" name="sessionStatus" value="${sessionStatus}">
+        <input type="hidden" id="gonna" name="gonna" value="buy">
 
         <nav class="navbar body-tertiary">
           <div class="container-fluid">
@@ -24,35 +25,7 @@
               &nbsp<i class="bi bi-music-note-beamed"></i> &nbsp
               Disciplina Musical
             </a>
-
-            <button type="button" onclick="mostraToast()" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
-
-            <div class="toast-container position-fixed bottom-0 end-0 p-3">
-              <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header">
-                  <img src="..." class="rounded me-2" alt="...">
-                  <strong class="me-auto">Bootstrap</strong>
-                  <small>11 mins ago</small>
-                  <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body">
-                  Hello, world! This is a toast message.
-                </div>
-              </div>
-            </div>
-
-            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-              <div class="toast-header">
-                <img src="..." class="rounded me-2" alt="...">
-                <strong class="me-auto">Bootstrap</strong>
-                <small>11 mins ago</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-              </div>
-              <div class="toast-body">
-                Hello, world! This is a toast message.
-              </div>
-            </div>
-
+            
             <div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <form action="/loginCli" method="get" id="loginCliForm">
               <div class="modal-dialog">

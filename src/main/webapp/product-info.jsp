@@ -159,19 +159,16 @@
 
                           </div>
                           <div class="card-body text-center">
+                          <hr>
+                            <button class="btn btn-secondary" type="button">Adicionar ao carrinho</button>
+                            <hr>
                             <h5 class="card-title">R$${pr.val}</h5>
+                            <hr>
+                            <h6>${pr.desc}</h6>
                           </div>
                         </div>
                       </div>
                   </div>
-
-                  <div class="col-sm-10 mb-10 mb-sm-10">
-                      <h2>${pr.desc}</h2>
-                    <div class="card-body text-center">
-                      <h5 class="card-title"></h5>
-                    </div>
-                  </div>
-                </div>
             </div>
         </header>
 

@@ -12,6 +12,8 @@ public class Logoff extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession().removeAttribute("cliente");
-        resp.sendRedirect("/Disciplina-Musical");
+        String msg = "logoff";
+        req.setAttribute("error", msg);
+        req.getRequestDispatcher("/Disciplina-Musical").forward(req, resp);
     }
 }

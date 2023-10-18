@@ -23,7 +23,9 @@ public class LoginCli extends HttpServlet {
             if (resposta) {
                 Cliente cliente = new clDAO().sessionPorEmail(cl_email);
                 req.getSession().setAttribute("cliente", cliente);
-                resp.sendRedirect("/Disciplina-Musical");
+                String msg = "login";
+                req.setAttribute("error", msg);
+                req.getRequestDispatcher("/Disciplina-Musical").forward(req, resp);
             } else {
                 error = "notFound";
                 req.setAttribute("error", error);

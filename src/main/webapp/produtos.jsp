@@ -14,6 +14,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet">
     </head>
     <body>
+        <input type="hidden" id="gonna" name="gonna" value="inspect">
+
         <header class="container">
 
             <nav aria-label="breadcrumb">
@@ -94,8 +96,8 @@
                                 <td><button type="submit">${pr.status ? "Desabilitar" : "Habilitar"}</button></td>
                             </form>
 
-                            <form action="/previaDoProduto" method="post">
-                                <input type="hidden" id="pr_ID" name="pr_ID" value="${pr.id}">
+                            <form action="/showProduct" method="get">
+                                <input type="hidden" id="pr-id" name="pr-id" value="${pr.id}">
                                 <td><button type="submit">Visualizar</button></td>
                             </form>
                         </tr>

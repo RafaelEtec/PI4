@@ -11,6 +11,25 @@ import java.sql.ResultSet;
 import java.util.Base64;
 
 public class clDAO {
+
+    public boolean addClient(Cliente cl) {
+        String sql = "";
+        boolean saida = false;
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            System.out.println("Conectado");
+            PreparedStatement ps = con.prepareStatement(sql);
+
+
+            saida = true;
+            System.out.println("Sucesso no cadastro do Cliente!");
+            con.close();
+        } catch (Exception ex) {
+            System.out.println("Erro no cadastro do Cliente!");
+        }
+        return saida;
+    }
     public boolean login(String email, String pass) {
         String sql = "SELECT cl_PASS FROM tb_CLIENTE WHERE cl_EMAIL = ? AND cl_PASS = ?;";
         boolean saida = false;
