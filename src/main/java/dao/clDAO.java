@@ -1,6 +1,7 @@
 package dao;
 
 import model.Cliente;
+import model.Endereco;
 import model.Usuario;
 
 import java.nio.charset.StandardCharsets;
@@ -13,14 +14,22 @@ import java.util.Base64;
 public class clDAO {
 
     public boolean addClient(Cliente cl) {
-        String sql = "";
+        String sql = "INSERT INTO tb_CLIENTE (cl_NOME, cl_EMAIL, cl_CPF, cl_NASC, cl_GENERO, cl_PASS, cl_END_FATURAMENTO, cl_END_ENTREGA) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         boolean saida = false;
-
+        String pass = encrypt(cl.getPass());
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
             System.out.println("Conectado");
             PreparedStatement ps = con.prepareStatement(sql);
-
+            ps.setString(1, cl.getNome());
+            ps.setString(2, cl.getEmail());
+            ps.setString(3, cl.getCpf());
+            ps.setString(4, cl.getNasc());
+            ps.setString(5, cl.getGenero());
+            ps.setString(6, pass);
+            ps.setInt(7, 1);
+            ps.setInt(8, 2);
+            ps.execute();
 
             saida = true;
             System.out.println("Sucesso no cadastro do Cliente!");
@@ -30,6 +39,55 @@ public class clDAO {
         }
         return saida;
     }
+
+    public int pegaIdPorEmail(String email) {
+        String sql = "SELECT cl_ID FROM tb_CLIENTE WHERE cl_EMAIL = ?";
+        int id = 0;
+        try {
+            Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                id = rs.getInt("cl_ID");
+            }
+            System.out.println("Sucesso na pesquisa do ID");
+            con.close();
+        } catch (Exception ex) {
+            System.out.println("Erro na pesquisa do ID!");
+        }
+        return id;
+    }
+
+    public boolean addEndereco(Endereco en) {
+        String sql = "INSERT INTO tb_ENDERECO (en_cl_ID, en_cl_N, en_TIPO, en_CEP, en_LOG, en_NUM, en_COM, en_CID, en_EST, en_DEFAULT) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        boolean saida = false;
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            System.out.println("Conectado");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, en.getCl_id());
+            ps.setInt(2, en.getCl_n());
+            ps.setString(3, en.getTipo());
+            ps.setString(4, en.getCep());
+            ps.setString(5, en.getLog());
+            ps.setString(6, en.getNum());
+            ps.setString(7, en.getCom());
+            ps.setString(8, en.getCid());
+            ps.setString(9, en.getEst());
+            ps.setBoolean(10, en.isIsdefault());
+            ps.execute();
+            saida = true;
+            System.out.println("Sucesso no cadastro do Endereco!");
+            con.close();
+        } catch (Exception ex) {
+            System.out.println("Erro no cadastro do Endereco!");
+        }
+        return saida;
+    }
+
     public boolean login(String email, String pass) {
         String sql = "SELECT cl_PASS FROM tb_CLIENTE WHERE cl_EMAIL = ? AND cl_PASS = ?;";
         boolean saida = false;
@@ -60,7 +118,7 @@ public class clDAO {
     }
 
     public Cliente sessionPorEmail(String sessionEmail) {
-        String sql = "";
+        String sql = "SELECT * FROM tb_CLINETE WHERE cl_EMAIL = ?";
         Cliente cl = new Cliente();
 
         try {
