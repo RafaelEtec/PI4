@@ -27,6 +27,19 @@ public class Endereco {
         this.isdefault = isdefault;
     }
 
+    public Endereco(int cl_id, int cl_n, String tipo, String cep, String log, String num, String com, String cid, String est, boolean isdefault) {
+        this.cl_id = cl_id;
+        this.cl_n = cl_n;
+        this.tipo = tipo;
+        this.cep = cep;
+        this.log = log;
+        this.num = num;
+        this.com = com;
+        this.cid = cid;
+        this.est = est;
+        this.isdefault = isdefault;
+    }
+
     public int getId() {
         return id;
     }

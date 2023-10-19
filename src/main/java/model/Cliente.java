@@ -25,6 +25,15 @@ public class Cliente {
         this.end_entrega = end_entrega;
     }
 
+    public Cliente(String nome, String email, String cpf, String nasc, String genero, String pass) {
+        this.nome = nome;
+        this.email = email;
+        this.cpf = cpf;
+        this.nasc = nasc;
+        this.genero = genero;
+        this.pass = pass;
+    }
+
     public Cliente(int id, String nome, String email, String pass) {
         this.id = id;
         this.nome = nome;
