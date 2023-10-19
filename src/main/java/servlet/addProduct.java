@@ -24,8 +24,6 @@ import static org.apache.commons.fileupload.servlet.ServletFileUpload.isMultipar
 public class addProduct extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-
         Map<String, String> parameters = uploadImage(req);
 
         String pr_nome = parameters.get("pr-nome");
@@ -37,12 +35,20 @@ public class addProduct extends HttpServlet {
         String pr_tag = parameters.get("pr-tag");
 
         Produto pr = new Produto(pr_nome, pr_desc, pr_val, pr_qnt, pr_ava, pr_img, pr_tag);
-        boolean saida = new prDAO().addProduct(pr);
 
+        boolean saida;
+        if (parameters.get("gonna") != null && parameters.get("gonna").equals("UPDATE")) {
+            int pr_id = Integer.parseInt(parameters.get("pr-id"));
+            Produto prU = new Produto(pr_id, pr_nome, pr_desc, pr_val, pr_qnt, pr_ava, pr_img, pr_tag);
+            saida = new prDAO().updateProduct(prU);
+        } else {
+            saida = new prDAO().addProduct(pr);
+        }
         if (saida) {
             resp.sendRedirect("/listProducts");
         } else {
             req.setAttribute("pr", pr);
+            req.setAttribute("gonna", parameters.get("gonna"));
             req.getRequestDispatcher("addProduct.jsp").forward(req, resp);
         }
     }

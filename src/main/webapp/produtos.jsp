@@ -82,10 +82,21 @@
                                     </li>
                                     <hr>
                                     <li class="d-flex justify-content-center">
-                                        <form action="/toUpdateProduct" method="get">
-                                            <input type="hidden" id="pr_ID" name="pr_ID" value="${pr.id}">
-                                            <button disabled type="submit">Alterar produto</button>
-                                        </form>
+
+                                        <c:choose>
+                                            <c:when test="${us.funcao == 'STOCKIST'}">
+                                                <form action="/toUpdateProductAll" method="get">
+                                                    <input type="hidden" id="pr_ID" name="pr_ID" value="${pr.id}">
+                                                    <button disabled type="submit">Alterar produto</button>
+                                                </form>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <form action="/toUpdateProductAll" method="get">
+                                                    <input type="hidden" id="pr_ID" name="pr_ID" value="${pr.id}">
+                                                    <button type="submit">Alterar produto</button>
+                                                </form>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </li>
                                   </ul>
                                 </div>

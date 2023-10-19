@@ -179,7 +179,7 @@ public class prDAO {
     }
 
     public boolean updateProduct(Produto pr) {
-        String sql = "UPDATE tb_PRODUTO SET pr_NOME = ?, pr_DESC = ?, pr_VAL = ?, pr_QNT = ?, pr_AVA, pr_STATUS = ? WHERE pr_ID = ?;";
+        String sql = "UPDATE tb_PRODUTO SET pr_NOME = ?, pr_DESC = ?, pr_VAL = ?, pr_QNT = ?, pr_AVA = ?, pr_IMG = ?, pr_TAG = ? WHERE pr_ID = ?;";
         boolean saida = false;
 
         try {
@@ -191,8 +191,9 @@ public class prDAO {
             ps.setDouble(3, pr.getVal());
             ps.setInt(4, pr.getQnt());
             ps.setDouble(5, pr.getAva());
-            ps.setBoolean(6, pr.getStatus());
-            ps.setInt(7, pr.getId());
+            ps.setString(6, pr.getImg());
+            ps.setString(7, pr.getTag());
+            ps.setInt(8, pr.getId());
             ps.execute();
             saida = true;
             System.out.println("Sucesso na atualização!");

@@ -2,6 +2,7 @@ package servlet;
 
 import dao.prDAO;
 import model.Produto;
+import model.Usuario;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,6 +21,8 @@ public class listProducts extends HttpServlet {
         int total = prs.size();
         String strTotal = "Total de produtos cadastrados: " + total;
         req.setAttribute("prs", prs);
+        Usuario us = (Usuario) req.getSession().getAttribute("us");
+        req.setAttribute("funcao", us.getFuncao());
         req.setAttribute("strTotal", strTotal);
         req.getRequestDispatcher("produtos.jsp").forward(req, resp);
     }

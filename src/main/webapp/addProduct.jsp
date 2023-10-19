@@ -33,6 +33,7 @@
                         <input type="hidden" id="error" name="error" value="${error}">
                         <input type="hidden" id="gonna" name="gonna" value="${gonna}">
                         <input type="hidden" id="id" name="id" value="${us.id}">
+                        <input type="hidden" id="pr-id" name="pr-id" value="${pr.id}">
 
                         <div class="row mb-4">
                             <label for="pr-nome" class="col-sm-2 col-form-label">Nome</label>
