@@ -382,7 +382,7 @@
                 </div>
             </nav>
 
-            <div class="col-sm-4 mb-3 mb-sm-0">
+            <div class="col-sm-3 mb-3 mb-sm-0">
                 <div class="card mb-3">
                     <div id="carouselExampleAutoplaying1" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
@@ -391,6 +391,7 @@
                                     <form action="/showProduct" method="get">
                                         <input type="hidden" id="pr-id" name="pr-id" value="${piano.id}">
                                         <button type="submit">
+                                        <p class="pNomes">${piano.nome}</p>
                                             <c:choose>
                                                 <c:when test="${piano.img != null}">
                                                     <img src="img/${piano.img}" class="d-block w-100"
@@ -434,6 +435,7 @@
                                     <form action="/showProduct" method="get">
                                         <input type="hidden" id="pr-id" name="pr-id" value="${guitarra.id}">
                                         <button type="submit">
+                                        <p class="pNomes">${guitarra.nome}</p>
                                             <c:choose>
                                                 <c:when test="${guitarra.img != null}">
                                                     <img src="img/${guitarra.img}" class="d-block w-100"
@@ -477,6 +479,7 @@
                                     <form action="/showProduct" method="get">
                                         <input type="hidden" id="pr-id" name="pr-id" value="${flauta.id}">
                                         <button type="submit">
+                                        <p class="pNomes">${flauta.nome}</p>
                                             <c:choose>
                                                 <c:when test="${flauta.img != null}">
                                                     <img src="img/${flauta.img}" class="d-block w-100"
@@ -520,6 +523,7 @@
                                     <form action="/showProduct" method="get">
                                         <input type="hidden" id="pr-id" name="pr-id" value="${violao.id}">
                                         <button type="submit">
+                                        <p class="pNomes">${violao.nome}</p>
                                             <c:choose>
                                                 <c:when test="${violao.img != null}">
                                                     <img src="img/${violao.img}" class="d-block w-100"
@@ -563,6 +567,7 @@
                                     <form action="/showProduct" method="get">
                                         <input type="hidden" id="pr-id" name="pr-id" value="${saxofone.id}">
                                         <button type="submit">
+                                        <p class="pNomes">${saxofone.nome}</p>
                                             <c:choose>
                                                 <c:when test="${saxofone.img != null}">
                                                     <img src="img/${saxofone.img}" class="d-block w-100"

@@ -2,6 +2,10 @@
     background-color: white;
 }
 
+.pNomes {
+    font-family: 'Oswald', sans-serif;
+}
+
 html {
     overflow-x: hidden;
 }
