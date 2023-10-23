@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fc923a6-1e2d-48f3-a81e-52d7c05e4e12" name="Changes" comment="&gt; updated">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/myInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/myInfo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/myInfo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/myInfo.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/clDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/clDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/Disciplina-Musical.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Disciplina-Musical.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/testin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/testin.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

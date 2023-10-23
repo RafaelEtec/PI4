@@ -118,7 +118,7 @@ public class clDAO {
     }
 
     public Cliente sessionPorEmail(String sessionEmail) {
-        String sql = "SELECT * FROM tb_CLINETE WHERE cl_EMAIL = ?";
+        String sql = "SELECT * FROM tb_CLIENTE WHERE cl_EMAIL = ?";
         Cliente cl = new Cliente();
 
         try {

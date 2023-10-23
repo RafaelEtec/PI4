@@ -1,0 +1,20 @@
+html {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.container {
+    align-content: start;
+    margin-top: 10%;
+    width: auto;
+    height: auto;
+    position: relative;
+}
+
+div {
+    font-family: 'Open Sans', sans-serif;"Plus Jakarta Sans";
+}
+
+.offcanvas-title {
+    font-family: 'Open Sans', sans-serif;"Plus Jakarta Sans";
+}
