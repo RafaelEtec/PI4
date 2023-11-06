@@ -352,21 +352,66 @@
                         </c:otherwise>
                     </c:choose>
 
-                    <button class="btn navbar-brand" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                            aria-controls="offcanvasRight">
-                        <i class="bi bi-cart"></i>
-                    </button>
-                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                        <div class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="offcanvasRightLabel">Carrinho</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                        </div>
-                        <div class="offcanvas-body">
-                            <!-- Conteúdo do OffCanvas -->
+                    <button class="btn navbar-brand" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                            <i class="bi bi-cart"></i>
+                        </button>
+                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                            <div class="offcanvas-header">
+                                <h5 class="offcanvas-title" id="offcanvasRightLabel">Carrinho</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body">
+                                <c:choose>
+                                    <c:when test="${carrinho.size() == 0}">
+                                        <h1>${txtCar}</h1>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:forEach var="prCar" items="${carrinho}">
+                                            <div class="card mb-3" style="max-width: auto;">
+                                              <div class="row g-0">
+                                                <div class="card">
+                                                  <div class="card-header d-flex justify-content-between">
+                                                    <p>${prCar.nome}</p>
+                                                    <ul class="nav nav-pills">
+                                                      <button type="button" class="btn">
+                                                        <i class="bi bi-trash3"></i>
+                                                      </button>
+                                                    </ul>
+                                                  </div>
+                                                  <div class="card-body">
+                                                    <blockquote class="blockquote mb-0">
+                                                      <p>${prCar.desc}</p>
+                                                      <footer class="blockquote-footer">${prCar.val}</footer>
+                                                    </blockquote>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                        </c:forEach>
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>
+                            <hr>
+                            <div class="modal-footer d-flex justify-content-evenly">
+                                <c:choose>
+                                <c:when test="${carrinho.size() == 0}">
+                                    <button type="button" disabled class="btn btn-secondary" data-bs-dismiss="modal">Esvaziar carrinho</button>
+                                    <button type="button" disabled class="btn btn-primary">Finalizar</button>
+                                </c:when>
+                                <c:otherwise>
+                                    <form action="/limparCarrinho" method="get" id="limparCarrinhoForm">
+                                        <input type="hidden" id="pr-id" name="pr-id" value="${pr.id}">
+                                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Esvaziar carrinho</button>
+                                    </form>
+                                    ${total}
+                                    <button type="button" class="btn btn-primary">Finalizar</button>
+                                </c:otherwise>
+                                </c:choose>
+                            </div>
+                            <hr>
                         </div>
                     </div>
-                </div>
-            </nav>
+                </nav>
 
         <header class="container">
             <div style="width: 100%; height: 100px;">
@@ -393,16 +438,19 @@
                                 </c:choose>
                               </div>
                             </div>
-
                           </div>
+
+                          <form action="/addToCarrinho" method="get" id="addToCarrinhoForm">
+                          <input type="hidden" id="pr-id" name="pr-id" value="${pr.id}">
                           <div class="card-body text-center">
-                          <hr>
-                            <button class="btn btn-secondary" type="button">Adicionar ao carrinho</button>
+                            <hr>
+                            <button class="btn btn-secondary" type="submit">Adicionar ao carrinho</button>
                             <hr>
                             <h5 class="card-title">R$${pr.val}</h5>
                             <hr>
                             <h6>${pr.desc}</h6>
                           </div>
+                          </form>
                         </div>
                       </div>
                   </div>

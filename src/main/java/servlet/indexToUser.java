@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/Disciplina-Musical")
@@ -22,7 +23,8 @@ public class indexToUser extends HttpServlet {
         List<Produto> flautas = new prDAO().listCarrouselCardsByTag("FLAUTA");
         List<Produto> violoes = new prDAO().listCarrouselCardsByTag("VIOLAO");
         List<Produto> saxofones = new prDAO().listCarrouselCardsByTag("SAXOFONE");
-
+        String total = "", qnt = "";
+        double precoTotal = 0;
         req.setAttribute("pianos", pianos);
         req.setAttribute("guitarras", guitarras);
         req.setAttribute("flautas", flautas);
@@ -37,6 +39,21 @@ public class indexToUser extends HttpServlet {
             status = "logado";
         }
 
+        if (req.getSession().getAttribute("carrinho") == null) {
+            List<Produto> carrinho = new ArrayList<>();
+            req.getSession().setAttribute("carrinho", carrinho);
+            req.getSession().setAttribute("txtCar", "Carrinho vazio");
+        } else {
+            List<Produto> carrinho = (List<Produto>) req.getSession().getAttribute("carrinho");
+            for (int i = 0; i < carrinho.size(); i++) {
+                Produto prAtual = carrinho.get(i);
+                double precoAtual = prAtual.getVal();
+                precoTotal = precoTotal + precoAtual;
+            }
+            total = "" + precoTotal;
+        }
+        req.setAttribute("qnt", qnt);
+        req.setAttribute("total", total);
         req.setAttribute("sessionStatus", status);
         req.getRequestDispatcher("Disciplina-Musical.jsp").forward(req, resp);
     }

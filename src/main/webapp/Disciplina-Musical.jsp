@@ -358,8 +358,53 @@
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
-                        <!-- Conteúdo do OffCanvas -->
+                        <c:choose>
+                            <c:when test="${carrinho.size() == 0}">
+                                <h1>${txtCar}</h1>
+                            </c:when>
+                            <c:otherwise>
+                                <c:forEach var="prCar" items="${carrinho}">
+                                    <div class="card mb-3" style="max-width: auto;">
+                                      <div class="row g-0">
+                                        <div class="card">
+                                          <div class="card-header d-flex justify-content-between">
+                                            <p>${prCar.nome}</p>
+                                            <ul class="nav nav-pills">
+                                              <button type="button" class="btn">
+                                                <i class="bi bi-trash3"></i>
+                                              </button>
+                                            </ul>
+                                          </div>
+                                          <div class="card-body">
+                                            <blockquote class="blockquote mb-0">
+                                              <p>${prCar.desc}</p>
+                                              <footer class="blockquote-footer">${prCar.val}</footer>
+                                            </blockquote>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </c:forEach>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
+                    <hr>
+                    <div class="modal-footer d-flex justify-content-evenly">
+                        <c:choose>
+                        <c:when test="${carrinho.size() == 0}">
+                            <button type="button" disabled class="btn btn-secondary" data-bs-dismiss="modal">Esvaziar carrinho</button>
+                            <button type="button" disabled class="btn btn-primary">Finalizar</button>
+                        </c:when>
+                        <c:otherwise>
+                        <form action="/limparCarrinhoIndex" method="get" id="limparCarrinhoForm">
+                            <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Esvaziar carrinho</button>
+                        </form>
+                            ${total}
+                            <button type="button" class="btn btn-primary">Finalizar</button>
+                        </c:otherwise>
+                        </c:choose>
+                    </div>
+                    <hr>
                 </div>
             </div>
         </nav>
