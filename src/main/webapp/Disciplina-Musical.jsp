@@ -378,13 +378,14 @@
                                           <div class="card-body">
                                             <blockquote class="blockquote mb-0">
                                               <p>${prCar.desc}</p>
-                                              <footer class="blockquote-footer">${prCar.val}</footer>
+                                              <footer class="blockquote-footer">R$${prCar.val}</footer>
                                             </blockquote>
                                           </div>
                                         </div>
                                       </div>
                                     </div>
                                 </c:forEach>
+                                <p>${qnt}</p>
                             </c:otherwise>
                         </c:choose>
                     </div>
@@ -399,7 +400,7 @@
                         <form action="/limparCarrinhoIndex" method="get" id="limparCarrinhoForm">
                             <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Esvaziar carrinho</button>
                         </form>
-                            ${total}
+                            R$${total}
                             <button type="button" class="btn btn-primary">Finalizar</button>
                         </c:otherwise>
                         </c:choose>

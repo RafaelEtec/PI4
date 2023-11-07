@@ -373,21 +373,26 @@
                                                   <div class="card-header d-flex justify-content-between">
                                                     <p>${prCar.nome}</p>
                                                     <ul class="nav nav-pills">
-                                                      <button type="button" class="btn">
-                                                        <i class="bi bi-trash3"></i>
-                                                      </button>
+                                                      <form action="/removeDoCarrinho" method="post" id="removeDoCarrinhoForm">
+                                                        <input type="hidden" name="id-remove" value="${carrinho.indexOf(prCar)}" id="id-remove">
+                                                        <input type="hidden" name="pr-id" value="${pr.id}" id="pr-id">
+                                                        <button type="submit" class="btn">
+                                                          <i class="bi bi-trash3"></i>
+                                                        </button>
+                                                      </form>
                                                     </ul>
                                                   </div>
                                                   <div class="card-body">
                                                     <blockquote class="blockquote mb-0">
                                                       <p>${prCar.desc}</p>
-                                                      <footer class="blockquote-footer">${prCar.val}</footer>
+                                                      <footer class="blockquote-footer">R$${prCar.val}</footer>
                                                     </blockquote>
                                                   </div>
                                                 </div>
                                               </div>
                                             </div>
                                         </c:forEach>
+                                        <p>${qnt}</p>
                                     </c:otherwise>
                                 </c:choose>
                             </div>
@@ -403,7 +408,7 @@
                                         <input type="hidden" id="pr-id" name="pr-id" value="${pr.id}">
                                         <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Esvaziar carrinho</button>
                                     </form>
-                                    ${total}
+                                    R$${total}
                                     <button type="button" class="btn btn-primary">Finalizar</button>
                                 </c:otherwise>
                                 </c:choose>

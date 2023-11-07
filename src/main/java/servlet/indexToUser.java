@@ -24,6 +24,7 @@ public class indexToUser extends HttpServlet {
         List<Produto> violoes = new prDAO().listCarrouselCardsByTag("VIOLAO");
         List<Produto> saxofones = new prDAO().listCarrouselCardsByTag("SAXOFONE");
         String total = "", qnt = "";
+        int index = 0;
         double precoTotal = 0;
         req.setAttribute("pianos", pianos);
         req.setAttribute("guitarras", guitarras);
@@ -51,6 +52,11 @@ public class indexToUser extends HttpServlet {
                 precoTotal = precoTotal + precoAtual;
             }
             total = "" + precoTotal;
+            if (carrinho.size() == 1) {
+                qnt = "Há " + carrinho.size() + " item no carrinho";
+            } else {
+                qnt = "Há " + carrinho.size() + " itens no carrinho";
+            }
         }
         req.setAttribute("qnt", qnt);
         req.setAttribute("total", total);
