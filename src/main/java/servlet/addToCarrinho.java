@@ -22,12 +22,11 @@ public class addToCarrinho extends HttpServlet {
         List<Produto> carrinho = (List<Produto>) req.getSession().getAttribute("carrinho");
 
         Cliente cliente = (Cliente) req.getSession().getAttribute("cliente");
-        if (cliente == null) {
-            status = "naologado";
-        } else {
-            status = "logado";
-        }
+        if (cliente == null) { status = "naologado";
+        } else {               status = "logado";}
+
         carrinho.add(pr);
+        new prDAO().removeOne(id);
 
         req.getSession().setAttribute("carrinho", carrinho);
         req.setAttribute("pr-id", id);

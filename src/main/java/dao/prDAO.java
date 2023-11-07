@@ -224,6 +224,38 @@ public class prDAO {
         return saida;
     }
 
+    public void removeOne(int id) {
+        String sql = "UPDATE tb_PRODUTO SET pr_QNT = pr_QNT - 1 WHERE pr_ID = ?;";
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            System.out.println("Conectado");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.execute();
+            System.out.println("Sucesso na atualização! -1");
+            con.close();
+        } catch (Exception ex) {
+            System.out.println("Erro na atualização!");
+        }
+    }
+
+    public void addOne(int id) {
+        String sql = "UPDATE tb_PRODUTO SET pr_QNT = pr_QNT + 1 WHERE pr_ID = ?;";
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            System.out.println("Conectado");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.execute();
+            System.out.println("Sucesso na atualização! +1");
+            con.close();
+        } catch (Exception ex) {
+            System.out.println("Erro na atualização!");
+        }
+    }
+
     public List<Produto> listCarrouselCardsByName(String name) {
         String sql = "SELECT TOP 3 pr_ID, pr_NOME, pr_DESC, pr_IMG FROM tb_PRODUTO WHERE pr_NOME LIKE ? AND pr_STATUS = TRUE ORDER BY RAND();";
 

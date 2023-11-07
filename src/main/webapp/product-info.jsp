@@ -449,7 +449,14 @@
                           <input type="hidden" id="pr-id" name="pr-id" value="${pr.id}">
                           <div class="card-body text-center">
                             <hr>
-                            <button class="btn btn-secondary" type="submit">Adicionar ao carrinho</button>
+                            <c:choose>
+                                <c:when test="${pr.qnt == 0}">
+                                    <button disabled class="btn btn-secondary" type="submit">Produto Indisponível</button>
+                                </c:when>
+                                <c:otherwise>
+                                    <button class="btn btn-secondary" type="submit">Adicionar ao carrinho</button>
+                                </c:otherwise>
+                            </c:choose>
                             <hr>
                             <h5 class="card-title">R$${pr.val}</h5>
                             <hr>

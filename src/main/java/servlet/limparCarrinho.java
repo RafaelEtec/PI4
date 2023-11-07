@@ -19,7 +19,14 @@ public class limparCarrinho extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter("pr-id"));
         String gonna = req.getParameter("gonna"), status;
-        List<Produto> carrinho = new ArrayList<>();
+
+        List<Produto> carrinho = (List<Produto>) req.getSession().getAttribute("carrinho");
+        for (int i = 0; i < carrinho.size(); i++) {
+            Produto prRemover = carrinho.get(i);
+            new prDAO().addOne(prRemover.getId());
+        }
+
+        carrinho = new ArrayList<>();
 
         Cliente cliente = (Cliente) req.getSession().getAttribute("cliente");
         if (cliente == null) {

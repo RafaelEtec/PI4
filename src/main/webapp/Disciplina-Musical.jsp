@@ -370,9 +370,12 @@
                                           <div class="card-header d-flex justify-content-between">
                                             <p>${prCar.nome}</p>
                                             <ul class="nav nav-pills">
-                                              <button type="button" class="btn">
-                                                <i class="bi bi-trash3"></i>
-                                              </button>
+                                              <form action="/removeDoCarrinhoIndex" method="get" id="removeDoCarrinhoIndexForm">
+                                                  <input type="hidden" name="id-remove" value="${carrinho.indexOf(prCar)}" id="id-remove">
+                                                  <button type="submit" class="btn">
+                                                    <i class="bi bi-trash3"></i>
+                                                  </button>
+                                                </form>
                                             </ul>
                                           </div>
                                           <div class="card-body">

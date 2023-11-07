@@ -24,7 +24,6 @@ public class indexToUser extends HttpServlet {
         List<Produto> violoes = new prDAO().listCarrouselCardsByTag("VIOLAO");
         List<Produto> saxofones = new prDAO().listCarrouselCardsByTag("SAXOFONE");
         String total = "", qnt = "";
-        int index = 0;
         double precoTotal = 0;
         req.setAttribute("pianos", pianos);
         req.setAttribute("guitarras", guitarras);

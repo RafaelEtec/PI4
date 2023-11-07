@@ -13,15 +13,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/removeDoCarrinho")
-public class removeDoCarrinho extends HttpServlet {
+@WebServlet("/removeDoCarrinhoIndex")
+public class removeDoCarrinhoIndex extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("pr-id"));
-        int id_remove = Integer.parseInt(req.getParameter("id-remove"));
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String gonna = req.getParameter("gonna");
-        Produto pr = new prDAO().productInfo(id);
-        req.setAttribute("pr", pr);
+        int id_remove = Integer.parseInt(req.getParameter("id-remove"));
         req.setAttribute("gonna", gonna);
         String status;
         String total = "", qnt = "";
@@ -59,6 +56,6 @@ public class removeDoCarrinho extends HttpServlet {
         req.setAttribute("qnt", qnt);
         req.setAttribute("total", total);
         req.setAttribute("sessionStatus", status);
-        req.getRequestDispatcher("product-info.jsp").forward(req, resp);
+        req.getRequestDispatcher("/Disciplina-Musical").forward(req, resp);
     }
 }
