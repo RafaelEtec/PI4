@@ -49,6 +49,7 @@ public class removeDoCarrinho extends HttpServlet {
                 double precoAtual = prAtual.getVal();
                 precoTotal = precoTotal + precoAtual;
             }
+
             total = "" + precoTotal;
             if (carrinho.size() == 1) {
                 qnt = "Há " + carrinho.size() + " item no carrinho";

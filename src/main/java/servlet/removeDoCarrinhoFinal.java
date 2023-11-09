@@ -1,7 +1,9 @@
 package servlet;
 
+import dao.clDAO;
 import dao.prDAO;
 import model.Cliente;
+import model.Endereco;
 import model.Produto;
 
 import javax.servlet.ServletException;
@@ -13,8 +15,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/removeDoCarrinhoIndex")
-public class removeDoCarrinhoIndex extends HttpServlet {
+@WebServlet("/removeDoCarrinhoFinal")
+public class removeDoCarrinhoFinal extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String gonna = req.getParameter("gonna");
@@ -24,6 +26,8 @@ public class removeDoCarrinhoIndex extends HttpServlet {
         String total = "", qnt = "";
         double precoTotal = 0;
         Cliente cliente = (Cliente) req.getSession().getAttribute("cliente");
+        int id = cliente.getId();
+        List<Endereco> enderecos = new clDAO().pegaEnderecosCliente(id);
         if (cliente == null) {
             status = "naologado";
         } else {
@@ -54,9 +58,10 @@ public class removeDoCarrinhoIndex extends HttpServlet {
                 qnt = "Há " + carrinho.size() + " itens no carrinho";
             }
         }
+        req.setAttribute("enderecos", enderecos);
         req.setAttribute("qnt", qnt);
         req.setAttribute("total", total);
         req.setAttribute("sessionStatus", status);
-        req.getRequestDispatcher("/Disciplina-Musical").forward(req, resp);
+        req.getRequestDispatcher("dadosDaCompra.jsp").forward(req, resp);
     }
 }

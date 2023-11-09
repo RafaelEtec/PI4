@@ -404,7 +404,18 @@
                             <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Esvaziar carrinho</button>
                         </form>
                             R$${total}
-                            <button type="button" class="btn btn-primary">Finalizar</button>
+
+                            <c:choose>
+                                <c:when test="${sessionStatus == 'naologado'}">
+                                    <button onclick="openLogin();" type="button" class="btn btn-primary">Finalizar</button>
+                                </c:when>
+                                <c:otherwise>
+                                    <form action="/dadosDaCompra" method="get" id="dadosDaCompraForm">
+                                        <button type="submit" class="btn btn-primary">Finalizar</button>
+                                    </form>
+                                </c:otherwise>
+                            </c:choose>
+
                         </c:otherwise>
                         </c:choose>
                     </div>

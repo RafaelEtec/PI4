@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page contentType="text/html; charset=UTF-8" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ page contentType="text/html; charset=UTF-8" %>
     <head>
         <title>Disciplina Musical</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="css/index.css">
         <link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/myInfo.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     </head>
+
     <body class="fundo">
         <input type="hidden" id="error" name="error" value="${error}">
         <input type="hidden" id="sessionStatus" name="sessionStatus" value="${sessionStatus}">
@@ -302,7 +303,7 @@
 
                 <c:choose>
                     <c:when test="${sessionStatus == 'naologado'}">
-                        <div class="dropdown">
+                        <div class="dropstart">
                             <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
                                     data-bs-auto-close="outside" aria-expanded="false">
                                 <i class="bi bi-person-fill"></i>
@@ -323,7 +324,7 @@
                         </div>
                     </c:when>
                     <c:otherwise>
-                        <div class="dropdown">
+                        <div class="dropstart">
                             <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
                                     data-bs-auto-close="outside" aria-expanded="false">
                                 <i class="bi bi-person-fill"></i>
@@ -333,7 +334,7 @@
                                 <div class="d-grid gap-2">
                                     <form action="/myInfo" method="get" id="myInfoForm">
                                         <button type="submit" class="btn btn-secondary">
-                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMeus dados &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMeus dados  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                         </button>
                                     </form>
 
@@ -347,182 +348,268 @@
                         </div>
                     </c:otherwise>
                 </c:choose>
+            </div>
 
-                <button class="btn navbar-brand" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                    <i class="bi bi-cart"></i>
-                </button>
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasRightLabel">Carrinho</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <c:choose>
-                            <c:when test="${carrinho.size() == 0}">
-                                <h1>${txtCar}</h1>
-                            </c:when>
-                            <c:otherwise>
-                                <c:forEach var="prCar" items="${carrinho}">
-                                    <div class="card mb-3" style="max-width: auto;">
-                                      <div class="row g-0">
-                                        <div class="card">
-                                          <div class="card-header d-flex justify-content-between">
-                                            <p>${prCar.nome}</p>
-                                            <ul class="nav nav-pills">
-                                              <form action="/removeDoCarrinhoIndex" method="get" id="removeDoCarrinhoIndexForm">
-                                                  <input type="hidden" name="id-remove" value="${carrinho.indexOf(prCar)}" id="id-remove">
-                                                  <button type="submit" class="btn">
-                                                    <i class="bi bi-trash3"></i>
-                                                  </button>
-                                                </form>
-                                            </ul>
-                                          </div>
-                                          <div class="card-body">
-                                            <blockquote class="blockquote mb-0">
-                                              <p>${prCar.desc}</p>
-                                              <footer class="blockquote-footer">R$${prCar.val}</footer>
-                                            </blockquote>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                </c:forEach>
-                                <p>${qnt}</p>
-                            </c:otherwise>
-                        </c:choose>
-                    </div>
-                    <hr>
-                    <div class="modal-footer d-flex justify-content-evenly">
-                        <c:choose>
-                        <c:when test="${carrinho.size() == 0}">
-                            <button type="button" disabled class="btn btn-secondary" data-bs-dismiss="modal">Esvaziar carrinho</button>
-                            <button type="button" disabled class="btn btn-primary">Finalizar</button>
-                        </c:when>
-                        <c:otherwise>
-                        <form action="/limparCarrinhoIndex" method="get" id="limparCarrinhoForm">
-                            <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Esvaziar carrinho</button>
-                        </form>
-                            R$${total}
-                            <c:choose>
-                                <c:when test="${sessionStatus == 'naologado'}">
-                                    <button onclick="openLogin();" type="button" class="btn btn-primary">Finalizar</button>
-                                </c:when>
-                                <c:otherwise>
-                                    <form action="/dadosDaCompra" method="get" id="dadosDaCompraForm">
-                                        <button type="submit" class="btn btn-primary">Finalizar</button>
-                                    </form>
-                                </c:otherwise>
-                            </c:choose>
-                        </c:otherwise>
-                        </c:choose>
-                    </div>
-                    <hr>
+            <div class="container text-center">
+              <div class="row align-items-start">
+                <div class="col" style="margin-right: 4rem; margin-left: 2rem;">
+                 <c:choose>
+                     <c:when test="${carrinho.size() == 0}">
+                         <h1>${txtCar}</h1>
+                     </c:when>
+                     <c:otherwise>
+                      <nav class="navbar bg-body-tertiary">
+                        <div class="container-fluid">
+                          <span class="navbar-brand mb-0 h1">${qnt}</span>
+                        </div>
+                      </nav>
+                      &nbsp
+                         <c:forEach var="prCar" items="${carrinho}">
+                             <div class="card mb-3" style="max-width: auto;">
+                               <div class="row g-0">
+                                 <div class="card">
+                                   <div class="card-header d-flex justify-content-between">
+                                     <p>${prCar.nome}</p>
+
+                                     <ul class="nav nav-pills">
+                                       <form action="/removeDoCarrinhoFinal" method="get" id="removeDoCarrinhoFinalForm">
+                                           <input type="hidden" name="id-remove" value="${carrinho.indexOf(prCar)}" id="id-remove">
+                                           <button type="submit" class="btn">
+                                             <i class="bi bi-trash3"></i>
+                                           </button>
+                                         </form>
+                                     </ul>
+                                   </div>
+                                   <div class="card-body">
+                                     <blockquote class="blockquote mb-0">
+                                     <c:choose>
+                                        <c:when test="${pr.img != null}">
+                                          <img src="img/${pr.img}" class="d-block w-100" style="width:100px;height:100px" alt="${pr.desc}">
+                                        </c:when>
+                                        <c:otherwise>
+                                          <img src="img/mus.jpg" class="d-block w-100" style="width:100px;height:100px" alt="${pr.desc}">
+                                        </c:otherwise>
+                                      </c:choose>
+                                       <p>${prCar.desc}</p>
+                                       <footer class="blockquote-footer">R$${prCar.val}</footer>
+                                     </blockquote>
+                                   </div>
+                                 </div>
+                               </div>
+                             </div>
+                         </c:forEach>
+                     </c:otherwise>
+                 </c:choose>
                 </div>
+                <div class="col" style="margin-right: 8rem;">
+                  <nav class="navbar bg-body-tertiary">
+                    <div class="container-fluid">
+                      <span class="navbar-brand mb-0 h1">Endereços</span>
+                    </div>
+                  </nav>
+                  &nbsp
+                    <c:forEach var="en" items="${enderecos}">
+                      <div class="row" style="margin-bottom: 0.8rem;">
+                        <div class="card" style="width: 18rem; margin-right: 0.4rem;">
+                          <div class="card-body">
+                            <button class="btn">
+                              <i class="bi bi-pencil-square"></i>
+                            </button>
+                            <h5 class="card-title">${en.log}, ${en.num}</h5>
+                            <p class="card-text blockquote-footer" style="margin-top: 0.2rem;">${en.tipo}</p>
+                          </div>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">${en.com}</li>
+                            <li class="list-group-item">${en.est}, ${en.cid}</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </c:forEach>
+                    <ul class="list-group">
+                      <li class="list-group-item" aria-current="true">Escolha o Frete:</li>
+                      <li class="list-group-item list-group-item-action list-group-item-light">
+                        <input onclick="atualizaFrete1();" class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio" checked>
+                        <label class="form-check-label" for="firstRadio">Buscar na loja</label>
+                      </li>
+                      <li class="list-group-item list-group-item-action list-group-item-light">
+                        <input onclick="atualizaFrete2();" class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="secondRadio">
+                        <label class="form-check-label" for="secondRadio">Correios - R$15,00</label>
+                      </li>
+                      <li class="list-group-item list-group-item-action list-group-item-light">
+                        <input onclick="atualizaFrete3();" class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="thirdRadio">
+                        <label class="form-check-label" for="thirdRadio">Fast! - R$21,00</label>
+                      </li>
+                    </ul>
+                </div>
+
+                <div class="col" style="margin-right: 2rem;">
+                  <nav class="navbar bg-body-tertiary">
+                    <div class="container-fluid">
+                      <span class="navbar-brand mb-0 h1">Pagamento</span>
+                    </div>
+                  </nav>
+                  &nbsp
+
+                    <div class="accordion" id="accordionExample">
+                      <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Pix
+                          </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <div class="mb-3">
+                              <input type="text" maxlength="40" class="form-control" id="formGroupExampleInput" placeholder="Nome completo">
+                            </div>
+                            <div class="mb-3">
+                              <input type="text" maxlength="40" class="form-control" id="formGroupExampleInput2" placeholder="E-mail">
+                            </div>
+                            <div class="mb-3">
+                              <input type="text" maxlength="11" class="form-control" id="formGroupExampleInput2" placeholder="CPF">
+                            </div>
+                            <div class="mb-3">
+                                <img src="img/qr-musical.png" class="d-block w-100" style="width:auto;height:auto" alt="${pr.desc}">
+                            </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Cartão de Crédito
+                          </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <div class="mb-3">
+                              <input type="text" maxlength="40" class="form-control" id="formGroupExampleInput" placeholder="Nome escrito no cartão">
+                            </div>
+                            <div class="mb-3">
+                              <input type="text" maxlength="40" class="form-control" id="formGroupExampleInput2" placeholder="Número do cartão">
+                            </div>
+                            <div class="mb-3">
+                              <input type="text" maxlength="3" class="form-control" id="formGroupExampleInput3" placeholder="CVV">
+                            </div>
+                            <div class="mb-3">
+                              <input type="text" maxlength="4" class="form-control" id="formGroupExampleInput4" placeholder="MM/AA">
+                            </div>
+                            <div class="mb-3">
+                              <label for="flexRadioDefault">Parcelas:</label>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                                <label class="form-check-label" id="parflexRadioDefault1" for="flexRadioDefault1">
+
+                                </label>
+                              </div>
+
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                <label class="form-check-label" id="parflexRadioDefault2" for="parflexRadioDefault2">
+
+                                </label>
+                              </div>
+
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+                                <label class="form-check-label" id="parflexRadioDefault3" for="parflexRadioDefault3">
+
+                                </label>
+                              </div>
+
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
+                                <label class="form-check-label" id="parflexRadioDefault4" for="parflexRadioDefault4">
+
+                                </label>
+                              </div>
+
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
+                                <label class="form-check-label" id="parflexRadioDefault5" for="parflexRadioDefault5">
+
+                                </label>
+                              </div>
+
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6">
+                                <label class="form-check-label" id="parflexRadioDefault6" for="parflexRadioDefault6">
+
+                                </label>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Cartão de Débito
+                          </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                          <div class="mb-3">
+                            <input type="text" maxlength="40" class="form-control" id="formGroupExampleInput" placeholder="Nome escrito no cartão">
+                          </div>
+                          <div class="mb-3">
+                            <input type="text" maxlength="40" class="form-control" id="formGroupExampleInput2" placeholder="Número do cartão">
+                          </div>
+                          <div class="mb-3">
+                            <input type="text" maxlength="3" class="form-control" id="formGroupExampleInput3" placeholder="CVV">
+                          </div>
+                          <div class="mb-3">
+                            <input type="text" maxlength="4" class="form-control" id="formGroupExampleInput4" placeholder="MM/AA">
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                          <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                              Boleto
+                            </button>
+                          </h2>
+                          <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="d-grid gap-2">
+                                  <button class="btn btn-light" style="margin-top: 0.8rem;" type="button">Gerar boleto</button>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="card" style="width: 18rem;">
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item" id="liFrete">Frete: R$0,00</li>
+                          <li class="list-group-item" id="subtotal">Subtotal: R$${total}</li>
+                        </ul>
+                        <div class="card-footer">
+                          <strong id="liTotal">Total: R$${total}</strong>
+                          <input type="hidden" id="totalJS" value="${total}">
+                        </div>
+                      </div>
+
+                      <div class="d-grid gap-2">
+                        <button class="btn btn-success" style="margin-top: 0.8rem;" type="button">Finalizar</button>
+                      </div>
+                    </div>
+                </div>
+              </div>
             </div>
         </nav>
 
-        <header class="container">
-        <nav class="navbar bg-body-tertiary">
-          <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">Dados Pessoais</span>
-          </div>
-        </nav>
-        &nbsp
-            <div style="width: 100%; height: 300px;">
-                <div class="row">
-                    <div class="col-sm-8 mb-0 mb-sm-0">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div id="colNome" class="col">
-                                    <span id="nomeSpan" class="navbar-brand mb-0 h1">${cliente.nome}</span>
-                                </div>
-                                <div class="col">
-                                    <button id="nomeBtn" onclick="editNome()" class="btn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <hr>
-
-                            <div class="row">
-                                <div id="colEmail" class="col">
-                                    <span id="emailSpan" class="navbar-brand mb-0 h1">${cliente.email}</span>
-                                </div>
-                                <div class="col">
-                                    <button id="emailBtn" onclick="editEmail()" class="btn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <hr>
-
-                            <div class="row">
-                                <div id="colCpf" class="col">
-                                    <span id="cpfSpan" class="navbar-brand mb-0 h1">${cliente.cpf}</span>
-                                </div>
-                                <div class="col">
-                                    <button id="cpfBtn" onclick="editCpf()" class="btn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <hr>
-
-                            <div class="row">
-                                <div id="colNasc" class="col">
-                                    <span id="nascSpan" class="navbar-brand mb-0 h1">${cliente.nasc}</span>
-                                </div>
-                                <div class="col">
-                                    <button id="nascBtn" onclick="editNasc()" class="btn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <hr>
-
-                            <div class="row">
-                                <div id="colGenero" class="col">
-                                    <span id="generoSpan" class="navbar-brand mb-0 h1">${cliente.genero}</span>
-                                </div>
-                                <div class="col">
-                                    <button id="generoBtn" onclick="editGenero()" class="btn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <hr>
-                        </div>
-                    </div>
-                </div>
-            </div>&nbsp
-        <nav class="navbar bg-body-tertiary">
-          <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">Endereços</span>
-          </div>
-        </nav>
-        &nbsp
-            <div style="width: 100%; height: 300px;">
-                <div class="row">
-                <c:forEach var="en" items="${enderecos}">
-                    <div class="card" style="width: 18rem; margin-right: 0.4rem;">
-                      <div class="card-body">
-                        <h5 class="card-title">${en.log}, ${en.num}</h5>
-                        <p class="card-text blockquote-footer" style="margin-top: 0.2rem;">${en.tipo}</p>
-                      </div>
-                      <ul class="list-group list-group-flush">
-                        <li class="list-group-item">${en.com}</li>
-                        <li class="list-group-item">${en.est}, ${en.cid}</li>
-                      </ul>
-                    </div>
-                </c:forEach>
-                </div>
-            </div>&nbsp
-        </header>
-
-
-        <script src="js/myInfo.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="js/cliente.js"></script>
+        <script src="js/pagamento.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+                integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+                integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+                crossorigin="anonymous"></script>
     </body>
 </html>
