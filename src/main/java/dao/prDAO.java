@@ -287,7 +287,7 @@ public class prDAO {
     }
 
     public List<Produto> listCarrouselCardsByTag(String tag) {
-        String sql = "SELECT TOP 3 pr_ID, pr_NOME, pr_DESC, pr_IMG FROM tb_PRODUTO WHERE pr_TAG LIKE ? AND pr_STATUS = TRUE ORDER BY RAND();";
+        String sql = "SELECT TOP 3 pr_ID, pr_NOME, pr_DESC, pr_IMG FROM tb_PRODUTO WHERE pr_TAG LIKE ? AND pr_STATUS = TRUE AND pr_QNT > 0 ORDER BY RAND();";
 
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");

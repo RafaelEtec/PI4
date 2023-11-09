@@ -9,7 +9,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Collections;
+import java.util.List;
 
 public class clDAO {
 
@@ -86,6 +89,43 @@ public class clDAO {
             System.out.println("Erro no cadastro do Endereco!");
         }
         return saida;
+    }
+
+    public List<Endereco> pegaEnderecosCliente(int id) {
+        String sql = "SELECT * FROM tb_ENDERECO WHERE en_CL_ID = ?;";
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            System.out.println("Conectado");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            List<Endereco> enderecos = new ArrayList<>();
+
+            while (rs.next()) {
+                int en_ID = rs.getInt("en_ID");
+                int en_CL_ID = rs.getInt("en_CL_ID");
+                int en_CL_N = rs.getInt("en_CL_N");
+                String en_TIPO = rs.getString("en_TIPO");
+                String en_CEP = rs.getString("en_CEP");
+                String en_LOG = rs.getString("en_LOG");
+                String en_NUM = rs.getString("en_NUM");
+                String en_COM = rs.getString("en_COM");
+                String en_CID = rs.getString("en_CID");
+                String en_EST = rs.getString("en_EST");
+                boolean en_DEFAULT = rs.getBoolean("en_DEFAULT");
+
+                Endereco en = new Endereco(en_ID, en_CL_ID, en_CL_N, en_TIPO, en_CEP, en_LOG, en_NUM, en_COM, en_CID, en_EST, en_DEFAULT);
+                enderecos.add(en);
+            }
+            System.out.println("Sucesso na listagem!");
+            con.close();
+
+            return enderecos;
+        } catch (Exception ex) {
+            System.out.println("Erro na listagem de endereços!");
+            return Collections.emptyList();
+        }
     }
 
     public boolean login(String email, String pass) {
