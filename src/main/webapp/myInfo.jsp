@@ -506,7 +506,7 @@
                 <c:forEach var="en" items="${enderecos}">
                     <div class="card" style="width: 18rem; margin-right: 0.4rem;">
                       <div class="card-body">
-                        <h5 class="card-title">${en.log}, ${en.num}</h5>
+                        <h5 class="card-title">${en.log}, ${en.num} &nbsp <i alt="Desabilitar endereço" class="bi bi-house-down"></i></h5>
                         <p class="card-text blockquote-footer" style="margin-top: 0.2rem;">${en.tipo}</p>
                       </div>
                       <ul class="list-group list-group-flush">
@@ -515,10 +515,16 @@
                       </ul>
                     </div>
                 </c:forEach>
-                </div>
+                </div>&nbsp
+            <nav class="navbar bg-body-tertiary">
+              <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Senha</span>
+              </div>
+            </nav>
+            &nbsp
+            <button type="button" class="btn btn-secondary">Alterar</button>
             </div>&nbsp
         </header>
-
 
         <script src="js/myInfo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
