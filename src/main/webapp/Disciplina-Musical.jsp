@@ -20,6 +20,7 @@
         <input type="hidden" id="error" name="error" value="${error}">
         <input type="hidden" id="sessionStatus" name="sessionStatus" value="${sessionStatus}">
         <input type="hidden" id="gonna" name="gonna" value="buy">
+        <input type="hidden" id="msg" name="msg" value="${msg}">
 
         <nav class="navbar body-tertiary">
             <div class="container-fluid">
@@ -68,6 +69,7 @@
                             </div>
                         </div>
                     </form>
+
                 </div>
 
                 <div class="modal fade" id="modalCriar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -395,28 +397,28 @@
                     <hr>
                     <div class="modal-footer d-flex justify-content-evenly">
                         <c:choose>
-                        <c:when test="${carrinho.size() == 0}">
-                            <button type="button" disabled class="btn btn-secondary" data-bs-dismiss="modal">Esvaziar carrinho</button>
-                            <button type="button" disabled class="btn btn-primary">Finalizar</button>
-                        </c:when>
-                        <c:otherwise>
-                        <form action="/limparCarrinhoIndex" method="get" id="limparCarrinhoForm">
-                            <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Esvaziar carrinho</button>
-                        </form>
-                            R$${total}
+                            <c:when test="${carrinho.size() == 0}">
+                                <button type="button" disabled class="btn btn-secondary" data-bs-dismiss="modal">Esvaziar carrinho</button>
+                                <button type="button" disabled class="btn btn-primary">Finalizar</button>
+                            </c:when>
+                            <c:otherwise>
+                            <form action="/limparCarrinhoIndex" method="get" id="limparCarrinhoForm">
+                                <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Esvaziar carrinho</button>
+                            </form>
+                                R$${total}
 
-                            <c:choose>
-                                <c:when test="${sessionStatus == 'naologado'}">
-                                    <button onclick="openLogin();" type="button" class="btn btn-primary">Finalizar</button>
-                                </c:when>
-                                <c:otherwise>
-                                    <form action="/dadosDaCompra" method="get" id="dadosDaCompraForm">
-                                        <button type="submit" class="btn btn-primary">Finalizar</button>
-                                    </form>
-                                </c:otherwise>
-                            </c:choose>
+                                <c:choose>
+                                    <c:when test="${sessionStatus == 'naologado'}">
+                                        <button onclick="openLogin();" type="button" class="btn btn-primary">Finalizar</button>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <form action="/dadosDaCompra" method="get" id="dadosDaCompraForm">
+                                            <button type="submit" class="btn btn-primary">Finalizar</button>
+                                        </form>
+                                    </c:otherwise>
+                                </c:choose>
 
-                        </c:otherwise>
+                            </c:otherwise>
                         </c:choose>
                     </div>
                     <hr>
@@ -655,7 +657,22 @@
                     </div>
                 </div>
             </div>
+
+
+            <div class="toast">
+                <div class="toast-header">
+                  <strong class="mr-auto">Bootstrap</strong>
+                  <small>11 mins ago</small>
+                  <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">
+                    <span>&times;</span>
+                  </button>
+                </div>
+                <div class="toast-body">
+                  Hello, world! This is a toast message.
+                </div>
+              </div>
         </header>
+
         <script src="js/cliente.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
                 integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"

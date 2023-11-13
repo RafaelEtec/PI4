@@ -433,62 +433,72 @@
                     <div class="col-sm-8 mb-0 mb-sm-0">
                         <div class="container-fluid">
                             <div class="row">
-                                <div id="colNome" class="col">
-                                    <span id="nomeSpan" class="navbar-brand mb-0 h1">${cliente.nome}</span>
-                                </div>
-                                <div class="col">
-                                    <button id="nomeBtn" onclick="editNome()" class="btn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </button>
-                                </div>
+                                <form action="/updateNome" method="post" id="updateNomeForm">
+                                    <div id="colNome" class="col">
+                                        <span id="nomeSpan" class="navbar-brand mb-0 h1">${cliente.nome}</span>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" id="nomeBtn" onclick="editNome()" class="btn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                             <hr>
 
                             <div class="row">
-                                <div id="colEmail" class="col">
-                                    <span id="emailSpan" class="navbar-brand mb-0 h1">${cliente.email}</span>
-                                </div>
-                                <div class="col">
-                                    <button id="emailBtn" onclick="editEmail()" class="btn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </button>
-                                </div>
+                                <form action="/updateEmail" method="post" id="updateEmailForm">
+                                    <div id="colEmail" class="col">
+                                        <span id="emailSpan" class="navbar-brand mb-0 h1">${cliente.email}</span>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" id="emailBtn" onclick="editEmail()" class="btn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                             <hr>
 
                             <div class="row">
-                                <div id="colCpf" class="col">
-                                    <span id="cpfSpan" class="navbar-brand mb-0 h1">${cliente.cpf}</span>
-                                </div>
-                                <div class="col">
-                                    <button id="cpfBtn" onclick="editCpf()" class="btn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </button>
-                                </div>
+                                <form action="/updateCpf" method="post" id="updateCpfForm">
+                                    <div id="colCpf" class="col">
+                                        <span id="cpfSpan" class="navbar-brand mb-0 h1">${cliente.cpf}</span>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" id="cpfBtn" onclick="editCpf()" class="btn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                             <hr>
 
                             <div class="row">
-                                <div id="colNasc" class="col">
-                                    <span id="nascSpan" class="navbar-brand mb-0 h1">${cliente.nasc}</span>
-                                </div>
-                                <div class="col">
-                                    <button id="nascBtn" onclick="editNasc()" class="btn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </button>
-                                </div>
+                                <form action="/updateNasc" method="post" id="updateNascForm">
+                                    <div id="colNasc" class="col">
+                                        <span id="nascSpan" class="navbar-brand mb-0 h1">${cliente.nasc}</span>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" id="nascBtn" onclick="editNasc()" class="btn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                             <hr>
 
                             <div class="row">
-                                <div id="colGenero" class="col">
-                                    <span id="generoSpan" class="navbar-brand mb-0 h1">${cliente.genero}</span>
-                                </div>
-                                <div class="col">
-                                    <button id="generoBtn" onclick="editGenero()" class="btn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </button>
-                                </div>
+                                <form action="/updateGenero" method="post" id="updateGeneroForm">
+                                    <div id="colGenero" class="col">
+                                        <span id="generoSpan" class="navbar-brand mb-0 h1">${cliente.genero}</span>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" id="generoBtn" onclick="editGenero()" class="btn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                             <hr>
                         </div>
