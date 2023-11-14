@@ -189,6 +189,38 @@ public class clDAO {
         return cl;
     }
 
+    public Cliente sessionPorId(int sessionId) {
+        String sql = "SELECT * FROM tb_CLIENTE WHERE cl_ID = ?";
+        Cliente cl = new Cliente();
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            System.out.println("Conectado");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, sessionId);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("cl_ID");
+                String nome = rs.getString("cl_NOME");
+                String email = rs.getString("cl_EMAIL");
+                String cpf = rs.getString("cl_CPF");
+                String nasc = rs.getString("cl_NASC");
+                String genero = rs.getString("cl_GENERO");
+                String pass = rs.getString("cl_PASS");
+                int end_f = Integer.parseInt(rs.getString("cl_END_FATURAMENTO"));
+                int end_e = Integer.parseInt(rs.getString("cl_END_ENTREGA"));
+
+                cl = new Cliente(id, nome, email, cpf, nasc, genero, pass, end_f, end_e);
+            }
+            System.out.println("Sucesso na pesquisa!");
+            con.close();
+        } catch (Exception ex) {
+            System.out.println("Erro na busca!");
+        }
+        return cl;
+    }
+
     public String encrypt(String str) {
         try {
             byte[] bytes = str.getBytes("UTF-8");
@@ -207,5 +239,70 @@ public class clDAO {
         } catch (Exception ex) {
             return null;
         }
+    }
+
+    public boolean checkExistance(String info) {
+        String sql = "SELECT EXISTS (SELECT 1 FROM tb_CLIENTE WHERE cl_EMAIL = ? OR cl_CPF = ?;";
+        boolean exists = false;
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            System.out.println("Conectado");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, info);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                if (rs.getBoolean(1)) {
+                    exists = true;
+                }
+            }
+            System.out.println("busca feita");
+            con.close();
+        } catch (Exception ex) {
+            System.out.println("Erro na busca!");
+        }
+        return exists;
+    }
+
+    public boolean updateCliente(String info, String target, int id) {
+        String sql = "";
+        boolean saida = false;
+
+        switch (target) {
+            case "nome":
+                sql = "UPDATE tb_CLIENTE SET cl_NOME = ? WHERE cl_ID = ?;";
+                break;
+            case "email":
+                sql = "UPDATE tb_CLIENTE SET cl_EMAIL = ? WHERE cl_ID = ?;";
+                break;
+            case "cpf":
+                sql = "UPDATE tb_CLIENTE SET cl_CPF = ? WHERE cl_ID = ?;";
+                break;
+            case "nasc":
+                sql = "UPDATE tb_CLIENTE SET cl_NASC = ? WHERE cl_ID = ?;";
+                break;
+            case "genero":
+                sql = "UPDATE tb_CLIENTE SET cl_GENERO = ? WHERE cl_ID = ?;";
+                break;
+            default:
+                sql = "";
+                break;
+        }
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            System.out.println("Conectado");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, info);
+            ps.setInt(2, id);
+            ps.execute();
+            saida = true;
+            System.out.println("Sucesso na atualização");
+            con.close();
+        } catch (Exception ex) {
+            System.out.println("Erro na atualização!");
+        }
+        return saida;
     }
 }

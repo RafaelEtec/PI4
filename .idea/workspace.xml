@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fc923a6-1e2d-48f3-a81e-52d7c05e4e12" name="Changes" comment="&gt; Updated">
-      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/updateClienteNome.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/updateClienteCpf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/updateClienteEmail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/updateClienteGenero.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/updateClienteNasc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/addClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/addClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Disciplina-Musical.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Disciplina-Musical.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/cliente.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/cliente.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/clDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/clDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/updateClienteNome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/updateClienteNome.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/myInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/myInfo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/myInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/myInfo.jsp" afterDir="false" />
     </list>
@@ -457,7 +459,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699572969769</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="&gt; Updated">
+      <option name="closed" value="true" />
+      <created>1699895628923</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1699895628924</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -19,6 +19,7 @@
         <input type="hidden" id="error" name="error" value="${error}">
         <input type="hidden" id="sessionStatus" name="sessionStatus" value="${sessionStatus}">
         <input type="hidden" id="gonna" name="gonna" value="buy">
+        <input type="hidden" id="msg" name="msg" value="${msg}">
 
         <nav class="navbar body-tertiary">
             <div class="container-fluid">
@@ -89,7 +90,7 @@
                                     <div class="row mb-2">
                                         <label for="cl-emailC" class="col-sm-2 col-form-label">E-mail</label>
                                         <div class="col-sm-10">
-                                            <input maxlength="40" type="text" class="form-control" id="cl-emailC" name="cl-emailC" value="${cl.email}">
+                                            <input maxlength="40" type="email" class="form-control" id="cl-emailC" name="cl-emailC" value="${cl.email}">
                                         </div>
                                     </div>
 
@@ -432,8 +433,9 @@
                 <div class="row">
                     <div class="col-sm-8 mb-0 mb-sm-0">
                         <div class="container-fluid">
-                            <div class="row">
-                                <form action="/updateNome" method="post" id="updateNomeForm">
+                            <form action="/updateNome" method="get" id="updateNomeForm">
+                                <input type="hidden" value="${cliente.id}" id="cl_ID" name="cl_ID">
+                                <div class="row">
                                     <div id="colNome" class="col">
                                         <span id="nomeSpan" class="navbar-brand mb-0 h1">${cliente.nome}</span>
                                     </div>
@@ -442,12 +444,14 @@
                                             <i class="bi bi-pencil-square"></i>
                                         </button>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                             <hr>
 
-                            <div class="row">
-                                <form action="/updateEmail" method="post" id="updateEmailForm">
+                            <form action="/updateEmail" method="get" id="updateEmailForm">
+                                <input type="hidden" value="${cliente.id}" id="cl_ID" name="cl_ID">
+                                <input type="hidden" value="${cliente.id}" id="cl_ID" name="cl_ID">
+                                <div class="row">
                                     <div id="colEmail" class="col">
                                         <span id="emailSpan" class="navbar-brand mb-0 h1">${cliente.email}</span>
                                     </div>
@@ -456,12 +460,13 @@
                                             <i class="bi bi-pencil-square"></i>
                                         </button>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                             <hr>
 
-                            <div class="row">
-                                <form action="/updateCpf" method="post" id="updateCpfForm">
+                            <form action="/updateCpf" method="get" id="updateCpfForm">
+                                <input type="hidden" value="${cliente.id}" id="cl_ID" name="cl_ID">
+                                <div class="row">
                                     <div id="colCpf" class="col">
                                         <span id="cpfSpan" class="navbar-brand mb-0 h1">${cliente.cpf}</span>
                                     </div>
@@ -470,12 +475,13 @@
                                             <i class="bi bi-pencil-square"></i>
                                         </button>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                             <hr>
 
-                            <div class="row">
-                                <form action="/updateNasc" method="post" id="updateNascForm">
+                            <form action="/updateNasc" method="get" id="updateNascForm">
+                                <input type="hidden" value="${cliente.id}" id="cl_ID" name="cl_ID">
+                                <div class="row">
                                     <div id="colNasc" class="col">
                                         <span id="nascSpan" class="navbar-brand mb-0 h1">${cliente.nasc}</span>
                                     </div>
@@ -484,12 +490,13 @@
                                             <i class="bi bi-pencil-square"></i>
                                         </button>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                             <hr>
 
-                            <div class="row">
-                                <form action="/updateGenero" method="post" id="updateGeneroForm">
+                            <form action="/updateGenero" method="get" id="updateGeneroForm">
+                                <input type="hidden" value="${cliente.id}" id="cl_ID" name="cl_ID">
+                                <div class="row">
                                     <div id="colGenero" class="col">
                                         <span id="generoSpan" class="navbar-brand mb-0 h1">${cliente.genero}</span>
                                     </div>
@@ -498,8 +505,8 @@
                                             <i class="bi bi-pencil-square"></i>
                                         </button>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                             <hr>
                         </div>
                     </div>

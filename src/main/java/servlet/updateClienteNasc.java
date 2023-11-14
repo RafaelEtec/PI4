@@ -10,15 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/updateNome")
-public class updateClienteNome extends HttpServlet {
+@WebServlet("/updateNasc")
+public class updateClienteNasc extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String info = req.getParameter("nomeInput"), erro = "", msg = "";
+        String info = req.getParameter("nasc"), erro = "", msg = "";
 
         int id = Integer.parseInt(req.getParameter("cl_ID"));
 
-        if (new clDAO().updateCliente(info, "nome", id)) {
+        if (new clDAO().updateCliente(info, "nasc", id)) {
             Cliente cliente = new clDAO().sessionPorId(id);
             req.getSession().setAttribute("cliente", cliente);
 
