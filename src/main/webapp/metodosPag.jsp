@@ -20,7 +20,6 @@
         <input type="hidden" id="error" name="error" value="${error}">
         <input type="hidden" id="sessionStatus" name="sessionStatus" value="${sessionStatus}">
         <input type="hidden" id="gonna" name="gonna" value="buy">
-        <input type="hidden" id="msg" name="msg" value="${msg}">
 
         <nav class="navbar body-tertiary">
             <div class="container-fluid">
@@ -69,7 +68,6 @@
                             </div>
                         </div>
                     </form>
-
                 </div>
 
                 <div class="modal fade" id="modalCriar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -305,7 +303,7 @@
 
                 <c:choose>
                     <c:when test="${sessionStatus == 'naologado'}">
-                        <div class="dropdown">
+                        <div class="dropstart">
                             <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
                                     data-bs-auto-close="outside" aria-expanded="false">
                                 <i class="bi bi-person-fill"></i>
@@ -326,7 +324,7 @@
                         </div>
                     </c:when>
                     <c:otherwise>
-                        <div class="dropdown">
+                        <div class="dropstart">
                             <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
                                     data-bs-auto-close="outside" aria-expanded="false">
                                 <i class="bi bi-person-fill"></i>
@@ -350,330 +348,171 @@
                         </div>
                     </c:otherwise>
                 </c:choose>
+            </div>
 
-                <button class="btn navbar-brand" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                    <i class="bi bi-cart"></i>
-                </button>
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasRightLabel">Carrinho</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <c:choose>
-                            <c:when test="${carrinho.size() == 0}">
-                                <h1>${txtCar}</h1>
-                            </c:when>
-                            <c:otherwise>
-                                <c:forEach var="prCar" items="${carrinho}">
-                                    <div class="card mb-3" style="max-width: auto;">
-                                      <div class="row g-0">
-                                        <div class="card">
-                                          <div class="card-header d-flex justify-content-between">
-                                            <p>${prCar.nome}</p>
-                                            <ul class="nav nav-pills">
-                                              <form action="/removeDoCarrinhoIndex" method="get" id="removeDoCarrinhoIndexForm">
-                                                  <input type="hidden" name="id-remove" value="${carrinho.indexOf(prCar)}" id="id-remove">
-                                                  <button type="submit" class="btn">
-                                                    <i class="bi bi-trash3"></i>
-                                                  </button>
-                                                </form>
-                                            </ul>
-                                          </div>
-                                          <div class="card-body">
-                                            <blockquote class="blockquote mb-0">
-                                              <p>${prCar.desc}</p>
-                                              <footer class="blockquote-footer">R$${prCar.val}</footer>
-                                            </blockquote>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                </c:forEach>
-                                <p>${qnt}</p>
-                            </c:otherwise>
-                        </c:choose>
-                    </div>
-                    <hr>
-                    <div class="modal-footer d-flex justify-content-evenly">
-                        <c:choose>
-                            <c:when test="${carrinho.size() == 0}">
-                                <button type="button" disabled class="btn btn-secondary" data-bs-dismiss="modal">Esvaziar carrinho</button>
-                                <button type="button" disabled class="btn btn-primary">Finalizar</button>
-                            </c:when>
-                            <c:otherwise>
-                            <form action="/limparCarrinhoIndex" method="get" id="limparCarrinhoForm">
-                                <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Esvaziar carrinho</button>
-                            </form>
-                                R$${total}
+            <div class="container text-center">
+              <div class="row align-items-start">
 
-                                <c:choose>
-                                    <c:when test="${sessionStatus == 'naologado'}">
-                                        <button onclick="openLogin();" type="button" class="btn btn-primary">Finalizar</button>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <form action="/metodosItens" method="get" id="metodosItensForm">
-                                            <button type="submit" class="btn btn-primary">Finalizar</button>
-                                        </form>
-                                    </c:otherwise>
-                                </c:choose>
-
-                            </c:otherwise>
-                        </c:choose>
+                <div class="col" style="margin-right: 2rem;">
+                  <nav class="navbar bg-body-tertiary">
+                    <div class="container-fluid">
+                      <span class="navbar-brand mb-0 h1">Pagamento</span>
                     </div>
-                    <hr>
+                  </nav>
+                  &nbsp
+
+                    <div class="accordion" id="accordionExample">
+                      <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Pix
+                          </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <div class="mb-3">
+                              <input type="text" maxlength="40" class="form-control" id="formGroupExampleInput" placeholder="Nome completo">
+                            </div>
+                            <div class="mb-3">
+                              <input type="text" maxlength="40" class="form-control" id="formGroupExampleInput2" placeholder="E-mail">
+                            </div>
+                            <div class="mb-3">
+                              <input type="text" maxlength="11" class="form-control" id="formGroupExampleInput2" placeholder="CPF">
+                            </div>
+                            <div class="mb-3">
+                                <img src="img/qr-musical.png" class="d-block w-100" style="width:auto;height:auto" alt="${pr.desc}">
+                            </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Cartão de Crédito
+                          </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <div class="mb-3">
+                              <input type="text" maxlength="40" class="form-control" id="formGroupExampleInput" placeholder="Nome escrito no cartão">
+                            </div>
+                            <div class="mb-3">
+                              <input type="text" maxlength="40" class="form-control" id="formGroupExampleInput2" placeholder="Número do cartão">
+                            </div>
+                            <div class="mb-3">
+                              <input type="text" maxlength="3" class="form-control" id="formGroupExampleInput3" placeholder="CVV">
+                            </div>
+                            <div class="mb-3">
+                              <input type="text" maxlength="4" class="form-control" id="formGroupExampleInput4" placeholder="MM/AA">
+                            </div>
+                            <div class="mb-3">
+                              <label for="flexRadioDefault">Parcelas:</label>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                                <label class="form-check-label" id="parflexRadioDefault1" for="flexRadioDefault1">
+
+                                </label>
+                              </div>
+
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                <label class="form-check-label" id="parflexRadioDefault2" for="parflexRadioDefault2">
+
+                                </label>
+                              </div>
+
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+                                <label class="form-check-label" id="parflexRadioDefault3" for="parflexRadioDefault3">
+
+                                </label>
+                              </div>
+
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
+                                <label class="form-check-label" id="parflexRadioDefault4" for="parflexRadioDefault4">
+
+                                </label>
+                              </div>
+
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
+                                <label class="form-check-label" id="parflexRadioDefault5" for="parflexRadioDefault5">
+
+                                </label>
+                              </div>
+
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6">
+                                <label class="form-check-label" id="parflexRadioDefault6" for="parflexRadioDefault6">
+
+                                </label>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Cartão de Débito
+                          </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                          <div class="mb-3">
+                            <input type="text" maxlength="40" class="form-control" id="formGroupExampleInput" placeholder="Nome escrito no cartão">
+                          </div>
+                          <div class="mb-3">
+                            <input type="text" maxlength="40" class="form-control" id="formGroupExampleInput2" placeholder="Número do cartão">
+                          </div>
+                          <div class="mb-3">
+                            <input type="text" maxlength="3" class="form-control" id="formGroupExampleInput3" placeholder="CVV">
+                          </div>
+                          <div class="mb-3">
+                            <input type="text" maxlength="4" class="form-control" id="formGroupExampleInput4" placeholder="MM/AA">
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                          <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                              Boleto
+                            </button>
+                          </h2>
+                          <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="d-grid gap-2">
+                                  <button class="btn btn-light" style="margin-top: 0.8rem;" type="button">Gerar boleto</button>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="card" style="width: 18rem;">
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item" id="liFrete">Frete: R$0,00</li>
+                          <li class="list-group-item" id="subtotal">Subtotal: R$${total}</li>
+                        </ul>
+                        <div class="card-footer">
+                          <strong id="liTotal">Total: R$${total}</strong>
+                          <input type="hidden" id="totalJS" value="${total}">
+                        </div>
+                      </div>
+
+                      <div class="d-grid gap-2">
+                        <button class="btn btn-success" style="margin-top: 0.8rem;" type="button">Finalizar</button>
+                      </div>
+                    </div>
                 </div>
+              </div>
             </div>
         </nav>
 
-        <header class="container">
-            <div style="width: 100%; height: 100px;">
-                <div class="row">
-
-                    <nav class="navbar body-tertiary">
-                        <div class="container-fluid">
-                            <span class="navbar-brand mb-0 h1">Principais escolhas</span>
-                        </div>
-                    </nav>
-
-                    <div class="col-sm-3 mb-3 mb-sm-0">
-                        <div class="card mb-3">
-                            <div id="carouselExampleAutoplaying1" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <c:forEach var="piano" items="${pianos}">
-                                        <div class="carousel-item active">
-                                            <form action="/showProduct" method="get">
-                                                <input type="hidden" id="pr-id" name="pr-id" value="${piano.id}">
-                                                <button type="submit">
-                                                    <p class="pNomes">${piano.nome}</p>
-                                                    <c:choose>
-                                                        <c:when test="${piano.img != null}">
-                                                            <img src="img/${piano.img}" class="d-block w-100"
-                                                                 style="width:400px;height:400px" alt="${piano.desc}">
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <img src="img/mus.jpg" class="d-block w-100"
-                                                                 style="width:400px;height:400px" alt="${piano.desc}">
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </c:forEach>
-                                </div>
-
-                                <button class="carousel-control-prev" type="button"
-                                        data-bs-target="#carouselExampleAutoplaying1" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button"
-                                        data-bs-target="#carouselExampleAutoplaying1" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-
-                            </div>
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Pianos</h5>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-2 mb-3 mb-sm-0">
-                        <div class="card mb-3">
-                            <div id="carouselExampleAutoplaying2" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <c:forEach var="guitarra" items="${guitarras}">
-                                        <div class="carousel-item active">
-                                            <form action="/showProduct" method="get">
-                                                <input type="hidden" id="pr-id" name="pr-id" value="${guitarra.id}">
-                                                <button type="submit">
-                                                    <p class="pNomes">${guitarra.nome}</p>
-                                                    <c:choose>
-                                                        <c:when test="${guitarra.img != null}">
-                                                            <img src="img/${guitarra.img}" class="d-block w-100"
-                                                                 style="width:400px;height:200px" alt="${guitarra.desc}">
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <img src="img/mus.jpg" class="d-block w-100"
-                                                                 style="width:400px;height:200px" alt="${guitarra.desc}">
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </c:forEach>
-                                </div>
-
-                                <button class="carousel-control-prev" type="button"
-                                        data-bs-target="#carouselExampleAutoplaying2" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button"
-                                        data-bs-target="#carouselExampleAutoplaying2" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-
-                            </div>
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Guitarras</h5>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-2 mb-3 mb-sm-0">
-                        <div class="card mb-3">
-                            <div id="carouselExampleAutoplaying3" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <c:forEach var="flauta" items="${flautas}">
-                                        <div class="carousel-item active">
-                                            <form action="/showProduct" method="get">
-                                                <input type="hidden" id="pr-id" name="pr-id" value="${flauta.id}">
-                                                <button type="submit">
-                                                    <p class="pNomes">${flauta.nome}</p>
-                                                    <c:choose>
-                                                        <c:when test="${flauta.img != null}">
-                                                            <img src="img/${flauta.img}" class="d-block w-100"
-                                                                 style="width:400px;height:200px" alt="${flauta.desc}">
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <img src="img/mus.jpg" class="d-block w-100"
-                                                                 style="width:400px;height:200px" alt="${flauta.desc}">
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </c:forEach>
-                                </div>
-
-                                <button class="carousel-control-prev" type="button"
-                                        data-bs-target="#carouselExampleAutoplaying3" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button"
-                                        data-bs-target="#carouselExampleAutoplaying3" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-
-                            </div>
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Flautas</h5>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-2 mb-3 mb-sm-0">
-                        <div class="card mb-3">
-                            <div id="carouselExampleAutoplaying4" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <c:forEach var="violao" items="${violoes}">
-                                        <div class="carousel-item active">
-                                            <form action="/showProduct" method="get">
-                                                <input type="hidden" id="pr-id" name="pr-id" value="${violao.id}">
-                                                <button type="submit">
-                                                    <p class="pNomes">${violao.nome}</p>
-                                                    <c:choose>
-                                                        <c:when test="${violao.img != null}">
-                                                            <img src="img/${violao.img}" class="d-block w-100"
-                                                                 style="width:400px;height:200px" alt="${violao.desc}">
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <img src="img/mus.jpg" class="d-block w-100"
-                                                                 style="width:400px;height:200px" alt="${violao.desc}">
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </c:forEach>
-                                </div>
-
-                                <button class="carousel-control-prev" type="button"
-                                        data-bs-target="#carouselExampleAutoplaying4" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button"
-                                        data-bs-target="#carouselExampleAutoplaying4" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-
-                            </div>
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Violões</h5>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-2 mb-3 mb-sm-0">
-                        <div class="card mb-3">
-                            <div id="carouselExampleAutoplaying5" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <c:forEach var="saxofone" items="${saxofones}">
-                                        <div class="carousel-item active">
-                                            <form action="/showProduct" method="get">
-                                                <input type="hidden" id="pr-id" name="pr-id" value="${saxofone.id}">
-                                                <button type="submit">
-                                                    <p class="pNomes">${saxofone.nome}</p>
-                                                    <c:choose>
-                                                        <c:when test="${saxofone.img != null}">
-                                                            <img src="img/${saxofone.img}" class="d-block w-100"
-                                                                 style="width:400px;height:200px" alt="${saxofone.desc}">
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <img src="img/mus.jpg" class="d-block w-100"
-                                                                 style="width:400px;height:200px" alt="${saxofone.desc}">
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </c:forEach>
-                                </div>
-
-                                <button class="carousel-control-prev" type="button"
-                                        data-bs-target="#carouselExampleAutoplaying5" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button"
-                                        data-bs-target="#carouselExampleAutoplaying5" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-
-                            </div>
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Saxofones</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="toast">
-                <div class="toast-header">
-                  <strong class="mr-auto">Bootstrap</strong>
-                  <small>11 mins ago</small>
-                  <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">
-                    <span>&times;</span>
-                  </button>
-                </div>
-                <div class="toast-body">
-                  Hello, world! This is a toast message.
-                </div>
-              </div>
-        </header>
-
         <script src="js/cliente.js"></script>
+        <script src="js/pagamento.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
                 integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
                 crossorigin="anonymous"></script>

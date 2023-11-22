@@ -20,7 +20,6 @@
         <input type="hidden" id="error" name="error" value="${error}">
         <input type="hidden" id="sessionStatus" name="sessionStatus" value="${sessionStatus}">
         <input type="hidden" id="gonna" name="gonna" value="buy">
-        <input type="hidden" id="msg" name="msg" value="${msg}">
 
         <nav class="navbar body-tertiary">
             <div class="container-fluid">
@@ -69,7 +68,6 @@
                             </div>
                         </div>
                     </form>
-
                 </div>
 
                 <div class="modal fade" id="modalCriar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -305,7 +303,7 @@
 
                 <c:choose>
                     <c:when test="${sessionStatus == 'naologado'}">
-                        <div class="dropdown">
+                        <div class="dropstart">
                             <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
                                     data-bs-auto-close="outside" aria-expanded="false">
                                 <i class="bi bi-person-fill"></i>
@@ -326,7 +324,7 @@
                         </div>
                     </c:when>
                     <c:otherwise>
-                        <div class="dropdown">
+                        <div class="dropstart">
                             <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
                                     data-bs-auto-close="outside" aria-expanded="false">
                                 <i class="bi bi-person-fill"></i>
@@ -350,330 +348,84 @@
                         </div>
                     </c:otherwise>
                 </c:choose>
+            </div>
 
-                <button class="btn navbar-brand" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                    <i class="bi bi-cart"></i>
-                </button>
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasRightLabel">Carrinho</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <c:choose>
-                            <c:when test="${carrinho.size() == 0}">
-                                <h1>${txtCar}</h1>
-                            </c:when>
-                            <c:otherwise>
-                                <c:forEach var="prCar" items="${carrinho}">
-                                    <div class="card mb-3" style="max-width: auto;">
-                                      <div class="row g-0">
-                                        <div class="card">
-                                          <div class="card-header d-flex justify-content-between">
-                                            <p>${prCar.nome}</p>
-                                            <ul class="nav nav-pills">
-                                              <form action="/removeDoCarrinhoIndex" method="get" id="removeDoCarrinhoIndexForm">
-                                                  <input type="hidden" name="id-remove" value="${carrinho.indexOf(prCar)}" id="id-remove">
-                                                  <button type="submit" class="btn">
-                                                    <i class="bi bi-trash3"></i>
-                                                  </button>
-                                                </form>
-                                            </ul>
-                                          </div>
-                                          <div class="card-body">
-                                            <blockquote class="blockquote mb-0">
-                                              <p>${prCar.desc}</p>
-                                              <footer class="blockquote-footer">R$${prCar.val}</footer>
-                                            </blockquote>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                </c:forEach>
-                                <p>${qnt}</p>
-                            </c:otherwise>
-                        </c:choose>
-                    </div>
-                    <hr>
-                    <div class="modal-footer d-flex justify-content-evenly">
-                        <c:choose>
-                            <c:when test="${carrinho.size() == 0}">
-                                <button type="button" disabled class="btn btn-secondary" data-bs-dismiss="modal">Esvaziar carrinho</button>
-                                <button type="button" disabled class="btn btn-primary">Finalizar</button>
-                            </c:when>
-                            <c:otherwise>
-                            <form action="/limparCarrinhoIndex" method="get" id="limparCarrinhoForm">
-                                <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Esvaziar carrinho</button>
-                            </form>
-                                R$${total}
+            <div class="container text-center">
+              <div class="row align-items-start">
+                <div class="col" style="margin-right: 4rem; margin-left: 2rem;">
+                 <c:choose>
+                     <c:when test="${carrinho.size() == 0}">
+                         <h1>${txtCar}</h1>
+                     </c:when>
+                     <c:otherwise>
+                      <nav class="navbar bg-body-tertiary">
+                        <div class="container-fluid">
+                          <span class="navbar-brand mb-0 h1">${qnt}</span>
+                        </div>
+                      </nav>
+                      &nbsp
+                         <c:forEach var="prCar" items="${carrinho}">
+                             <div class="card mb-3" style="max-width: auto;">
+                               <div class="row g-0">
+                                 <div class="card">
+                                   <div class="card-header d-flex justify-content-between">
+                                     <p>${prCar.nome}</p>
 
-                                <c:choose>
-                                    <c:when test="${sessionStatus == 'naologado'}">
-                                        <button onclick="openLogin();" type="button" class="btn btn-primary">Finalizar</button>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <form action="/metodosItens" method="get" id="metodosItensForm">
-                                            <button type="submit" class="btn btn-primary">Finalizar</button>
-                                        </form>
-                                    </c:otherwise>
-                                </c:choose>
-
-                            </c:otherwise>
-                        </c:choose>
-                    </div>
-                    <hr>
+                                     <ul class="nav nav-pills">
+                                       <form action="/removeDoCarrinhoFinal" method="get" id="removeDoCarrinhoFinalForm">
+                                           <input type="hidden" name="id-remove" value="${carrinho.indexOf(prCar)}" id="id-remove">
+                                           <button type="submit" class="btn">
+                                             <i class="bi bi-trash3"></i>
+                                           </button>
+                                         </form>
+                                     </ul>
+                                   </div>
+                                   <div class="card-body">
+                                     <blockquote class="blockquote mb-0">
+                                     <c:choose>
+                                        <c:when test="${pr.img != null}">
+                                          <img src="img/${pr.img}" class="d-block w-100" style="width:100px;height:100px" alt="${pr.desc}">
+                                        </c:when>
+                                        <c:otherwise>
+                                          <img src="img/mus.jpg" class="d-block w-100" style="width:100px;height:100px" alt="${pr.desc}">
+                                        </c:otherwise>
+                                      </c:choose>
+                                       <p>${prCar.desc}</p>
+                                       <footer class="blockquote-footer">R$${prCar.val}</footer>
+                                     </blockquote>
+                                   </div>
+                                 </div>
+                               </div>
+                             </div>
+                         </c:forEach>
+                     </c:otherwise>
+                 </c:choose>
                 </div>
+
+
+                      <div class="card" style="width: 18rem;">
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item" id="liFrete">Frete: R$0,00</li>
+                          <li class="list-group-item" id="subtotal">Subtotal: R$${total}</li>
+                        </ul>
+                        <div class="card-footer">
+                          <strong id="liTotal">Total: R$${total}</strong>
+                          <input type="hidden" id="totalJS" value="${total}">
+                        </div>
+                      </div>
+
+                      <div class="d-grid gap-2">
+                          <form action="/metodosFrete" method="get">
+                            <button class="btn btn-success" style="margin-top: 0.8rem;" type="button">Escolher Frete</button>
+                          </form>
+                      </div>
+                </div>
+              </div>
             </div>
         </nav>
 
-        <header class="container">
-            <div style="width: 100%; height: 100px;">
-                <div class="row">
-
-                    <nav class="navbar body-tertiary">
-                        <div class="container-fluid">
-                            <span class="navbar-brand mb-0 h1">Principais escolhas</span>
-                        </div>
-                    </nav>
-
-                    <div class="col-sm-3 mb-3 mb-sm-0">
-                        <div class="card mb-3">
-                            <div id="carouselExampleAutoplaying1" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <c:forEach var="piano" items="${pianos}">
-                                        <div class="carousel-item active">
-                                            <form action="/showProduct" method="get">
-                                                <input type="hidden" id="pr-id" name="pr-id" value="${piano.id}">
-                                                <button type="submit">
-                                                    <p class="pNomes">${piano.nome}</p>
-                                                    <c:choose>
-                                                        <c:when test="${piano.img != null}">
-                                                            <img src="img/${piano.img}" class="d-block w-100"
-                                                                 style="width:400px;height:400px" alt="${piano.desc}">
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <img src="img/mus.jpg" class="d-block w-100"
-                                                                 style="width:400px;height:400px" alt="${piano.desc}">
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </c:forEach>
-                                </div>
-
-                                <button class="carousel-control-prev" type="button"
-                                        data-bs-target="#carouselExampleAutoplaying1" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button"
-                                        data-bs-target="#carouselExampleAutoplaying1" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-
-                            </div>
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Pianos</h5>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-2 mb-3 mb-sm-0">
-                        <div class="card mb-3">
-                            <div id="carouselExampleAutoplaying2" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <c:forEach var="guitarra" items="${guitarras}">
-                                        <div class="carousel-item active">
-                                            <form action="/showProduct" method="get">
-                                                <input type="hidden" id="pr-id" name="pr-id" value="${guitarra.id}">
-                                                <button type="submit">
-                                                    <p class="pNomes">${guitarra.nome}</p>
-                                                    <c:choose>
-                                                        <c:when test="${guitarra.img != null}">
-                                                            <img src="img/${guitarra.img}" class="d-block w-100"
-                                                                 style="width:400px;height:200px" alt="${guitarra.desc}">
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <img src="img/mus.jpg" class="d-block w-100"
-                                                                 style="width:400px;height:200px" alt="${guitarra.desc}">
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </c:forEach>
-                                </div>
-
-                                <button class="carousel-control-prev" type="button"
-                                        data-bs-target="#carouselExampleAutoplaying2" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button"
-                                        data-bs-target="#carouselExampleAutoplaying2" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-
-                            </div>
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Guitarras</h5>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-2 mb-3 mb-sm-0">
-                        <div class="card mb-3">
-                            <div id="carouselExampleAutoplaying3" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <c:forEach var="flauta" items="${flautas}">
-                                        <div class="carousel-item active">
-                                            <form action="/showProduct" method="get">
-                                                <input type="hidden" id="pr-id" name="pr-id" value="${flauta.id}">
-                                                <button type="submit">
-                                                    <p class="pNomes">${flauta.nome}</p>
-                                                    <c:choose>
-                                                        <c:when test="${flauta.img != null}">
-                                                            <img src="img/${flauta.img}" class="d-block w-100"
-                                                                 style="width:400px;height:200px" alt="${flauta.desc}">
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <img src="img/mus.jpg" class="d-block w-100"
-                                                                 style="width:400px;height:200px" alt="${flauta.desc}">
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </c:forEach>
-                                </div>
-
-                                <button class="carousel-control-prev" type="button"
-                                        data-bs-target="#carouselExampleAutoplaying3" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button"
-                                        data-bs-target="#carouselExampleAutoplaying3" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-
-                            </div>
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Flautas</h5>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-2 mb-3 mb-sm-0">
-                        <div class="card mb-3">
-                            <div id="carouselExampleAutoplaying4" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <c:forEach var="violao" items="${violoes}">
-                                        <div class="carousel-item active">
-                                            <form action="/showProduct" method="get">
-                                                <input type="hidden" id="pr-id" name="pr-id" value="${violao.id}">
-                                                <button type="submit">
-                                                    <p class="pNomes">${violao.nome}</p>
-                                                    <c:choose>
-                                                        <c:when test="${violao.img != null}">
-                                                            <img src="img/${violao.img}" class="d-block w-100"
-                                                                 style="width:400px;height:200px" alt="${violao.desc}">
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <img src="img/mus.jpg" class="d-block w-100"
-                                                                 style="width:400px;height:200px" alt="${violao.desc}">
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </c:forEach>
-                                </div>
-
-                                <button class="carousel-control-prev" type="button"
-                                        data-bs-target="#carouselExampleAutoplaying4" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button"
-                                        data-bs-target="#carouselExampleAutoplaying4" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-
-                            </div>
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Violões</h5>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-2 mb-3 mb-sm-0">
-                        <div class="card mb-3">
-                            <div id="carouselExampleAutoplaying5" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <c:forEach var="saxofone" items="${saxofones}">
-                                        <div class="carousel-item active">
-                                            <form action="/showProduct" method="get">
-                                                <input type="hidden" id="pr-id" name="pr-id" value="${saxofone.id}">
-                                                <button type="submit">
-                                                    <p class="pNomes">${saxofone.nome}</p>
-                                                    <c:choose>
-                                                        <c:when test="${saxofone.img != null}">
-                                                            <img src="img/${saxofone.img}" class="d-block w-100"
-                                                                 style="width:400px;height:200px" alt="${saxofone.desc}">
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <img src="img/mus.jpg" class="d-block w-100"
-                                                                 style="width:400px;height:200px" alt="${saxofone.desc}">
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </c:forEach>
-                                </div>
-
-                                <button class="carousel-control-prev" type="button"
-                                        data-bs-target="#carouselExampleAutoplaying5" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button"
-                                        data-bs-target="#carouselExampleAutoplaying5" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-
-                            </div>
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Saxofones</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="toast">
-                <div class="toast-header">
-                  <strong class="mr-auto">Bootstrap</strong>
-                  <small>11 mins ago</small>
-                  <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">
-                    <span>&times;</span>
-                  </button>
-                </div>
-                <div class="toast-body">
-                  Hello, world! This is a toast message.
-                </div>
-              </div>
-        </header>
-
         <script src="js/cliente.js"></script>
+        <script src="js/pagamento.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
                 integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
                 crossorigin="anonymous"></script>
