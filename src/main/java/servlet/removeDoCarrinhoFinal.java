@@ -62,6 +62,6 @@ public class removeDoCarrinhoFinal extends HttpServlet {
         req.setAttribute("qnt", qnt);
         req.setAttribute("total", total);
         req.setAttribute("sessionStatus", status);
-        req.getRequestDispatcher("dadosDaCompra.jsp").forward(req, resp);
+        req.getRequestDispatcher("metodosItens.jsp").forward(req, resp);
     }
 }

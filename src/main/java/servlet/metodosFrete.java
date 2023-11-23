@@ -45,6 +45,6 @@ public class metodosFrete extends HttpServlet {
         req.setAttribute("enderecos", enderecos);
         req.setAttribute("qnt", qnt);
         req.setAttribute("total", total);
-        req.getRequestDispatcher("dadosDaCompra.jsp").forward(req, resp);
+        req.getRequestDispatcher("metodosFrete.jsp").forward(req, resp);
     }
 }

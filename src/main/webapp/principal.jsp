@@ -41,7 +41,9 @@
                         </form>
                     </c:otherwise>
                 </c:choose>
-                <li class="list-group-item"><a href="#" class="btn btn-secondary disabled" role="button" aria-disabled="true">Listar Pedidos</a></li>
+                <form action="/listPedidos" method="get">
+                    <li class="list-group-item"><button class="btn btn-primary" method="submit">Listar Pedidos</button></li>
+                </form>
             </ul>
         </div>
         </div>

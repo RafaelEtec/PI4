@@ -23,6 +23,7 @@ public class indexToUser extends HttpServlet {
         List<Produto> flautas = new prDAO().listCarrouselCardsByTag("FLAUTA");
         List<Produto> violoes = new prDAO().listCarrouselCardsByTag("VIOLAO");
         List<Produto> saxofones = new prDAO().listCarrouselCardsByTag("SAXOFONE");
+        List<Produto> randomPrs = new prDAO().listRandomProducts();
         String total = "", qnt = "";
         double precoTotal = 0;
         req.setAttribute("pianos", pianos);
@@ -30,6 +31,7 @@ public class indexToUser extends HttpServlet {
         req.setAttribute("flautas", flautas);
         req.setAttribute("violoes", violoes);
         req.setAttribute("saxofones", saxofones);
+        req.setAttribute("prsShow", randomPrs);
         String status = "";
 
         Cliente cliente = (Cliente) req.getSession().getAttribute("cliente");

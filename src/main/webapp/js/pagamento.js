@@ -20,6 +20,20 @@ function atualizaParcelas() {
     document.getElementById("parflexRadioDefault6").innerHTML = `6x - ${val6}`;
 }
 
+metodoFrete = document.getElementById("metodoFrete").value;
+
+autoFrete();
+function autoFrete() {
+    console.log(metodoFrete);
+    if (metodoFrete == "buscar") {
+        atualizaFrete1();
+    } else if (metodoFrete == "correios") {
+        atualizaFrete2();
+    } else if (metodoFrete == "fast") {
+        atualizaFrete3();
+    }
+}
+
 function atualizaFrete1() {
     document.getElementById("liFrete").innerHTML = `Frete: R$0,00`;
     document.getElementById("liTotal").innerHTML = `Total: R$${total}`;
@@ -37,4 +51,26 @@ function atualizaFrete3() {
     var showTotal = value + 21;
     document.getElementById("liFrete").innerHTML = `Frete: R$21,00`;
     document.getElementById("liTotal").innerHTML = `Total: R$${showTotal}`;
+}
+
+var metodoPagamento;
+
+function mudaPag1() {
+    metodoPagamento = "pix";
+    document.getElementById("metodoPagamento").value = "pix";
+}
+
+function mudaPag2() {
+    metodoPagamento = "credito";
+    document.getElementById("metodoPagamento").value = "credito";
+}
+
+function mudaPag3() {
+    metodoPagamento = "debito";
+    document.getElementById("metodoPagamento").value = "debito";
+}
+
+function mudaPag4() {
+    metodoPagamento = "boleto";
+    document.getElementById("metodoPagamento").value = "boleto";
 }

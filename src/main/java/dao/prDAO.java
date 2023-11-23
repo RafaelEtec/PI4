@@ -256,8 +256,8 @@ public class prDAO {
         }
     }
 
-    public List<Produto> listCarrouselCardsByName(String name) {
-        String sql = "SELECT TOP 3 pr_ID, pr_NOME, pr_DESC, pr_IMG FROM tb_PRODUTO WHERE pr_NOME LIKE ? AND pr_STATUS = TRUE ORDER BY RAND();";
+    public List<Produto> listProductsByName(String name) {
+        String sql = "SELECT pr_ID, pr_NOME, pr_DESC, pr_IMG, pr_VAL FROM tb_PRODUTO WHERE pr_NOME LIKE ? AND pr_STATUS = TRUE AND pr_QNT > 0";
 
         try {
             Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
@@ -272,8 +272,9 @@ public class prDAO {
                 String pr_NOME = rs.getString("pr_NOME");
                 String pr_DESC = rs.getString("pr_DESC");
                 String pr_IMG = rs.getString("pr_IMG");
+                double pr_VAL = rs.getDouble("pr_VAL");
 
-                Produto pr = new Produto(pr_ID, pr_NOME, pr_DESC, pr_IMG);
+                Produto pr = new Produto(pr_ID, pr_NOME, pr_DESC, pr_IMG, pr_VAL);
                 prs.add(pr);
             }
             System.out.println("Sucesso na listagem!");
@@ -312,6 +313,36 @@ public class prDAO {
             return prs;
         } catch (Exception ex) {
             System.out.println("Erro na listagem de " + tag + "!");
+            return Collections.emptyList();
+        }
+    }
+
+    public List<Produto> listRandomProducts() {
+        String sql = "SELECT TOP 12 pr_ID, pr_NOME, pr_DESC, pr_IMG, pr_VAL FROM tb_PRODUTO WHERE pr_STATUS = TRUE AND pr_QNT > 0 ORDER BY RAND();";
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            System.out.println("Conectado");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            List<Produto> prs = new ArrayList<>();
+
+            while (rs.next()) {
+                int pr_ID = rs.getInt("pr_ID");
+                String pr_NOME = rs.getString("pr_NOME");
+                String pr_DESC = rs.getString("pr_DESC");
+                String pr_IMG = rs.getString("pr_IMG");
+                double pr_VAL = rs.getDouble("Pr_VAL");
+
+                Produto pr = new Produto(pr_ID, pr_NOME, pr_DESC, pr_IMG, pr_VAL);
+                prs.add(pr);
+            }
+            System.out.println("Sucesso na listagem!");
+            con.close();
+
+            return prs;
+        } catch (Exception ex) {
+            System.out.println("Erro na listagem dos produtos!");
             return Collections.emptyList();
         }
     }

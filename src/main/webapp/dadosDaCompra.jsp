@@ -350,6 +350,7 @@
                 </c:choose>
             </div>
 
+        <form action="/finalizarCompra" method="get">
             <div class="container text-center">
               <div class="row align-items-start">
                 <div class="col" style="margin-right: 4rem; margin-left: 2rem;">
@@ -371,14 +372,6 @@
                                    <div class="card-header d-flex justify-content-between">
                                      <p>${prCar.nome}</p>
 
-                                     <ul class="nav nav-pills">
-                                       <form action="/removeDoCarrinhoFinal" method="get" id="removeDoCarrinhoFinalForm">
-                                           <input type="hidden" name="id-remove" value="${carrinho.indexOf(prCar)}" id="id-remove">
-                                           <button type="submit" class="btn">
-                                             <i class="bi bi-trash3"></i>
-                                           </button>
-                                         </form>
-                                     </ul>
                                    </div>
                                    <div class="card-body">
                                      <blockquote class="blockquote mb-0">
@@ -412,9 +405,6 @@
                       <div class="row" style="margin-bottom: 0.8rem;">
                         <div class="card" style="width: 18rem; margin-right: 0.4rem;">
                           <div class="card-body">
-                            <button class="btn">
-                              <i class="bi bi-pencil-square"></i>
-                            </button>
                             <h5 class="card-title">${en.log}, ${en.num}</h5>
                             <p class="card-text blockquote-footer" style="margin-top: 0.2rem;">${en.tipo}</p>
                           </div>
@@ -425,21 +415,61 @@
                         </div>
                       </div>
                     </c:forEach>
-                    <ul class="list-group">
-                      <li class="list-group-item" aria-current="true">Escolha o Frete:</li>
-                      <li class="list-group-item list-group-item-action list-group-item-light">
-                        <input onclick="atualizaFrete1();" class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio" checked>
-                        <label class="form-check-label" for="firstRadio">Buscar na loja</label>
-                      </li>
-                      <li class="list-group-item list-group-item-action list-group-item-light">
-                        <input onclick="atualizaFrete2();" class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="secondRadio">
-                        <label class="form-check-label" for="secondRadio">Correios - R$15,00</label>
-                      </li>
-                      <li class="list-group-item list-group-item-action list-group-item-light">
-                        <input onclick="atualizaFrete3();" class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="thirdRadio">
-                        <label class="form-check-label" for="thirdRadio">Fast! - R$21,00</label>
-                      </li>
-                    </ul>
+
+                    <c:choose>
+                        <c:when test="${metodoFrete == 'buscar'}">
+                            <ul class="list-group">
+                              <li class="list-group-item" aria-current="true">Frete:</li>
+                              <li class="list-group-item list-group-item-action list-group-item-light">
+                                <input disabled onclick="atualizaFrete1();" class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio" checked>
+                                <label class="form-check-label" for="firstRadio">Buscar na loja</label>
+                              </li>
+                              <li class="list-group-item list-group-item-action list-group-item-light">
+                                <input disabled onclick="atualizaFrete2();" class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="secondRadio">
+                                <label class="form-check-label" for="secondRadio">Correios - R$15,00</label>
+                              </li>
+                              <li class="list-group-item list-group-item-action list-group-item-light">
+                                <input disabled onclick="atualizaFrete3();" class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="thirdRadio">
+                                <label class="form-check-label" for="thirdRadio">Fast! - R$21,00</label>
+                              </li>
+                            </ul>
+                        </c:when>
+                        <c:when test="${metodoFrete == 'correios'}">
+                            <ul class="list-group">
+                              <li class="list-group-item" aria-current="true">Frete:</li>
+                              <li class="list-group-item list-group-item-action list-group-item-light">
+                                <input disabled onclick="atualizaFrete1();" class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio">
+                                <label class="form-check-label" for="firstRadio">Buscar na loja</label>
+                              </li>
+                              <li class="list-group-item list-group-item-action list-group-item-light">
+                                <input disabled onclick="atualizaFrete2();" class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="secondRadio" checked>
+                                <label class="form-check-label" for="secondRadio">Correios - R$15,00</label>
+                              </li>
+                              <li class="list-group-item list-group-item-action list-group-item-light">
+                                <input disabled onclick="atualizaFrete3();" class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="thirdRadio">
+                                <label class="form-check-label" for="thirdRadio">Fast! - R$21,00</label>
+                              </li>
+                            </ul>
+                        </c:when>
+                        <c:when test="${metodoFrete == 'fast'}">
+                            <ul class="list-group">
+                              <li class="list-group-item" aria-current="true">Frete:</li>
+                              <li class="list-group-item list-group-item-action list-group-item-light">
+                                <input disabled onclick="atualizaFrete1();" class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio">
+                                <label class="form-check-label" for="firstRadio">Buscar na loja</label>
+                              </li>
+                              <li class="list-group-item list-group-item-action list-group-item-light">
+                                <input disabled onclick="atualizaFrete2();" class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="secondRadio">
+                                <label class="form-check-label" for="secondRadio">Correios - R$15,00</label>
+                              </li>
+                              <li class="list-group-item list-group-item-action list-group-item-light">
+                                <input disabled onclick="atualizaFrete3();" class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="thirdRadio" checked>
+                                <label class="form-check-label" for="thirdRadio">Fast! - R$21,00</label>
+                              </li>
+                            </ul>
+                        </c:when>
+                    </c:choose>
+
                 </div>
 
                 <div class="col" style="margin-right: 2rem;">
@@ -453,20 +483,27 @@
                     <div class="accordion" id="accordionExample">
                       <div class="accordion-item">
                         <h2 class="accordion-header">
-                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          <button disabled class="accordion-button collapsed" id="accUm" onclick="mudaPag1();" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             Pix
                           </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <c:choose>
+                            <c:when test="${metodoPagamento == 'pix'}">
+                                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                            </c:when>
+                            <c:otherwise>
+                                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            </c:otherwise>
+                        </c:choose>
                           <div class="accordion-body">
                             <div class="mb-3">
-                              <input type="text" maxlength="40" class="form-control" id="formGroupExampleInput" placeholder="Nome completo">
+                              <input disabled type="text" maxlength="40" class="form-control" value="${pixNome}" name="pixNome" id="pixNome" placeholder="Nome completo">
                             </div>
                             <div class="mb-3">
-                              <input type="text" maxlength="40" class="form-control" id="formGroupExampleInput2" placeholder="E-mail">
+                              <input disabled type="text" maxlength="40" class="form-control" value="${pixEmail}" name="pixEmail" id="pixEmail" placeholder="E-mail">
                             </div>
                             <div class="mb-3">
-                              <input type="text" maxlength="11" class="form-control" id="formGroupExampleInput2" placeholder="CPF">
+                              <input disabled type="text" maxlength="11" class="form-control" value="${pixCpf}" name="pixCpf" id="pixCpf" placeholder="CPF">
                             </div>
                             <div class="mb-3">
                                 <img src="img/qr-musical.png" class="d-block w-100" style="width:auto;height:auto" alt="${pr.desc}">
@@ -475,63 +512,71 @@
                       </div>
                       <div class="accordion-item">
                         <h2 class="accordion-header">
-                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          <button disabled class="accordion-button collapsed" id="accDois" onclick="mudaPag2();" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             Cartão de Crédito
                           </button>
                         </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <c:choose>
+                            <c:when test="${metodoPagamento == 'credito'}">
+                                <div id="collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                            </c:when>
+                            <c:otherwise>
+                                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            </c:otherwise>
+                        </c:choose>
+
                           <div class="accordion-body">
                             <div class="mb-3">
-                              <input type="text" maxlength="40" class="form-control" id="formGroupExampleInput" placeholder="Nome escrito no cartão">
+                              <input disabled type="text" maxlength="40" class="form-control" value="${creditoNome}" name="creditoNome" id="creditoNome" placeholder="Nome escrito no cartão">
                             </div>
                             <div class="mb-3">
-                              <input type="text" maxlength="40" class="form-control" id="formGroupExampleInput2" placeholder="Número do cartão">
+                              <input disabled type="text" maxlength="40" class="form-control" value="${creditoNum}" name="creditoNum" id="creditoNum" placeholder="Número do cartão">
                             </div>
                             <div class="mb-3">
-                              <input type="text" maxlength="3" class="form-control" id="formGroupExampleInput3" placeholder="CVV">
+                              <input disabled type="text" maxlength="3" class="form-control" value="${creditoCvv}" name="creditoCvv" id="creditoCvv" placeholder="CVV">
                             </div>
                             <div class="mb-3">
-                              <input type="text" maxlength="4" class="form-control" id="formGroupExampleInput4" placeholder="MM/AA">
+                              <input disabled type="text" maxlength="4" class="form-control" value="${creditoData}" name="creditoData" id="creditoData" placeholder="MM/AA">
                             </div>
                             <div class="mb-3">
                               <label for="flexRadioDefault">Parcelas:</label>
                               <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                                <input disabled class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
                                 <label class="form-check-label" id="parflexRadioDefault1" for="flexRadioDefault1">
 
                                 </label>
                               </div>
 
                               <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                <input disabled class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                                 <label class="form-check-label" id="parflexRadioDefault2" for="parflexRadioDefault2">
 
                                 </label>
                               </div>
 
                               <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+                                <input disabled class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
                                 <label class="form-check-label" id="parflexRadioDefault3" for="parflexRadioDefault3">
 
                                 </label>
                               </div>
 
                               <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
+                                <input disabled class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
                                 <label class="form-check-label" id="parflexRadioDefault4" for="parflexRadioDefault4">
 
                                 </label>
                               </div>
 
                               <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
+                                <input disabled class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
                                 <label class="form-check-label" id="parflexRadioDefault5" for="parflexRadioDefault5">
 
                                 </label>
                               </div>
 
                               <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6">
+                                <input disabled class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6">
                                 <label class="form-check-label" id="parflexRadioDefault6" for="parflexRadioDefault6">
 
                                 </label>
@@ -543,34 +588,48 @@
                       </div>
                       <div class="accordion-item">
                         <h2 class="accordion-header">
-                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          <button disabled class="accordion-button collapsed" onclick="mudaPag3();" id="accTres" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                             Cartão de Débito
                           </button>
                         </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <c:choose>
+                            <c:when test="${metodoPagamento == 'debito'}">
+                                <div id="collapseThree" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                            </c:when>
+                            <c:otherwise>
+                                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            </c:otherwise>
+                        </c:choose>
+
                           <div class="accordion-body">
                           <div class="mb-3">
-                            <input type="text" maxlength="40" class="form-control" id="formGroupExampleInput" placeholder="Nome escrito no cartão">
+                            <input disabled type="text" maxlength="40" class="form-control" value="${debitoNome}" name="debitoNome" id="debitoNome" placeholder="Nome escrito no cartão">
                           </div>
                           <div class="mb-3">
-                            <input type="text" maxlength="40" class="form-control" id="formGroupExampleInput2" placeholder="Número do cartão">
+                            <input disabled type="text" maxlength="40" class="form-control" value="${debitoNum}" name="debitoNum" id="debitoNum" placeholder="Número do cartão">
                           </div>
                           <div class="mb-3">
-                            <input type="text" maxlength="3" class="form-control" id="formGroupExampleInput3" placeholder="CVV">
+                            <input disabled type="text" maxlength="3" class="form-control" value="${debitoCvv}" name="debitoCvv" id="debitoCvv" placeholder="CVV">
                           </div>
                           <div class="mb-3">
-                            <input type="text" maxlength="4" class="form-control" id="formGroupExampleInput4" placeholder="MM/AA">
-
+                            <input disabled type="text" maxlength="4" class="form-control" value="${debitoData}" name="debitoData" id="debitoData" placeholder="MM/AA">
                           </div>
                         </div>
                       </div>
                       <div class="accordion-item">
                           <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            <button disabled class="accordion-button collapsed" onclick="mudaPag4();" id="accQuatro" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                               Boleto
                             </button>
                           </h2>
-                          <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                          <c:choose>
+                              <c:when test="${metodoPagamento == 'boleto'}">
+                                  <div id="collapseFour" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                              </c:when>
+                              <c:otherwise>
+                                  <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                              </c:otherwise>
+                          </c:choose>
                             <div class="accordion-body">
                                 <div class="d-grid gap-2">
                                   <button class="btn btn-light" style="margin-top: 0.8rem;" type="button">Gerar boleto</button>
@@ -592,14 +651,20 @@
                       </div>
 
                       <div class="d-grid gap-2">
-                        <button class="btn btn-success" style="margin-top: 0.8rem;" type="button">Finalizar</button>
+                        <input type="hidden" value="${metodoPagamento}" id="metodoPagamento" name="metodoPagamento">
+                        <input type="hidden" value="${metodoFrete}" id="metodoFrete" name="metodoFrete">
+                        <button type="submit" class="btn btn-success" style="margin-top: 0.8rem;" type="button">Finalizar</button>
                       </div>
+                      <br>
+                      <br>
                     </div>
                 </div>
               </div>
+        </form>
             </div>
         </nav>
 
+        <script src="js/final.js"></script>
         <script src="js/cliente.js"></script>
         <script src="js/pagamento.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"

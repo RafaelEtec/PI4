@@ -5,15 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fc923a6-1e2d-48f3-a81e-52d7c05e4e12" name="Changes" comment="&gt; Updated">
-      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/metodosFrete.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/metodosItens.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/metodosPag.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/metodosFrete.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/metodosItens.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/metodosPag.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/peDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Pedido.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/PedidoProduto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/finalizarCompra.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/listByName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/listPedidos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/meusPedidos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/toUpdatePedidoStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/final.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/meusPedidos.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pedidos.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/updateClienteGenero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/updateClienteGenero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/databaseSQL" beforeDir="false" afterPath="$PROJECT_DIR$/databaseSQL" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/prDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/prDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Produto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/dadosDaCompra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/dadosDaCompra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/indexToUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/indexToUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/metodosFrete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/metodosFrete.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/metodosPag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/metodosPag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/myInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/myInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/removeDoCarrinhoFinal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/removeDoCarrinhoFinal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/Disciplina-Musical.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Disciplina-Musical.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/dadosDaCompra.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/dadosDaCompra.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/pagamento.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/pagamento.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/metodosFrete.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/metodosFrete.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/metodosItens.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/metodosItens.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/metodosPag.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/metodosPag.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/myInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/myInfo.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/principal.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/principal.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -475,7 +495,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699984573867</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="&gt; Updated">
+      <option name="closed" value="true" />
+      <created>1700680918137</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1700680918137</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

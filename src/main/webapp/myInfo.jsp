@@ -409,7 +409,7 @@
                                     <button onclick="openLogin();" type="button" class="btn btn-primary">Finalizar</button>
                                 </c:when>
                                 <c:otherwise>
-                                    <form action="/dadosDaCompra" method="get" id="dadosDaCompraForm">
+                                    <form action="/metodosItens" method="get" id="dadosDaCompraForm">
                                         <button type="submit" class="btn btn-primary">Finalizar</button>
                                     </form>
                                 </c:otherwise>
@@ -539,8 +539,49 @@
               </div>
             </nav>
             &nbsp
+            <br>
             <button type="button" class="btn btn-secondary">Alterar</button>
             </div>&nbsp
+        <nav class="navbar bg-body-tertiary">
+          <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">Pedidos</span>
+          </div>
+        </nav>
+        &nbsp
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Pedido</th>
+                        <th scope="col">Val. total</th>
+                        <th scope="col">Qnt. itens</th>
+                        <th scope="col">Frete</th>
+                        <th scope="col">Pagamento</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <c:forEach var="pe" items="${pes}">
+                        <tr>
+                            <td>${pe.id}</td>
+                            <td>${pe.total}</td>
+                            <td>${pe.qnt}</td>
+                            <td>${pe.frete}</td>
+                            <td>${pe.pagamento}</td>
+                            <td>${pe.status}</td>
+
+                            <td>
+                                <div class="dropdown">
+                                  <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Visualizar Produtos
+                                  </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+            <p>${strTotal}</p>
         </header>
 
         <script src="js/myInfo.js"></script>

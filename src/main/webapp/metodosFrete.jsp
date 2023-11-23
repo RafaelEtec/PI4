@@ -349,58 +349,11 @@
                     </c:otherwise>
                 </c:choose>
             </div>
+        </nav>
 
+        <form action="/metodosPag" method="get">
             <div class="container text-center">
               <div class="row align-items-start">
-                <div class="col" style="margin-right: 4rem; margin-left: 2rem;">
-                 <c:choose>
-                     <c:when test="${carrinho.size() == 0}">
-                         <h1>${txtCar}</h1>
-                     </c:when>
-                     <c:otherwise>
-                      <nav class="navbar bg-body-tertiary">
-                        <div class="container-fluid">
-                          <span class="navbar-brand mb-0 h1">${qnt}</span>
-                        </div>
-                      </nav>
-                      &nbsp
-                         <c:forEach var="prCar" items="${carrinho}">
-                             <div class="card mb-3" style="max-width: auto;">
-                               <div class="row g-0">
-                                 <div class="card">
-                                   <div class="card-header d-flex justify-content-between">
-                                     <p>${prCar.nome}</p>
-
-                                     <ul class="nav nav-pills">
-                                       <form action="/removeDoCarrinhoFinal" method="get" id="removeDoCarrinhoFinalForm">
-                                           <input type="hidden" name="id-remove" value="${carrinho.indexOf(prCar)}" id="id-remove">
-                                           <button type="submit" class="btn">
-                                             <i class="bi bi-trash3"></i>
-                                           </button>
-                                         </form>
-                                     </ul>
-                                   </div>
-                                   <div class="card-body">
-                                     <blockquote class="blockquote mb-0">
-                                     <c:choose>
-                                        <c:when test="${pr.img != null}">
-                                          <img src="img/${pr.img}" class="d-block w-100" style="width:100px;height:100px" alt="${pr.desc}">
-                                        </c:when>
-                                        <c:otherwise>
-                                          <img src="img/mus.jpg" class="d-block w-100" style="width:100px;height:100px" alt="${pr.desc}">
-                                        </c:otherwise>
-                                      </c:choose>
-                                       <p>${prCar.desc}</p>
-                                       <footer class="blockquote-footer">R$${prCar.val}</footer>
-                                     </blockquote>
-                                   </div>
-                                 </div>
-                               </div>
-                             </div>
-                         </c:forEach>
-                     </c:otherwise>
-                 </c:choose>
-                </div>
                 <div class="col" style="margin-right: 8rem;">
                   <nav class="navbar bg-body-tertiary">
                     <div class="container-fluid">
@@ -425,42 +378,43 @@
                         </div>
                       </div>
                     </c:forEach>
+                </div>
+                <div class="col">
                     <ul class="list-group">
                       <li class="list-group-item" aria-current="true">Escolha o Frete:</li>
                       <li class="list-group-item list-group-item-action list-group-item-light">
-                        <input onclick="atualizaFrete1();" class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio" checked>
+                        <input onclick="atualizaFrete1();" class="form-check-input me-1" type="radio" name="listGroupRadio" value="buscar" id="firstRadio" checked>
                         <label class="form-check-label" for="firstRadio">Buscar na loja</label>
                       </li>
                       <li class="list-group-item list-group-item-action list-group-item-light">
-                        <input onclick="atualizaFrete2();" class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="secondRadio">
+                        <input onclick="atualizaFrete2();" class="form-check-input me-1" type="radio" name="listGroupRadio" value="correios" id="secondRadio">
                         <label class="form-check-label" for="secondRadio">Correios - R$15,00</label>
                       </li>
                       <li class="list-group-item list-group-item-action list-group-item-light">
-                        <input onclick="atualizaFrete3();" class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="thirdRadio">
+                        <input onclick="atualizaFrete3();" class="form-check-input me-1" type="radio" name="listGroupRadio" value="fast" id="thirdRadio">
                         <label class="form-check-label" for="thirdRadio">Fast! - R$21,00</label>
                       </li>
                     </ul>
-                </div>
-
-                      <div class="card" style="width: 18rem;">
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item" id="liFrete">Frete: R$0,00</li>
-                          <li class="list-group-item" id="subtotal">Subtotal: R$${total}</li>
-                        </ul>
-                        <div class="card-footer">
-                          <strong id="liTotal">Total: R$${total}</strong>
-                          <input type="hidden" id="totalJS" value="${total}">
-                        </div>
-                      </div>
-
-                      <div class="d-grid gap-2">
-                        <button class="btn btn-success" style="margin-top: 0.8rem;" type="button">Finalizar</button>
-                      </div>
+                    <br>
+                  <div class="card" style="width: auto;">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item" id="liFrete">Frete: R$0,00</li>
+                      <li class="list-group-item" id="subtotal">Subtotal: R$${total}</li>
+                    </ul>
+                    <div class="card-footer">
+                      <strong id="liTotal">Total: R$${total}</strong>
+                      <input type="hidden" id="totalJS" value="${total}">
                     </div>
+                  </div>
+
+                  <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-success" style="margin-top: 0.8rem;" type="button">Pagamento</button>
+                  </div>
                 </div>
+                <div class="col"></div>
               </div>
             </div>
-        </nav>
+        </form>
 
         <script src="js/cliente.js"></script>
         <script src="js/pagamento.js"></script>

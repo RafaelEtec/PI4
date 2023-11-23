@@ -1,8 +1,10 @@
 package servlet;
 
 import dao.clDAO;
+import dao.peDAO;
 import model.Cliente;
 import model.Endereco;
+import model.Pedido;
 import model.Produto;
 
 import javax.servlet.ServletException;
@@ -35,6 +37,14 @@ public class myInfo extends HttpServlet {
         } else {
             qnt = "Há " + carrinho.size() + " itens no carrinho";
         }
+
+        List<Pedido> pes = new peDAO().meusPedidos(id);
+        int totalPe = pes.size();
+        String strTotal = "Total de Pedidos: " + totalPe;
+        req.setAttribute("pes", pes);
+
+        req.setAttribute("strTotal", strTotal);
+
         req.setAttribute("enderecos", enderecos);
         req.setAttribute("qnt", qnt);
         req.setAttribute("total", total);

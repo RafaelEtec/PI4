@@ -349,7 +349,9 @@
                     </c:otherwise>
                 </c:choose>
             </div>
+        </nav>
 
+        <form action="/dadosDaCompra" method="get">
             <div class="container text-center">
               <div class="row align-items-start">
 
@@ -364,45 +366,42 @@
                     <div class="accordion" id="accordionExample">
                       <div class="accordion-item">
                         <h2 class="accordion-header">
-                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          <button class="accordion-button" id="accUm" onclick="mudaPag1();" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             Pix
                           </button>
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                           <div class="accordion-body">
                             <div class="mb-3">
-                              <input type="text" maxlength="40" class="form-control" id="formGroupExampleInput" placeholder="Nome completo">
+                              <input type="text" maxlength="40" class="form-control" value="" name="pixNome" id="pixNome" placeholder="Nome completo">
                             </div>
                             <div class="mb-3">
-                              <input type="text" maxlength="40" class="form-control" id="formGroupExampleInput2" placeholder="E-mail">
+                              <input type="text" maxlength="40" class="form-control" name="pixEmail" id="pixEmail" placeholder="E-mail">
                             </div>
                             <div class="mb-3">
-                              <input type="text" maxlength="11" class="form-control" id="formGroupExampleInput2" placeholder="CPF">
-                            </div>
-                            <div class="mb-3">
-                                <img src="img/qr-musical.png" class="d-block w-100" style="width:auto;height:auto" alt="${pr.desc}">
+                              <input type="text" maxlength="11" class="form-control" name="pixCpf" id="pixCpf" placeholder="CPF">
                             </div>
                         </div>
                       </div>
                       <div class="accordion-item">
                         <h2 class="accordion-header">
-                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          <button class="accordion-button collapsed" id="accDois" onclick="mudaPag2();" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             Cartão de Crédito
                           </button>
                         </h2>
                         <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                           <div class="accordion-body">
                             <div class="mb-3">
-                              <input type="text" maxlength="40" class="form-control" id="formGroupExampleInput" placeholder="Nome escrito no cartão">
+                              <input type="text" maxlength="40" class="form-control" name="creditoNome" id="creditoNome" placeholder="Nome escrito no cartão">
                             </div>
                             <div class="mb-3">
-                              <input type="text" maxlength="40" class="form-control" id="formGroupExampleInput2" placeholder="Número do cartão">
+                              <input type="text" maxlength="40" class="form-control" name="creditoNum" id="creditoNum" placeholder="Número do cartão">
                             </div>
                             <div class="mb-3">
-                              <input type="text" maxlength="3" class="form-control" id="formGroupExampleInput3" placeholder="CVV">
+                              <input type="text" maxlength="3" class="form-control" name="creditoCvv" id="creditoCvv" placeholder="CVV">
                             </div>
                             <div class="mb-3">
-                              <input type="text" maxlength="4" class="form-control" id="formGroupExampleInput4" placeholder="MM/AA">
+                              <input type="text" maxlength="4" class="form-control" name="creditoData" id="creditoData" placeholder="MM/AA">
                             </div>
                             <div class="mb-3">
                               <label for="flexRadioDefault">Parcelas:</label>
@@ -454,34 +453,33 @@
                       </div>
                       <div class="accordion-item">
                         <h2 class="accordion-header">
-                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          <button class="accordion-button collapsed" onclick="mudaPag3();" id="accTres" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                             Cartão de Débito
                           </button>
                         </h2>
                         <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                           <div class="accordion-body">
                           <div class="mb-3">
-                            <input type="text" maxlength="40" class="form-control" id="formGroupExampleInput" placeholder="Nome escrito no cartão">
+                            <input type="text" maxlength="40" class="form-control" name="debitoNome" id="debitoNome" placeholder="Nome escrito no cartão">
                           </div>
                           <div class="mb-3">
-                            <input type="text" maxlength="40" class="form-control" id="formGroupExampleInput2" placeholder="Número do cartão">
+                            <input type="text" maxlength="40" class="form-control" name="debitoNum" id="debitoNum" placeholder="Número do cartão">
                           </div>
                           <div class="mb-3">
-                            <input type="text" maxlength="3" class="form-control" id="formGroupExampleInput3" placeholder="CVV">
+                            <input type="text" maxlength="3" class="form-control" name="debitoCvv" id="debitoCvv" placeholder="CVV">
                           </div>
                           <div class="mb-3">
-                            <input type="text" maxlength="4" class="form-control" id="formGroupExampleInput4" placeholder="MM/AA">
-
+                            <input type="text" maxlength="4" class="form-control" name="debitoData" id="debitoData" placeholder="MM/AA">
                           </div>
                         </div>
                       </div>
                       <div class="accordion-item">
                           <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            <button class="accordion-button collapsed" onclick="mudaPag4();" id="accQuatro" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                               Boleto
                             </button>
                           </h2>
-                          <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                          <div id="collapseFour" class="accordion-button collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <div class="d-grid gap-2">
                                   <button class="btn btn-light" style="margin-top: 0.8rem;" type="button">Gerar boleto</button>
@@ -491,7 +489,7 @@
                         </div>
                       </div>
 
-                      <div class="card" style="width: 18rem;">
+                      <div class="card" style="width: auto;">
                         <ul class="list-group list-group-flush">
                           <li class="list-group-item" id="liFrete">Frete: R$0,00</li>
                           <li class="list-group-item" id="subtotal">Subtotal: R$${total}</li>
@@ -503,13 +501,17 @@
                       </div>
 
                       <div class="d-grid gap-2">
-                        <button class="btn btn-success" style="margin-top: 0.8rem;" type="button">Finalizar</button>
+                        <input type="hidden" value="pix" id="metodoPagamento" name="metodoPagamento">
+                        <input type="hidden" value="${metodoFrete}" id="metodoFrete" name="metodoFrete">
+                        <button type="submit" class="btn btn-success" style="margin-top: 0.8rem;" type="button">Finalizar</button>
                       </div>
+                      <br>
+                      <br>
                     </div>
                 </div>
               </div>
             </div>
-        </nav>
+        </form>
 
         <script src="js/cliente.js"></script>
         <script src="js/pagamento.js"></script>

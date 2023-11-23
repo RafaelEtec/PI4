@@ -657,21 +657,40 @@
                     </div>
                 </div>
             </div>
-
-
-            <div class="toast">
-                <div class="toast-header">
-                  <strong class="mr-auto">Bootstrap</strong>
-                  <small>11 mins ago</small>
-                  <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">
-                    <span>&times;</span>
-                  </button>
-                </div>
-                <div class="toast-body">
-                  Hello, world! This is a toast message.
-                </div>
-              </div>
         </header>
+
+        <nav class="container-md" style="margin-top: 30rem;margin-left: 2rem;margin-right: 16rem;">
+            <nav class="navbar bg-body-tertiary">
+              <form class="container-fluid" action="/listByName" method="get">
+                <div class="input-group">
+                  <span class="input-group-text" id="basic-addon1">Nome</span>
+                  <input type="text" class="form-control" name="nomeToSearch" id="nomeToSearch" aria-label="Nome" aria-describedby="basic-addon1">
+                    <button id="search" class="btn btn-outline-success" type="submit">Procurar</button>
+                </div>
+              </form>
+            </nav>
+            <br>
+            <c:forEach var="prShow" items="${prsShow}">
+                <div class="card" style="width: 18rem;">
+                  <c:choose>
+                      <c:when test="${prShow.img != null}">
+                          <img src="img/${prShow.img}" class="d-block w-100"
+                               style="width:400px;height:200px" alt="${prShow.desc}">
+                      </c:when>
+                      <c:otherwise>
+                          <img src="img/mus.jpg" class="d-block w-100"
+                               style="width:400px;height:200px" alt="${prShow.desc}">
+                      </c:otherwise>
+                  </c:choose>
+                  <div class="card-body">
+                    <p class="card-text">${prShow.nome}</p>
+                    <p class="card-text">${prShow.desc}</p>
+                    <p class="card-text">${prShow.val}</p>
+                  </div>
+                </div>
+                <br>
+            </c:forEach>
+        </nav>
 
         <script src="js/cliente.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"

@@ -1,8 +1,7 @@
 package servlet;
 
-import dao.clDAO;
+import dao.prDAO;
 import model.Cliente;
-import model.Endereco;
 import model.Produto;
 
 import javax.servlet.ServletException;
@@ -14,12 +13,33 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/metodosPag")
-public class metodosPag extends HttpServlet {
+@WebServlet("/listByName")
+public class listByName extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String total = "", qnt = "", frete = req.getParameter("listGroupRadio");
+        List<Produto> pianos = new prDAO().listCarrouselCardsByTag("PIANO");
+        List<Produto> guitarras = new prDAO().listCarrouselCardsByTag("GUITARRA");
+        List<Produto> flautas = new prDAO().listCarrouselCardsByTag("FLAUTA");
+        List<Produto> violoes = new prDAO().listCarrouselCardsByTag("VIOLAO");
+        List<Produto> saxofones = new prDAO().listCarrouselCardsByTag("SAXOFONE");
+        List<Produto> searched = new prDAO().listProductsByName(req.getParameter("nomeToSearch"));
+        String total = "", qnt = "";
         double precoTotal = 0;
+        req.setAttribute("pianos", pianos);
+        req.setAttribute("guitarras", guitarras);
+        req.setAttribute("flautas", flautas);
+        req.setAttribute("violoes", violoes);
+        req.setAttribute("saxofones", saxofones);
+        req.setAttribute("prsShow", searched);
+        String status = "";
+
+        Cliente cliente = (Cliente) req.getSession().getAttribute("cliente");
+        if (cliente == null) {
+            status = "naologado";
+        } else {
+            status = "logado";
+        }
+
         if (req.getSession().getAttribute("carrinho") == null) {
             List<Produto> carrinho = new ArrayList<>();
             req.getSession().setAttribute("carrinho", carrinho);
@@ -39,9 +59,9 @@ public class metodosPag extends HttpServlet {
                 qnt = "Há " + carrinho.size() + " itens no carrinho";
             }
         }
-        req.setAttribute("metodoFrete", frete);
         req.setAttribute("qnt", qnt);
         req.setAttribute("total", total);
-        req.getRequestDispatcher("metodosPag.jsp").forward(req, resp);
+        req.setAttribute("sessionStatus", status);
+        req.getRequestDispatcher("Disciplina-Musical.jsp").forward(req, resp);
     }
 }

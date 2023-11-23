@@ -349,6 +349,7 @@
                     </c:otherwise>
                 </c:choose>
             </div>
+        </nav>
 
             <div class="container text-center">
               <div class="row align-items-start">
@@ -401,9 +402,8 @@
                      </c:otherwise>
                  </c:choose>
                 </div>
-
-
-                      <div class="card" style="width: 18rem;">
+                <div class="col">
+                      <div class="card" style="width: auto;">
                         <ul class="list-group list-group-flush">
                           <li class="list-group-item" id="liFrete">Frete: R$0,00</li>
                           <li class="list-group-item" id="subtotal">Subtotal: R$${total}</li>
@@ -413,16 +413,22 @@
                           <input type="hidden" id="totalJS" value="${total}">
                         </div>
                       </div>
-
-                      <div class="d-grid gap-2">
-                          <form action="/metodosFrete" method="get">
-                            <button class="btn btn-success" style="margin-top: 0.8rem;" type="button">Escolher Frete</button>
-                          </form>
+                          <div class="d-grid gap-2">
+                            <form action="/metodosFrete" method="get">
+                              <c:choose>
+                                  <c:when test="${carrinho.size() == 0}">
+                                      <button disabled class="btn btn-success" style="margin-top: 0.8rem;" type="button">Escolher Frete</button>
+                                  </c:when>
+                                  <c:otherwise>
+                                      <button type="submit" class="btn btn-success" style="margin-top: 0.8rem;" type="button">Escolher Frete</button>
+                                  </c:otherwise>
+                              </c:choose>
+                            </form>
+                          </div>
                       </div>
+                      <div class="col"></div>
                 </div>
-              </div>
             </div>
-        </nav>
 
         <script src="js/cliente.js"></script>
         <script src="js/pagamento.js"></script>

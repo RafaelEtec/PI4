@@ -65,6 +65,14 @@ public class Produto {
         this.ava = ava;
     }
 
+    public Produto(int id, String nome, String desc, String img, double val) {
+        this.id = id;
+        this.nome = nome;
+        this.desc = desc;
+        this.img = img;
+        this.val = val;
+    }
+
     public Produto(String nome, String desc, double val, int qnt, double ava, String img, String tag) {
         this.nome = nome;
         this.desc = desc;
