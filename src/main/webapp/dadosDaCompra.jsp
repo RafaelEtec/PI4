@@ -397,11 +397,13 @@
                 <div class="col" style="margin-right: 8rem;">
                   <nav class="navbar bg-body-tertiary">
                     <div class="container-fluid">
-                      <span class="navbar-brand mb-0 h1">Endereços</span>
+                      <span class="navbar-brand mb-0 h1">Endereço de Entrega</span>
                     </div>
                   </nav>
                   &nbsp
                     <c:forEach var="en" items="${enderecos}">
+                    <c:choose>
+                    <c:when test="${en.isdefault == true}">
                       <div class="row" style="margin-bottom: 0.8rem;">
                         <div class="card" style="width: 18rem; margin-right: 0.4rem;">
                           <div class="card-body">
@@ -410,10 +412,12 @@
                           </div>
                           <ul class="list-group list-group-flush">
                             <li class="list-group-item">${en.com}</li>
-                            <li class="list-group-item">${en.est}, ${en.cid}</li>
+                            <li class="list-group-item">${en.cid}, ${en.est}</li>
                           </ul>
                         </div>
                       </div>
+                      </c:when>
+                      </c:choose>
                     </c:forEach>
 
                     <c:choose>

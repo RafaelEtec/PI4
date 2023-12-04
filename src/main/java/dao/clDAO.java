@@ -91,6 +91,30 @@ public class clDAO {
         return saida;
     }
 
+    public int pegaMaxCLN(int cliente) {
+        String sql = "SELECT MAX(en_CL_N) FROM tb_ENDERECO WHERE en_CL_ID = ?;";
+        int cln = 2;
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            System.out.println("Conectado");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, cliente);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                cln = rs.getInt(1);
+            }
+
+            con.close();
+            System.out.println("Sucesso na pesquisa de endereços");
+            return cln + 1;
+        } catch (Exception ex) {
+            System.out.println("Erro na pesquisa de endereços!");
+            return cln;
+        }
+    }
+
     public List<Endereco> pegaEnderecosCliente(int id) {
         String sql = "SELECT * FROM tb_ENDERECO WHERE en_CL_ID = ?;";
 
@@ -125,6 +149,99 @@ public class clDAO {
         } catch (Exception ex) {
             System.out.println("Erro na listagem de endereços!");
             return Collections.emptyList();
+        }
+    }
+
+    public boolean newDefaultClienteEndereco(int cliente, int endereco) {
+        String sql = "UPDATE tb_CLIENTE SET cl_END_ENTREGA = ? WHERE cl_ID = ?";
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            System.out.println("Conectado");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, endereco);
+            ps.setInt(2, cliente);
+            ps.execute();
+
+            System.out.println("Sucesso na atualização do endereço do cliente");
+            con.close();
+            return true;
+        } catch (Exception ex) {
+            System.out.println("Erro na atualização do endereço do cliente");
+            return false;
+        }
+    }
+
+    public boolean downAllDefaultEndereco(int cliente) {
+        String sql = "UPDATE tb_ENDERECO SET en_DEFAULT = false WHERE en_CL_ID = ?;";
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            System.out.println("Conectado");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, cliente);
+            ps.execute();
+
+            System.out.println("Sucesso na atualização do endereço padrão do cliente");
+            con.close();
+            return true;
+        } catch (Exception ex) {
+            System.out.println("Erro na atualização do endereço padrão do cliente!");
+            return false;
+        }
+    }
+
+    public boolean newDefaultEndereco(int endereco) {
+        String sql = "UPDATE tb_ENDERECO SET en_DEFAULT = true WHERE en_ID = ?;";
+        try {
+            Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            System.out.println("Conectado");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, endereco);
+            ps.execute();
+
+            con.close();
+            System.out.println("Sucesso na atualização do endereço padrão");
+            return true;
+        } catch (Exception ex) {
+            System.out.println("Erro na atualização do endereço padrão!");
+            return false;
+        }
+    }
+
+    public Endereco pegaEnderecoDefault(int id) {
+        String sql = "SELECT * FROM tb_ENDERECO WHERE en_CL_ID = ? AND en_DEFAULT = true;";
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            System.out.println("Conectado");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            Endereco en = new Endereco();
+
+            while (rs.next()) {
+                int en_ID = rs.getInt("en_ID");
+                int en_CL_ID = rs.getInt("en_CL_ID");
+                int en_CL_N = rs.getInt("en_CL_N");
+                String en_TIPO = rs.getString("en_TIPO");
+                String en_CEP = rs.getString("en_CEP");
+                String en_LOG = rs.getString("en_LOG");
+                String en_NUM = rs.getString("en_NUM");
+                String en_COM = rs.getString("en_COM");
+                String en_CID = rs.getString("en_CID");
+                String en_EST = rs.getString("en_EST");
+                boolean en_DEFAULT = rs.getBoolean("en_DEFAULT");
+
+                en = new Endereco(en_ID, en_CL_ID, en_CL_N, en_TIPO, en_CEP, en_LOG, en_NUM, en_COM, en_CID, en_EST, en_DEFAULT);
+            }
+            System.out.println("Sucesso na listagem!");
+            con.close();
+
+            return en;
+        } catch (Exception ex) {
+            System.out.println("Erro na listagem de endereços!");
+            return null;
         }
     }
 

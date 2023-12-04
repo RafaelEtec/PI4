@@ -27,14 +27,14 @@ public class finalizarCompra extends HttpServlet {
             double precoAtual = prAtual.getVal();
             precoTotal = precoTotal + precoAtual;
         }
-        List<Endereco> enderecos = new clDAO().pegaEnderecosCliente(cliente.getId());
-        Endereco en = enderecos.get(1);
+
+        int ende = cliente.getEnd_entrega();
 
         total = "" + precoTotal;
         if (carrinho.size() == 1) { qnt = "Há " + carrinho.size() + " item no carrinho";
         } else { qnt = "Há " + carrinho.size() + " itens no carrinho"; }
 
-        Pedido pe = new Pedido(cliente.getId(), precoTotal, carrinho.size(), en.getId(), metodoFrete, metodoPagamento, "Verificando pagamento");
+        Pedido pe = new Pedido(cliente.getId(), precoTotal, carrinho.size(), ende, metodoFrete, metodoPagamento, "Aguardando pagamento");
         new peDAO().addPedido(pe);
         try {
             Thread.sleep(1000);

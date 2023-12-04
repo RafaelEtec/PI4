@@ -74,10 +74,12 @@
                                             <input type="hidden" name="pe_new_ID" id="pe_new_ID" value="${pe.id}">
                                             <select name="pe-stt" id="pe-stt">
                                                 <option value=""></option>
-                                                <option value="Verificando Pagamento">Verificando pagamento</option>
-                                                <option value="Saiu para entrega">Saiu para entrega</option>
+                                                <option value="Aguardando pagamento">Aguardando pagamento</option>
+                                                <option value="Pagamento rejeitado">Pagamento rejeitado</option>
+                                                <option value="Pagamento com sucesso">Pagamento com sucesso</option>
+                                                <option value="Aguardando retirada">Aguardando retirada</option>
+                                                <option value="Em transito">Em transito</option>
                                                 <option value="Entregue">Entregue</option>
-                                                <option value="Cancelado">Cancelado</option>
                                             </select>
                                         </div>
                                         <div class="col">

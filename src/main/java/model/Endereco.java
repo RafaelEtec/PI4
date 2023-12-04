@@ -13,6 +13,7 @@ public class Endereco {
     private String est;
     private boolean isdefault;
 
+    public Endereco() {}
     public Endereco(int id, int cl_id, int cl_n, String tipo, String cep, String log, String num, String com, String cid, String est, boolean isdefault) {
         this.id = id;
         this.cl_id = cl_id;

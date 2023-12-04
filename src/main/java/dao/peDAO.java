@@ -54,7 +54,7 @@ public class peDAO {
             ps.execute();
 
             System.out.println("Sucesso no cadastro do Produto do Pedido!");
-            con.close();
+              con.close();
         } catch (Exception ex) {
             System.out.println("Erro no cadastro do Produto do Pedido!");
         }

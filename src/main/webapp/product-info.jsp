@@ -405,7 +405,7 @@
                                               <button onclick="openLogin();" type="button" class="btn btn-primary">Finalizar</button>
                                           </c:when>
                                           <c:otherwise>
-                                              <form action="/dadosDaCompra" method="get" id="dadosDaCompraForm">
+                                              <form action="/metodosItens" method="get" id="dadosDaCompraForm">
                                                   <button type="submit" class="btn btn-primary">Finalizar</button>
                                               </form>
                                           </c:otherwise>

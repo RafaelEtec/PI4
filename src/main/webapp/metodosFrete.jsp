@@ -351,32 +351,167 @@
             </div>
         </nav>
 
+        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Alterar endereço</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                    <c:forEach var="en" items="${enderecos}">
+                      <div class="row" style="margin-bottom: 0.8rem;">
+                        <div class="card" style="width: 24rem; margin-left: 3.2rem;">
+                          <div class="card-body">
+                            <h5 class="card-title">${en.log}, ${en.num}</h5>
+                            <div class="row">
+                                <div class="col">
+                                    <p class="card-text blockquote-footer" style="margin-top: 0.2rem;">${en.cep}</p>
+                                </div>
+                                <c:choose>
+                                    <c:when test="${en.isdefault == false}">
+                                        <div class="col" style="margin-left: 4rem;">
+                                            <form method="get" action="/newDefaultEndereco">
+                                                <input type="hidden" value="${en.id}" name="newIdEndereco" id="newIdEndereco">
+                                                <input type="hidden" value="${en.cl_n}" name="newIdEnderecoCLN" id="newIdEnderecoCLN">
+                                                <button type="submit" class="btn">
+                                                    <i class="bi bi-check2-square"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </c:when>
+                                </c:choose>
+                            </div>
+                          </div>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">${en.com}</li>
+                            <li class="list-group-item">${en.cid}, ${en.est}</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </c:forEach>
+              </div>
+              <div class="modal-footer">
+                <p>
+                  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                    Novo endereço
+                  </button>
+                </p>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+                  <div class="collapse collapse-horizontal" id="collapseWidthExample">
+                    <form action="/addEndereco" method="get">
+                    <div class="card card-body" style="width: 490px;margin-left: 0.25rem;">
+                        <div class="row mb-2">
+                            <label for="new-e-cep" class="col-sm-4 col-form-label">CEP</label>
+                            <div class="col-sm-7">
+                                <input required maxlength="8" type="text" class="form-control" id="new-e-cep" name="new-e-cep">
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <label for="new-e-log" class="col-sm-4 col-form-label">Logradouro</label>
+                            <div class="col-sm-7">
+                                <input required maxlength="40" type="text" class="form-control" id="new-e-log" name="new-e-log"">
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <label for="new-e-num" class="col-sm-4 col-form-label">Número</label>
+                            <div class="col-sm-7">
+                                <input required maxlength="4" type="text" class="form-control" id="new-e-num" name="new-e-num">
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <label for="new-e-com" class="col-sm-4 col-form-label">Complemento</label>
+                            <div class="col-sm-7">
+                                <input maxlength="40" type="text" class="form-control" id="new-e-com" name="new-e-com">
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <label for="new-e-est" class="col-sm-4 col-form-label">Estado</label>
+                            <div class="col-sm-7">
+                                <select name="new-e-est" id="new-e-est">
+                                    <option value="">Selecione</option>
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapa</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceara</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espirito Santo</option>
+                                    <option value="GO">Goias</option>
+                                    <option value="MA">Maranhao</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Para</option>
+                                    <option value="PB">Paraiba</option>
+                                    <option value="PR">Parana</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piaui</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondonia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">Sao Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <label for="new-e-cid" class="col-sm-4 col-form-label">Cidade</label>
+                            <div class="col-sm-7">
+                                <input required maxlength="40" type="text" class="form-control" id="new-e-cid" name="new-e-cid">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success">
+                            Cadastrar
+                        </button>
+                    </div>
+                    </form>
+                  </div>
+            </div>
+          </div>
+        </div>
+
         <form action="/metodosPag" method="get">
             <div class="container text-center">
               <div class="row align-items-start">
                 <div class="col" style="margin-right: 8rem;">
                   <nav class="navbar bg-body-tertiary">
                     <div class="container-fluid">
-                      <span class="navbar-brand mb-0 h1">Endereços</span>
+                      <span class="navbar-brand mb-0 h1">Endereço de Entrega</span>
                     </div>
                   </nav>
                   &nbsp
                     <c:forEach var="en" items="${enderecos}">
-                      <div class="row" style="margin-bottom: 0.8rem;">
-                        <div class="card" style="width: 18rem; margin-right: 0.4rem;">
-                          <div class="card-body">
-                            <button class="btn">
-                              <i class="bi bi-pencil-square"></i>
-                            </button>
-                            <h5 class="card-title">${en.log}, ${en.num}</h5>
-                            <p class="card-text blockquote-footer" style="margin-top: 0.2rem;">${en.tipo}</p>
+                    <c:choose>
+                      <c:when test="${en.isdefault == true}">
+                          <div class="row" style="margin-bottom: 0.8rem;">
+                            <div class="card" style="width: 18rem; margin-right: 0.4rem;">
+                              <div class="card-body">
+                                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
+                                  <i class="bi bi-pencil-square"></i>
+                                </button>
+                                <h5 class="card-title">${en.log}, ${en.num}</h5>
+                                <p class="card-text blockquote-footer" style="margin-top: 0.2rem;">${en.tipo}</p>
+                              </div>
+                              <ul class="list-group list-group-flush">
+                                <li class="list-group-item">${en.com}</li>
+                                <li class="list-group-item">${en.cid}, ${en.est}</li>
+                              </ul>
+                            </div>
                           </div>
-                          <ul class="list-group list-group-flush">
-                            <li class="list-group-item">${en.com}</li>
-                            <li class="list-group-item">${en.est}, ${en.cid}</li>
-                          </ul>
-                        </div>
-                      </div>
+                      </c:when>
+                    </c:choose>
                     </c:forEach>
                 </div>
                 <div class="col">

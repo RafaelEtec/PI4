@@ -531,8 +531,8 @@
                         <li class="list-group-item">${en.est}, ${en.cid}</li>
                       </ul>
                     </div>
-                </c:forEach>
                 </div>&nbsp
+                </c:forEach>
             <nav class="navbar bg-body-tertiary">
               <div class="container-fluid">
                 <span class="navbar-brand mb-0 h1">Senha</span>
